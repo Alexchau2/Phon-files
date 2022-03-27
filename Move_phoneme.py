@@ -12,11 +12,10 @@ import xml.etree.ElementTree as ET
 import time
 import itertools
 import timeit
-import csv
 import openpyxl
-import pandas as pd
 import xlrd
 import re
+import unicodedata
 
 # DO NOT USE YET
 # Still being worked on
