@@ -1,0 +1,4879 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<session xmlns="http://phon.ling.mun.ca/ns/phonbank" id="6365_CCP_CCP Pre" corpus="csv061620_superscriptDiphthongsFix" version="PB1.2">
+    <header>
+        <date>2020-06-16</date>
+    </header>
+    <participants/>
+    <transcribers/>
+    <userTiers>
+        <userTier tierName="Target" grouped="false"/>
+        <userTier tierName="DI" grouped="false"/>
+        <userTier tierName="NumProductions" grouped="false"/>
+        <userTier tierName="Speaker" grouped="false"/>
+        <userTier tierName="CA" grouped="false"/>
+        <userTier tierName="Probe" grouped="false"/>
+        <userTier tierName="Session" grouped="false"/>
+    </userTiers>
+    <tierOrder>
+        <tier tierName="Orthography" visible="true" locked="false" font="default"/>
+        <tier tierName="IPA Target" visible="true" locked="false" font="default"/>
+        <tier tierName="IPA Actual" visible="true" locked="false" font="default"/>
+        <tier tierName="Notes" visible="true" locked="false" font="default"/>
+        <tier tierName="Segment" visible="true" locked="false" font="default"/>
+        <tier tierName="Target" visible="true" locked="false" font="default"/>
+        <tier tierName="DI" visible="true" locked="false" font="default"/>
+        <tier tierName="NumProductions" visible="true" locked="false" font="default"/>
+        <tier tierName="Speaker" visible="true" locked="false" font="default"/>
+        <tier tierName="CA" visible="true" locked="false" font="default"/>
+        <tier tierName="Probe" visible="true" locked="false" font="default"/>
+        <tier tierName="Session" visible="true" locked="false" font="default"/>
+    </tierOrder>
+    <transcript>
+        <u id="d6cf73b1-f279-4c9b-8cb6-5b32bc58971c" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>help</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈhɛlp</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>hɛlp</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l p</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="8f4ab816-3aea-43e8-b5c3-818bcf7cebf1" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>scalp</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈskælp</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="LA"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>kaʊp˺</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="6">
+                    <phomap value="0 -1"/>
+                    <phomap value="1 0"/>
+                    <phomap value="2 1"/>
+                    <phomap value="-1 2"/>
+                    <phomap value="3 -1"/>
+                    <phomap value="4 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l p</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="eefb4c55-3f68-4886-93b7-f0d4a67055c4" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>gulp</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈɡʌlp</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ɡʌlp</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l p</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="af678755-7a16-4b9b-a5b7-9a0a2f4911e3" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>belt</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈbɛlt</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bɛlt</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l t</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="b42bb949-edd2-4690-be84-47f694c4f946" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>salt</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈsɑlt</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>jɔlt˺</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l t</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="cefd0bff-7743-44b7-9302-1ef0f17c3513" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>melt</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈmɛlt</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>mɛlt</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l t</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="595a2f91-43be-4629-b1ed-d02f17da3972" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>old</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈoʊld</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>oʊld</w>
+                    <sb>
+                        <ph indexes="0" scType="N" hiatus="false"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l d</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="05878052-4f8a-45b5-ab0a-0cdea0e789f8" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>gold</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈɡoʊld</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ɡoʊld</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l d</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="0d2a5ef6-97d9-4756-92ee-2298608e104a" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>cold</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈkoʊld</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>koʊˡd</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2 3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 -1"/>
+                    <phomap value="4 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l d</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="d460b9d7-1144-445b-a861-0da5d7fb8b43" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>milk</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈmɪlk</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>mɪlk</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l k</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="d9d9748a-826d-4129-b455-867a5994f79a" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>sulk</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈsʌlk</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>jʌlk˺</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l k</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="5fa316a5-af02-4ed0-8810-497aa3ff2f62" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>silk</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈsɪlk</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>jɪlk˺</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l k</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="6d6b6e76-5b42-477c-b65d-16623a013cec" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>wolf</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈwʊlf</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>wʊp</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 -1"/>
+                    <phomap value="3 2"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l f</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="c54dc72e-ac4e-4a0a-8acb-e154f8e91e2b" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>golf</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈɡɔlf</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ɡɔlp</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l f</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="09fc68c5-a8e8-4ff3-a7f7-16c58744b9a9" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>shelf</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈʃɛlf</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ʃɛlp˺</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l f</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="d0d62995-dd86-4d0f-8cc6-03f101dff529" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>health</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈhɛlθ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>hɛlp</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l θ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="55fba260-deb9-46cc-8df7-5067d0954c5b" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>wealth</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈwɛlθ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>wɛlp</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l θ</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="ab07b35b-fc72-44c6-9cf2-4202ea757329" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>filth</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈfɪlθ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>vɪlp</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l θ</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="d81543b6-9cf6-404c-92b6-0b475f296235" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>burp</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈbʊɹp</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bʊɹp</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r p</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="d72adbb7-3875-43fb-bbb9-da71f0a757f8" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>sharp</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈʃɑɹp</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ʃˡɔɹp</w>
+                    <sb>
+                        <ph indexes="0 1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r p</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="edd7e7fb-c60e-49ca-a281-74ec90188c96" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>chirp</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈʧʊɹp</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ʧʊɹp</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r p</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="3d9e7ff5-d72e-48f5-a67b-cf37e41b55cc" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>curb</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈkʊɹb</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>kʊɹb</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r b</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="9261f2c3-35a0-4c2e-82eb-be9f75f07f01" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>verb</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈvʊɹb</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bʊɹb</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r b</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="6a7f3829-f2cf-487f-bf17-98052f773547" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>barb</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈbɑɹb</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bɔb</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 -1"/>
+                    <phomap value="3 2"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r b</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="078f46df-81e0-4d5b-b3d1-a51051ca0d05" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>shirt</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈʃʊɹt</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ʃʊɹt˺</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r t</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="2ded9abe-e6a2-4e8e-ac36-238a5d977a96" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>heart</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈhɑɹt</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>hɔɹt˺</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r t</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="8b8de3a5-93f3-4b18-ac42-d386288b4d93" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>cart</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈkɑɹt</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>kɔɹt˺</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r t</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="66634689-4d19-425b-869b-4df2ad42b9f3" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>bird</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈbʊɹd</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bʊɹd</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r d</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="f5364469-a5eb-47ad-8f20-9f78b793796b" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>card</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈkɑɹd</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>kɔɹd</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r d</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="fc22dc22-b9a4-4cbb-96a7-4772233d1f47" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>yard</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈjɑɹd</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>jɔɹd˺</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r d</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="accd50cd-c88c-4d20-9659-396fccc9497b" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>fork</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈfoʊɹk</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>boʊɹk</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r k</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="9bbcd413-d3f6-4923-96f5-87f3baa08546" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>bark</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈbɑɹk</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bɔɹk</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r k</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="0a4cc9fd-692d-4aca-a4de-1775b3552c2c" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>park</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈpɑɹk</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>pɔɹk</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r k</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="84f3fe69-c76f-4a3d-be79-6e535018b116" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>iceberg</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈaɪsbʊɹɡ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="O"/>
+                        <ph indexes="5" scType="N" hiatus="true"/>
+                        <ph indexes="6" scType="C"/>
+                        <ph indexes="7" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>aɪt˺bʊɹɡ</w>
+                    <sb>
+                        <ph indexes="0" scType="N" hiatus="false"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2 3" scType="C"/>
+                        <ph indexes="4" scType="O"/>
+                        <ph indexes="5" scType="N" hiatus="true"/>
+                        <ph indexes="6" scType="C"/>
+                        <ph indexes="7" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="7">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                    <phomap value="5 5"/>
+                    <phomap value="6 6"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r g</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="56da5af1-062b-40dc-bd84-34d8dc44c51f" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>burglar</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈbʊɹɡlʊɹ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="O"/>
+                        <ph indexes="5" scType="O"/>
+                        <ph indexes="6" scType="N" hiatus="true"/>
+                        <ph indexes="7" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bʊɹɡlʊɹ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="O"/>
+                        <ph indexes="5" scType="N" hiatus="true"/>
+                        <ph indexes="6" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="7">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                    <phomap value="5 5"/>
+                    <phomap value="6 6"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r g</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="f5f0ac9b-def6-4db2-bb14-f9faa77bc28f" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>hamburger</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈhæmbʊɹɡʊɹ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="O"/>
+                        <ph indexes="5" scType="N" hiatus="true"/>
+                        <ph indexes="6" scType="C"/>
+                        <ph indexes="7" scType="O"/>
+                        <ph indexes="8" scType="N" hiatus="true"/>
+                        <ph indexes="9" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bʊɹɡʊɹ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="9">
+                    <phomap value="0 -1"/>
+                    <phomap value="1 -1"/>
+                    <phomap value="2 -1"/>
+                    <phomap value="3 0"/>
+                    <phomap value="4 1"/>
+                    <phomap value="5 2"/>
+                    <phomap value="6 3"/>
+                    <phomap value="7 4"/>
+                    <phomap value="8 5"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r g</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="c7ade76f-f913-4de6-9297-41825d72b57d" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>scarf</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈskɑɹf</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="LA"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ɡɔɹp˺</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 -1"/>
+                    <phomap value="1 0"/>
+                    <phomap value="2 1"/>
+                    <phomap value="3 2"/>
+                    <phomap value="4 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r f</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="250ec40c-76b5-4b8b-810b-3ec6f42cf0a3" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>surf</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈsʊɹf</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>hʊɹp˺</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r f</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="dc54f7c3-38bf-4172-a785-71c22f16baa5" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>nerf</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈnʊɹf</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>nʊɹp˺</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r f</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="64021cb1-4342-4800-b2e8-d7cd0d532b82" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>curve</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈkʊɹv</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>kʊɹb</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r v</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="7fb697f6-91bb-4e8f-b39f-8409fb065a70" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>carve</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈkɔɹv</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>kɔɹb</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r v</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="095b2389-a91b-4253-96db-4e9a578abedb" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>starve</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈstɑɹv</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="LA"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>dɔɹb</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 -1"/>
+                    <phomap value="1 0"/>
+                    <phomap value="2 1"/>
+                    <phomap value="3 2"/>
+                    <phomap value="4 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r v</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="0fd144ea-c350-4112-ba26-4fff02d971b7" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>hearth</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈhɑɹθ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>hɔɹp</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r θ</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="e66c1198-20d9-45bf-987d-45a69a248a5f" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>earth</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈʊɹθ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ʊɹp</w>
+                    <sb>
+                        <ph indexes="0" scType="N" hiatus="true"/>
+                        <ph indexes="1" scType="C"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="3">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r θ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="ab53f9ee-b9c3-4473-83ca-aa1ec539015c" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>birth</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈbʊɹθ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bʊɹpdeɪ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="O"/>
+                        <ph indexes="5" scType="N" hiatus="false"/>
+                        <ph indexes="6" scType="N" hiatus="false"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="7">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="-1 4"/>
+                    <phomap value="-1 5"/>
+                    <phomap value="-1 6"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r θ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="ed4b448a-8007-4bfa-8de2-1867a6b3c64c" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>horse</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈhoʊɹs</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>hoʊɹs</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r s</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="5d0c3c2b-7acc-4e6c-8b90-cf5d8fc58294" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>purse</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈpʊɹs</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>pʊɹs</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r s</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="32dfc409-3263-45d7-a956-00e6ecae1941" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>nurse</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈnʊɹs</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>nʊɹs</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r s</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="6457a56e-71fa-49be-b779-0ec38ac8083f" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>ours</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈɔɹz</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ɔɹz</w>
+                    <sb>
+                        <ph indexes="0" scType="N" hiatus="true"/>
+                        <ph indexes="1" scType="C"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="3">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r z</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="54b0d739-90d4-48b2-a5f7-f8474fe17628" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>mars</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈmɑɹz</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>mɔɹz</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r z</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="38ead9b1-228d-4d5f-be8f-08391e5d815b" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>cars</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈkɑɹz</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>kɔɹz̥</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r z</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="3bcaf781-26e4-4d3e-883a-30e17b9b9a2a" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>church</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈʧʊɹʧ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ʃˡʊɹʃˡ</w>
+                    <sb>
+                        <ph indexes="0 1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4 5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r ʧ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="66dcacd1-7f7f-4100-a397-68842fe35df9" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>torch</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈtɔɹʧ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>toʊɹʃ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="-1 1"/>
+                    <phomap value="1 2"/>
+                    <phomap value="2 3"/>
+                    <phomap value="3 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r ʧ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="d07b40a3-c122-442e-a940-ab9c512a2f3e" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>porch</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈpɔɹʧ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>poʊɹᶴ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="-1 1"/>
+                    <phomap value="1 2"/>
+                    <phomap value="2 3"/>
+                    <phomap value="3 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r ʧ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="23a574e3-5d8d-4472-b7d0-2ab303f8190d" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>large</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈlɑɹʤ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>lɔɹᶴ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2 3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r ʤ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="498a660a-bdc9-43b0-bd64-6f1ed3fee8fc" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>George</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈʤoʊɹʤ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ʒˡoʊɹᶾ</w>
+                    <sb>
+                        <ph indexes="0 1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4 5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r ʤ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="9b424f67-551e-4e76-ba1c-ccaa3fa5654a" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>sarge</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈsɑɹʤ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>jɔɹ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r ʤ</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="813d3d7e-b308-4550-88d4-96d1ec8e4980" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>arm</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈɑɹm</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ɔɹm</w>
+                    <sb>
+                        <ph indexes="0" scType="N" hiatus="true"/>
+                        <ph indexes="1" scType="C"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="3">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r m</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="8a79652b-20d8-4d77-a109-7f0e7b2b0d46" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>worm</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈwʊɹm</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>wʊɹm</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r m</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="6f79aa3e-789d-41c3-a728-ee8d5c53cd8a" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>farm</w>
+                    <w>farm</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈfɑɹm</w>
+                    <w>ˈfɑɹm</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="WB"/>
+                        <ph indexes="6" scType="SS"/>
+                        <ph indexes="7" scType="O"/>
+                        <ph indexes="8" scType="N" hiatus="true"/>
+                        <ph indexes="9" scType="C"/>
+                        <ph indexes="10" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>mɔɹm</w>
+                    <w>wɔɹm</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="WB"/>
+                        <ph indexes="5" scType="O"/>
+                        <ph indexes="6" scType="N" hiatus="true"/>
+                        <ph indexes="7" scType="C"/>
+                        <ph indexes="8" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="8">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                    <phomap value="5 5"/>
+                    <phomap value="6 6"/>
+                    <phomap value="7 7"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r m</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions">2.0</flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="f7738725-e05a-4db1-b476-152025af41f6" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>barn</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈbɑɹn</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bɔɹn</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r n</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="818a430a-d1bb-45bc-81bc-0aa36233be36" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>corn</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈkoʊɹn</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>koʊɹn</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r n</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="3b73020d-41e1-470d-b67b-df01301dadd7" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>horn</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈhoʊɹn</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>hoʊɹn</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r n</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="192f7c4a-f604-49ec-8174-f98426e5c3d4" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>girl</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈɡʊɹl</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ɡʊɹl</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r l</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="ee49795e-0f6a-415f-9681-8572a830faca" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>curl</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈkʊɹl</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>kʊɹl</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r l</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="d58d3446-d196-4c7f-9203-d7b20ce84f10" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>squirrel</w>
+                    <w>squirrel</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈskwʊɹəl</w>
+                    <w>ˈskwʊɹəl</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="LA"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="O"/>
+                        <ph indexes="6" scType="N" hiatus="true"/>
+                        <ph indexes="7" scType="C"/>
+                        <ph indexes="8" scType="WB"/>
+                        <ph indexes="9" scType="SS"/>
+                        <ph indexes="10" scType="LA"/>
+                        <ph indexes="11" scType="O"/>
+                        <ph indexes="12" scType="O"/>
+                        <ph indexes="13" scType="N" hiatus="true"/>
+                        <ph indexes="14" scType="O"/>
+                        <ph indexes="15" scType="N" hiatus="true"/>
+                        <ph indexes="16" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>wʊɹl</w>
+                    <w>ᵏ̵wʊɹl</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="RA"/>
+                        <ph indexes="4" scType="WB"/>
+                        <ph indexes="5 6 7" scType="O"/>
+                        <ph indexes="8" scType="N" hiatus="true"/>
+                        <ph indexes="9" scType="C"/>
+                        <ph indexes="10" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="14">
+                    <phomap value="0 -1"/>
+                    <phomap value="1 -1"/>
+                    <phomap value="2 0"/>
+                    <phomap value="3 1"/>
+                    <phomap value="4 2"/>
+                    <phomap value="5 -1"/>
+                    <phomap value="6 3"/>
+                    <phomap value="7 -1"/>
+                    <phomap value="8 -1"/>
+                    <phomap value="9 4"/>
+                    <phomap value="10 5"/>
+                    <phomap value="11 6"/>
+                    <phomap value="12 -1"/>
+                    <phomap value="13 7"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r l</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions">2.0</flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="394ddfc7-6884-4c85-9e5d-f5f30aca658f" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>wasp</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈwɑsp</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="OEHS"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>wɔsᵖ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2 3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">s p</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="3c4155ec-478c-4ada-8bb0-a522b7bd4789" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>gasp</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈɡæsp</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="OEHS"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ɡæs</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">s p</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="a1c4aa50-d36b-4f22-95b6-40d82f4783f4" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>grasp</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈɡɹæsp</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="OEHS"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ɡɹæs</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">s p</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="340a46a4-b4c4-43d5-a7de-c8a706482f4e" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>nest</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈnɛst</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>nɛs</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">s t</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="ce0664a5-bb29-46e4-8555-702a7db1c10f" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>toast</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈtoʊst</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>toʊʰ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2 3" scType="N" hiatus="false"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 -1"/>
+                    <phomap value="4 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">s t</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="668ac1eb-6000-42cc-a6f6-b2d5d71323e4" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>vest</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈvɛst</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bɛs</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">s t</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="8b646a9b-e227-43f9-bb74-08515c0b91ba" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>mask</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈmæsk</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="OEHS"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>mæˢ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1 2" scType="N" hiatus="true"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 -1"/>
+                    <phomap value="3 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">s k</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="03df9623-3e09-4601-a085-baa6f8750f90" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>desk</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈdɛsk</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="OEHS"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>dɛs</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">s k</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="7b1b626a-1504-490f-a703-5c04b7904060" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>ask</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈæsk</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="OEHS"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>æt</w>
+                    <sb>
+                        <ph indexes="0" scType="N" hiatus="true"/>
+                        <ph indexes="1" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="3">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">s k</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="309999ff-2341-49cc-92bc-ea5fb516138a" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>tent</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈtɛnt</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>tɪnt˺</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n t</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="bd9a6642-6f1e-4952-a085-01c048b68816" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>paint</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈpeɪnt</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>peɪnt˺</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4 5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n t</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="cfece1a5-4540-4896-90b3-3a554c2bf769" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>point</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈpɔɪnt</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>pɔɪnt˺</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4 5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n t</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="932d2808-23d2-4d34-8b22-457124db7313" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>blonde</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈblɑnd</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>blɔn</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n d</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="5c3bcfd7-d821-4d6d-9ff3-648ff42bd3cc" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>hand</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈhænd</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>hæn</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n d</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="21347280-dcf4-405a-9a37-602e1e55b0a1" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>stand</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈstænd</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="LA"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>dænd</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 -1"/>
+                    <phomap value="1 0"/>
+                    <phomap value="2 1"/>
+                    <phomap value="3 2"/>
+                    <phomap value="4 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n d</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="2107e3de-a123-4b44-a6ad-498a15e3df31" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>ninth</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈnaɪnθ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>naɪnt</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n θ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="3f559cf9-53ce-4749-b428-4eedf21e83f9" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>tenth</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈtɛnθ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>tɛn</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n θ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="67696854-90d1-4cf0-8c3d-854646da066a" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>month</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈmʌnθ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>mʌmp</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n θ</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="5e84ec7c-1274-4083-ba38-94e10feb2063" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>fence</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈfɛns</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>wɪnt</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n ts</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="1fe36eeb-c9c9-43dc-94ce-b8c2695e5fb8" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>bounce</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈbaʊnts</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                        <ph indexes="6" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>baʊnʰ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="6">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 -1"/>
+                    <phomap value="5 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n ts</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="2b552ee7-9f91-4a8f-b156-fc7a67f2b651" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>dance</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈdænts</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>dæn</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 -1"/>
+                    <phomap value="4 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n ts</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="3618a7e0-6742-4f6b-acf9-ee89331eb8b3" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>lunch</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈlʌnʧ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>wʌnt</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n ʧ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="dd8533c7-164f-4666-b52e-9c574ffed8c1" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>branch</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈbɹænʧ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bɹænᵗ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n ʧ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="24ffa208-28ea-4d9a-b708-830b32f0e77f" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>punch</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈpʌnʧ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>pʌnt</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n ʧ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="87354fb2-f00c-4d39-b023-9777967e46ba" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>orange</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈoʊɹɪnʤ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="C"/>
+                        <ph indexes="6" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>oʊɹɪn</w>
+                    <sb>
+                        <ph indexes="0" scType="N" hiatus="false"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="6">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                    <phomap value="5 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n ʤ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="af46b523-038b-4b00-9c76-a6c05343e31c" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>sponge</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈspʌnʤ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="LA"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bʌnd</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 -1"/>
+                    <phomap value="1 0"/>
+                    <phomap value="2 1"/>
+                    <phomap value="3 2"/>
+                    <phomap value="4 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n ʤ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="4d6fc162-5cf2-458d-8a85-369b3d5baa8d" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>change</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈʧeɪnʤ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ʃˡeɪnᵈ</w>
+                    <sb>
+                        <ph indexes="0 1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4 5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n ʤ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="28e87047-4fa7-4146-ae12-cc23f4d86104" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>pink</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈpiŋk</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>pɪŋk</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">ŋ k</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="4e1a435c-6947-46ff-8615-12d7a43533ba" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>sink</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈsiŋk</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>jɪŋk</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">ŋ k</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="2e8eb8e3-9ffa-4567-bb60-60d8ee9e12ec" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>trunk</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈtɹʌŋk</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>tɹʌŋk</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">ŋ k</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="d47609e2-8684-4aec-a1a7-e90f7c6da0ee" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>lamp</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈlæmp</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>wæmp</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">m p</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="31e064d6-831c-4980-9377-0bdb2f1813e8" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>jump</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈʤʌmp</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ʤˡʌ̃p</w>
+                    <sb>
+                        <ph indexes="0 1" scType="O"/>
+                        <ph indexes="2 3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 -1"/>
+                    <phomap value="3 2"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">m p</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="469ca67c-dec3-4558-9478-f50e65d86b67" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>stamp</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈstæmp</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="LA"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>dæmp</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 -1"/>
+                    <phomap value="1 0"/>
+                    <phomap value="2 1"/>
+                    <phomap value="3 2"/>
+                    <phomap value="4 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">m p</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="27eaf21e-4aba-4d42-9567-5d7876cb843c" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>lift</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈlɪft</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>wɪpt</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">f t</flatTier>
+            <flatTier tierName="DI">1</flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="9e134b11-62de-481f-b138-95e7a354b007" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>soft</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈsɑft</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>jɔːp</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1 2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">f t</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="837132fb-2f2e-4c7d-b7db-54b4101fa74e" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>raft</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈɹæft</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ɹæpᵗ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2 3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">f t</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="89d6bdd7-8475-47e2-8c4b-63c1d3096709" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>box</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈbɔks</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bɔks</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">k s</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="47806f5e-67e2-4224-aac8-f441dfcc0537" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>six</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈsɪks</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>jɪks</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">k s</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+        <u id="477bd907-380b-4281-9930-2be0d33d973a" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>fix</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈfɪks</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>wɪks</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">k s</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">CCP</flatTier>
+            <flatTier tierName="CA">6;0;19</flatTier>
+            <flatTier tierName="Speaker">6365</flatTier>
+            <flatTier tierName="Session">CCP Pre</flatTier>
+        </u>
+    </transcript>
+</session>
