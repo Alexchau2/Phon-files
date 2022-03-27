@@ -18,7 +18,7 @@ import pandas as pd
 import xlrd
 import re
 
-media_folder = "C:\\Users\\alex\\Documents\\GitHub\\Combiths Lab\\AutoPATT\\XML Files"
+media_folder = r"C:\Users\Philip\Documents\github\Phon-files\XML Files"
 
 os.chdir(media_folder)
 
