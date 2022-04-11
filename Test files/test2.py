@@ -417,31 +417,57 @@ def transcription_suffix(word):
                     # print("index: ", index)
                     # print(keys[1][int(index)])
                     # print(keys[1].index(keys[1][int(index)]))
+
+                    # Check if index is phoneme.
                     if keys[1][int(index)] not in diacritics_list:
                         # phoneme_with_suffix.append(keys[1][int(index)])
                         # print("letter index: ", index)
+
+                        # Temporarily get index of phoneme
                         letter_index = keys[1].index( keys[1][int(index)] )
                         
                         # print(phoneme_with_suffix)
+
+                        # If phoneme already in list, skip.
                         if keys[1][int(index)] in phoneme_with_suffix:
                             pass
                         else:
+
+                            # Else, append phoneme into list.
                             phoneme_with_suffix.append(keys[1][int(index)])
+
+                            # Iterate over indices
                             for i in indexes:
-                                
+
+                                # Check if diacritic
                                 if keys[1][int(i)] in diacritics_list:
 
+                                    # Check if diacritic index is larger than phoneme index
+                                    # Basically, checking if diacritic is after phoneme
                                     if int(i) > letter_index:
                                     
                                     # print("diacritic: ", keys[1][int(i)])
+
+                                        # Append diacritic into list
                                         suffixes.append(keys[1][int(i)])
+
                                         # phoneme_with_suffix.append(keys[1][int(index)])
+
+                                # Check if suffixes list is empty
                                 if len(suffixes) == 0:
                                     pass
+
                                 else:
+
+                                    # Create dictionary entry with transcription as key
+                                    # Values are phonemes with suffixes and the diacritics
                                     suffixes_phoneme[keys[1]] = [phoneme_with_suffix, suffixes]
-                                    print(suffixes_phoneme)
+                                    print("Suffixes_phoneme: ", suffixes_phoneme)
+
+                                    # Check if dictionary entry is in list
                                     if suffixes_phoneme not in suffix_list:
+
+                                        # Append entry into list
                                         suffix_list.append(suffixes_phoneme)
                                     else:
                                         pass
@@ -538,7 +564,7 @@ def transcription_suffix(word):
                             # skip
 
 # transcription_prefix_suffix(diacritic_fixed)
-# transcription_suffix(diacritic_fixed)
+transcription_suffix(diacritic_fixed)
 # transcription_prefix(test_word)
 # transcription_prefix(test_word_2)
 # transcription_prefix(Diacritic_fixer())
