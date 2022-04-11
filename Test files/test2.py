@@ -398,6 +398,13 @@ def transcription_prefix_suffix(word):
     # print(prefixes)
 
 # In testing. Do not use. Use transcription_suffix_prefix for now.
+# Example:
+
+# Ideal output(s): {'ɛlᵖ': [['l'], ['ᵖ']]}, {'ᵇ̵wɛˡ': [['ɛ'], ['ˡ']]}, {'õɹĩ': [['o', 'i'], ['̃', '̃']]}
+# Gives transcription and its phonemes with diacritic(s) after them.
+
+# Current output(s): {'ɛlᵖ': [['l'], ['ᵖ']]}, {'ᵇ̵wɛˡ': [['w', 'ɛ'], ['ˡ']]}, {'õɹĩ': [['o', 'i'], ['̃', '̃']]}
+# See second output. "w" should not be in there. It has diacritics before it, but not after.
 def transcription_suffix(word):
     
     suffix_list = []
