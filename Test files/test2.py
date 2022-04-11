@@ -21,6 +21,7 @@ import unicodedata
 from diacritics_list import diacritics_list
 # from Diacritic_fixer import Diacritic_fixer
 
+# Test set
 diacritic_fixed = {
     ("8c437a92-64f3-4438-8098-62273be265a7", "ɛlᵖ"): ["0", ["1", "2"]],
     ("6a230285-bd20-4814-bbf5-8c4318fadbcd", "ɡæ"): ["0", "1"],
@@ -158,10 +159,12 @@ test_word_2 = "ᵇ̵w"
 # for phoneme in test_word_2:
 # print(phoneme)
 
-def transcription_prefix(word):
+# In testing. Do not use.
+def transcription_prefix_suffix(word):
     
     prefix_list = []
 
+    # Iterate over phonemes and their indices
     for (keys, indexes_list) in zip(word, word.values()):
 
         print(keys, indexes_list)
@@ -172,6 +175,8 @@ def transcription_prefix(word):
         phoneme_with_prefix = []
         index_holder = []
         keys_index = []
+
+        # Iterate over indices
         for indexes in indexes_list:
             
             # Check if indexes has diacritic
@@ -181,25 +186,34 @@ def transcription_prefix(word):
                 #     print(index, phoneme)
                 index_holder.append(indexes)
 
+                # Iterate over list with diacritics
                 for lists in index_holder:
+
+                    # Iterate over indices in list with diacritics
                     for index in lists:
 
+                        # Get indices
                         keys_index.append(keys[1][int(index)])
 
                         index_holder = []
 
+                    # Contains list of phonemes and diacritics 
                     phoneme_with_prefix.append(keys_index) 
 
                     keys_index = []
 
                 print("Test: ", phoneme_with_prefix)
 
+                # Iterate over list phonemes and diacritics
                 for phoneme_lists in phoneme_with_prefix:
                     
+                    # Iterate over phonemes and diacritics in list
                     for phoneme_diacritic in phoneme_lists:
 
+                        # Check if iterated item is a diacritic
                         if phoneme_diacritic not in diacritics_list:
 
+                            # If item is phoneme, skip. Else, append to list. Just testing, not to be used.
                             if phoneme_diacritic in list_of_phonemes:
                                 pass
                             else:
@@ -383,6 +397,7 @@ def transcription_prefix(word):
 
     # print(prefixes)
 
+# In testing. Do not use. Use transcription_suffix_prefix for now.
 def transcription_suffix(word):
     
     suffix_list = []
@@ -522,7 +537,7 @@ def transcription_suffix(word):
                         # except:
                             # skip
 
-transcription_prefix(diacritic_fixed)
+# transcription_prefix_suffix(diacritic_fixed)
 # transcription_suffix(diacritic_fixed)
 # transcription_prefix(test_word)
 # transcription_prefix(test_word_2)
