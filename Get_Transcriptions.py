@@ -15,8 +15,9 @@ import timeit
 import openpyxl
 import xlrd
 import re
+from diacritics_list import diacritics_list
 
-media_folder = "C:\\Users\\alex\\Documents\\GitHub\\Combiths Lab\\AutoPATT\\XML Files"
+media_folder = "C:\\Users\\alex\\Documents\\GitHub\\Combiths Lab\\Phon\\XML Files"
 
 os.chdir(media_folder)
 
@@ -57,7 +58,8 @@ start = timeit.default_timer()
 # xml_file = "1007_CCP_CCP Pre.xml"
 
 # Go through all XML files in the directory
-
+diacritics = set()
+not_diacritics = set()
 for files in xml_files:
 
     # Parse through files
@@ -73,10 +75,14 @@ for files in xml_files:
 
         # Get transcriptions for each unique id into a list
 
-        id_transcriptions = [
-            transcription.text  # Get transcription
-            for id in ids  # Iterate over ids
-            for transcription in root.findall(  # Get transcription for each unique id
+        id_transcriptions = []
+
+        # Iterate over ids
+        for id in ids:
+            transcriptions = []
+
+            # Get transcription for each unique id
+            for transcription in root.findall(
                 speaker
                 + str("[@id=" + "'" + id + "'" + "]/")
                 + ipaTier_model
@@ -84,18 +90,53 @@ for files in xml_files:
                 + ipaTier
                 + "']/"
                 + transcription_pg
-            )
-            if transcription.tag != str(phon_link + "sb")  # Exclude sb tag and if there is no text
-            and transcription.text is not None
-        ]
+            ):
+                # Exclude sb tag and if there is no text
+                if (
+                    transcription.tag != str(phon_link + "sb")
+                    and transcription.text is not None
+                ):
 
-        print(id_transcriptions)
+                    transcriptions.append(transcription.text)
+            transcriptions = " ".join(transcriptions)
+            id_transcriptions.append(transcriptions)
+
+        # print(id_transcriptions)
+        return id_transcriptions
 
     get_transcriptions()
 
-# This function is ~20-30 seconds faster than Get_transcriptions_old.py and more accurate
-# Model/target: ~51 seconds compared to ~72 seconds.
-# Actual: ~56 seconds compared to ~76 seconds
+
 stop = timeit.default_timer()
 
 print("Time: ", stop - start)
+
+# Old
+
+# id_transcriptions = [
+#             transcription.text  # Get transcription
+#             for id in ids  # Iterate over ids
+#             for transcription in root.findall(  # Get transcription for each unique id
+#                 speaker
+#                 + str("[@id=" + "'" + id + "'" + "]/")
+#                 + ipaTier_model
+#                 + "[@form='"
+#                 + ipaTier
+#                 + "']/"
+#                 + transcription_pg
+#             )
+#             if transcription.tag != str(phon_link + "sb")  # Exclude sb tag and if there is no text
+#             and transcription.text is not None
+#         ]
+
+# for transcription in id_transcriptions:
+#     for letter in transcription:
+#         if letter in diacritics_list:
+#             diacritics.add(letter)
+#             # print(letter, "in diacritic list.")
+#         else:
+#             not_diacritics.add(letter)
+# print(letter, " not in diacritic list.")
+
+# print("diacritics: ", diacritics)
+# print("not diacritics: ", not_diacritics)

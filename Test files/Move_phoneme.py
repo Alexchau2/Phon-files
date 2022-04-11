@@ -16,6 +16,8 @@ import openpyxl
 import xlrd
 import re
 import unicodedata
+from diacritics_list import diacritics_list
+import Diacritic_fixer
 
 # DO NOT USE YET
 # Still being worked on
@@ -33,7 +35,7 @@ import unicodedata
 # Problem: How to check if index contains a phoneme with a diacritic?
 # Problem: Moving single phoneme to a place/index where there is a phoneme with a diacritic.
 
-media_folder = "C:\\Users\\alex\\Documents\\GitHub\\Combiths Lab\\AutoPATT\\XML Files"
+media_folder = "C:\\Users\\alex\\Documents\\GitHub\\Combiths Lab\\Phon\\XML Files"
 
 os.chdir(media_folder)
 
@@ -134,6 +136,15 @@ start = timeit.default_timer()
 transcription_info = {
     ('53cc0837-b600-44cc-89fb-c2cbe6435e58', 'ᵇ̵wɛˡ'): [['0 1 2', 'O'], ['3 4', 'N', 'true']]
 }
+
+diacritic_fixed = {
+    ('53cc0837-b600-44cc-89fb-c2cbe6435e58', 'ᵇ̵wɛˡ'): [['0', '1', '2'], ['3', '4']]
+}
+
+test_word = "ᵇ̵wɛˡ"
+
+
+
 id = '53cc0837-b600-44cc-89fb-c2cbe6435e58'
 
 # def move_phoneme_with_diacritic(desired_word, desired_phoneme, desired_index):
@@ -203,10 +214,10 @@ def move_phoneme_with_diacritic(desired_word, desired_phoneme, desired_index):
     # Able to move phoneme with diacritic(s) to index where there is a single phoneme
 
     # Check if input is a diacritic by seeing if there is more than 1 phoneme/character
-    if len(desired_phoneme) > 1:
+    # if len(desired_phoneme) > 1:
 
         # Check to see if phoneme at desired index is only a phoneme
-        if len(desired_word[desired_index]) == 1:
+        if len(desired_word[desired_index]) == 1 and desired_word[desired_index] not in diacritics_list:
 
             # Convert word sequence to list type.
             desired_phoneme = list(desired_phoneme)
@@ -230,38 +241,101 @@ def move_phoneme_with_diacritic(desired_word, desired_phoneme, desired_index):
 
             return "".join(desired_phoneme_list)
 
-        # # Check to see if phoneme at desired index has diacritics
-        # elif len(transcription_info[desired_word]) > 1:
+        # elif desired_word[desired_index] in diacritics_list:
+        #     print("Please put the phoneme in another index.")
 
-        #     # Convert word sequence to list type.
-        #     desired_phoneme = list(desired_phoneme)
+        # Check if there is a diacritic before the phoneme
+        elif desired_word[desired_index-1] in diacritics_list:
+            print(desired_word[desired_index-1])
+            print("Please put the phoneme in another index.")
+            # print(desired_word[desired_index])
+            # print(desired_word[desired_index+1])
+            
+            # Convert word sequence to list type.
+            # desired_phoneme = list(desired_phoneme)
 
-        #     desired_phoneme_list = list(desired_word)
+            # desired_phoneme_list = list(desired_word)
 
-        #     # Get the current index of the target phoneme.
-        #     for phonemes in desired_phoneme[::-1]:
+            # # Get the current index of the target phoneme.
+            # for phonemes in desired_phoneme[::-1]:
 
-        #         old_index = desired_phoneme_list.index(phonemes)
+            #     old_index = desired_phoneme_list.index(phonemes)
 
-        #         # Remove the target phoneme from the character list.
-        #         desired_phoneme = desired_phoneme_list.pop(old_index)
+            #     # Remove the target phoneme from the character list.
+            #     desired_phoneme = desired_phoneme_list.pop(old_index)
 
-        #         # Insert target phoneme at a new location.
-        #         desired_phoneme_list.insert(desired_index, desired_phoneme)
+            #     # Insert target phoneme at a new location.
+            #     desired_phoneme_list.insert(desired_index, desired_phoneme)
 
-        #     # Convert word list back to str type and return.
-        #     desired_phoneme_list = "".join(desired_phoneme_list)
+            # # Convert word list back to str type and return.
+            # desired_phoneme_list = "".join(desired_phoneme_list)
 
-        #     print(desired_phoneme_list)
+            # print(desired_phoneme_list)
 
-        #     return "".join(desired_phoneme_list)
+            # return "".join(desired_phoneme_list)
 
-    else:
-        print("Put in a phoneme with a diacritic.")
+        elif desired_word[desired_index+1] in diacritics_list:
+            print("Please put the phoneme in another index.")
+            # # print(desired_word[desired_index])
+            # # print(desired_word[desired_index+1])
+            # # print(desired_word[desired_index-1])
+            # # Convert word sequence to list type.
+            # desired_phoneme = list(desired_phoneme)
 
-move_phoneme_with_diacritic ("ᵇ̵wʊ", "ᵇ̵w", 3)
-# move_phoneme_with_diacritic("ɛlᵖ", "lᵖ", 0)
-# move_phoneme_with_diacritic("ᵇ̵wɛˡ", "ᵇ̵w", 3)
+            # desired_phoneme_list = list(desired_word)
+
+            # # Get the current index of the target phoneme.
+            # for phonemes in desired_phoneme[::-1]:
+
+            #     old_index = desired_phoneme_list.index(phonemes)
+
+            #     # Remove the target phoneme from the character list.
+            #     desired_phoneme = desired_phoneme_list.pop(old_index)
+
+            #     # Insert target phoneme at a new location.
+            #     desired_phoneme_list.insert(desired_index, desired_phoneme)
+
+            # # Convert word list back to str type and return.
+            # desired_phoneme_list = "".join(desired_phoneme_list)
+
+            # print(desired_phoneme_list)
+
+            # return "".join(desired_phoneme_list)
+
+        # Check to see if phoneme at desired index has diacritics before and after it.
+        elif desired_word[desired_index+1] in diacritics_list and desired_word[desired_index-1] in diacritics_list:
+            print("Please put the phoneme in another index.")
+            # Convert word sequence to list type.
+            # desired_phoneme = list(desired_phoneme)
+
+            # desired_phoneme_list = list(desired_word)
+
+            # # Get the current index of the target phoneme.
+            # for phonemes in desired_phoneme[::-1]:
+
+            #     old_index = desired_phoneme_list.index(phonemes)
+
+            #     # Remove the target phoneme from the character list.
+            #     desired_phoneme = desired_phoneme_list.pop(old_index)
+
+            #     # Insert target phoneme at a new location.
+            #     desired_phoneme_list.insert(desired_index, desired_phoneme)
+
+            # # Convert word list back to str type and return.
+            # desired_phoneme_list = "".join(desired_phoneme_list)
+
+            # print(desired_phoneme_list)
+
+            # return "".join(desired_phoneme_list)
+
+    # else:
+        # print("Put in a phoneme with a diacritic.")
+
+# move_phoneme_with_diacritic ("ᵇ̵wʊ", "ᵇ̵w", 3)
+# move_phoneme_with_diacritic("ɛlᵖ", "ɛ", 1)
+# move_phoneme_with_diacritic("ᵇ̵wɛˡ", "ɛˡ", )
+
+# def shift_phoneme
 
 # Able to move individual phonemes to an index where there is an individual phoneme
 def move_phoneme(desired_word, desired_phoneme, desired_index):
@@ -359,6 +433,14 @@ def move_phoneme(desired_word, desired_phoneme, desired_index):
 # swap_phoneme(word, phoneme, index)
 
 # move_phoneme()
+
+from Phoneme_class_test import Phoneme
+
+# shift_phoneme = Phoneme.shift_phoneme
+
+test_word = 'ɛɛwᵇɛɛ'
+
+Phoneme.shift_phoneme(test_word, "wᵇ", -2)
 
 stop = timeit.default_timer()
 

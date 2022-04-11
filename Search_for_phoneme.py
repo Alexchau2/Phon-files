@@ -16,7 +16,7 @@ import openpyxl
 import xlrd
 import re
 
-media_folder = "C:\\Users\\alex\\Documents\\GitHub\\Combiths Lab\\AutoPATT\\XML Files"
+media_folder = "C:\\Users\\alex\\Documents\\GitHub\\Combiths Lab\\Phon\\XML Files"
 
 os.chdir(media_folder)
 
@@ -69,10 +69,16 @@ for files in xml_files:
 
         ids = [id.attrib["id"] for id in root.findall(speaker)]
 
-        transcriptions = [
-            transcription.text # Get transcription
-            for id in ids # Iterate over ids
-            for transcription in root.findall( # Get transcription for each unique id 
+        # Get transcriptions for each unique id into a list
+
+        id_transcriptions = []
+
+        # Iterate over ids
+        for id in ids:
+            transcriptions = []
+
+            # Get transcription for each unique id
+            for transcription in root.findall(
                 speaker
                 + str("[@id=" + "'" + id + "'" + "]/")
                 + ipaTier_model
@@ -80,18 +86,47 @@ for files in xml_files:
                 + ipaTier
                 + "']/"
                 + transcription_pg
-            )
-            if transcription.tag != str(phon_link + "sb") # Exclude sb tag and if there is no text
-            and transcription.text is not None
-        ]
+            ):
+                # Exclude sb tag and if there is no text
+                if (
+                    transcription.tag != str(phon_link + "sb")
+                    and transcription.text is not None
+                ):
+
+                    transcriptions.append(transcription.text)
+            transcriptions = " ".join(transcriptions)
+            id_transcriptions.append(transcriptions)
+
+        # print(id_transcriptions)
 
         # Search for phoneme in transcriptions
-        words_with_phoneme = [word for word in transcriptions if phoneme_search in word]
-
-        print(words_with_phoneme)
+        for word in id_transcriptions:
+            if phoneme_search in word:
+                print(word)
+                return word
 
     search_for_phoneme()
 
 stop = timeit.default_timer()
 
 print("Time: ", stop - start)
+
+# Old
+
+# transcriptions = [
+#     transcription.text # Get transcription
+#     for id in ids # Iterate over ids
+#     for transcription in root.findall( # Get transcription for each unique id
+#         speaker
+#         + str("[@id=" + "'" + id + "'" + "]/")
+#         + ipaTier_model
+#         + "[@form='"
+#         + ipaTier
+#         + "']/"
+#         + transcription_pg
+#     )
+#     if transcription.tag != str(phon_link + "sb") # Exclude sb tag and if there is no text
+#     and transcription.text is not None
+# ]
+
+#         # words_with_phoneme = [word for word in id_transcriptions if phoneme_search in word]

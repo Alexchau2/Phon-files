@@ -16,7 +16,7 @@ import openpyxl
 import xlrd
 import re
 
-media_folder = "C:\\Users\\alex\\Documents\\GitHub\\Combiths Lab\\AutoPATT\\XML Files"
+media_folder = "C:\\Users\\alex\\Documents\\GitHub\\Combiths Lab\\Phon\\XML Files"
 
 os.chdir(media_folder)
 
@@ -68,12 +68,16 @@ for files in xml_files:
 
         ids = [id.attrib["id"] for id in root.findall(speaker)]
 
-        # Get transcriptions
+        # Get transcriptions for each unique id into a list
 
-        id_transcriptions = [
-            transcription.text  # Get transcription
-            for id in ids  # Iterate over ids
-            for transcription in root.findall(  # Get transcription for each unique id
+        id_transcriptions = []
+
+        # Iterate over ids
+        for id in ids:
+            transcriptions = []
+
+            # Get transcription for each unique id
+            for transcription in root.findall(
                 speaker
                 + str("[@id=" + "'" + id + "'" + "]/")
                 + ipaTier_model
@@ -81,17 +85,29 @@ for files in xml_files:
                 + ipaTier
                 + "']/"
                 + transcription_pg
-            )
-            if transcription.tag != str(phon_link + "sb")  # Exclude sb tag and if there is no text
-            and transcription.text is not None
-        ]
+            ):
+                # Exclude sb tag and if there is no text
+                if (
+                    transcription.tag != str(phon_link + "sb")
+                    and transcription.text is not None
+                ):
+
+                    transcriptions.append(transcription.text)
+            transcriptions = " ".join(transcriptions)
+            id_transcriptions.append(transcriptions)
+
+        # print(id_transcriptions)
 
         alignment_values = {
             (id, transcriptions): [
-                list(map(int, alignment.get("value").split()))[0] # Get target alignment values
+                list(map(int, alignment.get("value").split()))[
+                    0
+                ]  # Get target alignment values
                 if alignment.get("value") is not None and ipaTier == "model"
-                else list(map(int, alignment.get("value").split()))[1] # Get actual alignment values
-                for alignment in root.findall( # Go to alignment tag in XML file
+                else list(map(int, alignment.get("value").split()))[
+                    1
+                ]  # Get actual alignment values
+                for alignment in root.findall(  # Go to alignment tag in XML file
                     speaker
                     + str("[@id=" + "'" + id + "'" + "]/")
                     + alignment_segmental
@@ -99,16 +115,25 @@ for files in xml_files:
                     + transcription_length
                 )
             ]
-            for (id, transcriptions) in zip(ids, id_transcriptions) # Iterate over ids and transcriptions
+            for (id, transcriptions) in zip(
+                ids, id_transcriptions
+            )  # Iterate over ids and transcriptions
         }
         # print(alignment_values)
 
         transcription_info = {
             (id, transcriptions): [
-                [index.get("indexes"), index.get("scType"), index.get("hiatus")] # Get info for transcription
-                if "hiatus" in index.attrib # Check if hiatus exists
-                else [index.get("indexes"), index.get("scType")] # If hiatus does not exist, then only get indexes and scType
-                for index in root.findall( # Go to tag where info is (<sb>)
+                [
+                    index.get("indexes"),
+                    index.get("scType"),
+                    index.get("hiatus"),
+                ]  # Get info for transcription
+                if "hiatus" in index.attrib  # Check if hiatus exists
+                else [
+                    index.get("indexes"),
+                    index.get("scType"),
+                ]  # If hiatus does not exist, then only get indexes and scType
+                for index in root.findall(  # Go to tag where info is (<sb>)
                     speaker
                     + str("[@id=" + "'" + id + "'" + "]/")
                     + ipaTier_model
@@ -118,7 +143,9 @@ for files in xml_files:
                     + transcription_indices
                 )
             ]
-            for (id, transcriptions) in zip(ids, id_transcriptions) # Iterate over ids and transcriptions
+            for (id, transcriptions) in zip(
+                ids, id_transcriptions
+            )  # Iterate over ids and transcriptions
         }
 
         print(transcription_info)

@@ -16,7 +16,7 @@ import openpyxl
 import xlrd
 import re
 
-media_folder = "C:\\Users\\alex\\Documents\\GitHub\\Combiths Lab\\AutoPATT\\XML Files"
+media_folder = "C:\\Users\\alex\\Documents\\GitHub\\Combiths Lab\\Phon\\XML Files"
 
 os.chdir(media_folder)
 
@@ -67,10 +67,20 @@ for files in xml_files:
 
         ids = [id.attrib["id"] for id in root.findall(speaker)]
 
-        words_transcriptions = {
-            transcription.text: form.text  # Get word and its associated transcription
-            for id in ids  # Iterate over ids
-            for (transcription, form) in zip( # Iterate over transcriptions and orthographic representation
+        # Get transcriptions for each unique id into a list
+
+        word_transcriptions = {}
+
+        # Iterate over ids
+        for id in ids:
+            transcriptions = []
+            forms = []
+
+            # Get transcription for each unique id
+            for (
+                transcription,
+                form,
+            ) in zip(  # Iterate over transcriptions and orthographic representation
                 root.findall(  # Get word for each unique id
                     speaker + str("[@id=" + "'" + id + "'" + "]/") + orthography_w
                 ),
@@ -83,17 +93,51 @@ for files in xml_files:
                     + "']/"
                     + transcription_pg
                 ),
-            )
-            if transcription.tag != str(phon_link + "sb")  # Exclude sb tag and if there is no text
-            and transcription.text is not None
-        }
+            ):
+                # Exclude sb tag and if there is no text
+                if (
+                    transcription.tag != str(phon_link + "sb")
+                    and transcription.text is not None
+                    and form.tag != str(phon_link + "sb")
+                    and form.text is not None
+                ):
+
+                    transcriptions.append(transcription.text)
+                    forms.append(form.text)
+
+            transcriptions = " ".join(transcriptions)
+            forms = " ".join(forms)
+            word_transcriptions[transcriptions] = forms
 
         # Search for word in transcriptions
-        if word_search in words_transcriptions:
-            print(word_search, words_transcriptions[word_search], files)
+        if word_search in word_transcriptions:
+            print(word_search, word_transcriptions[word_search], files)
 
     search_for_word()
 
 stop = timeit.default_timer()
 
 print("Time: ", stop - start)
+
+# Old
+
+# words_transcriptions = {
+#     transcription.text: form.text  # Get word and its associated transcription
+#     for id in ids  # Iterate over ids
+#     for (transcription, form) in zip( # Iterate over transcriptions and orthographic representation
+#         root.findall(  # Get word for each unique id
+#             speaker + str("[@id=" + "'" + id + "'" + "]/") + orthography_w
+#         ),
+#         root.findall(  # Get transcription for each unique id
+#             speaker
+#             + str("[@id=" + "'" + id + "'" + "]/")
+#             + ipaTier_model
+#             + "[@form='"
+#             + ipaTier
+#             + "']/"
+#             + transcription_pg
+#         ),
+#     )
+#     if transcription.tag != str(phon_link + "sb")  # Exclude sb tag and if there is no text
+#     and transcription.text is not None
+# }

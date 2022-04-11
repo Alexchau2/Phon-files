@@ -27,97 +27,144 @@ import re
 # This function treats lᵖ as one index, but you are able to index the phoneme and diacritic separately
 # Output: {('8c437a92-64f3-4438-8098-62273be265a7', 'ɛlᵖ'): ['0', ['1', '2']]}
 
-media_folder = "C:\\Users\\alex\\Documents\\GitHub\\Combiths Lab\\AutoPATT\\XML Files"
 
-os.chdir(media_folder)
+def Diacritic_fixer():
+    media_folder = "C:\\Users\\alex\\Documents\\GitHub\\Combiths Lab\\Phon\\XML Files"
 
-# Get XML files
-xml_files = [
-    xml_file
-    for xml_file in listdir(media_folder)
-    if isfile(join(media_folder, xml_file))
-]
+    os.chdir(media_folder)
 
-while True:
+    # Get XML files
+    xml_files = [
+        xml_file
+        for xml_file in listdir(media_folder)
+        if isfile(join(media_folder, xml_file))
+    ]
 
-    # Ask for model/target or actual transcription information
-    ipaTier = input("Model (target) or actual transcription? ")
+    while True:
 
-    if ipaTier == "model":
-        print("Model")
-        break
+        # Ask for model/target or actual transcription information
+        ipaTier = input("Model (target) or actual transcription? ")
 
-    elif ipaTier == "actual":
-        print("Actual")
-        break
+        if ipaTier == "model":
+            print("Model")
+            break
 
-    else:
-        print("Please select either model (target) or actual. ")
-        continue
+        elif ipaTier == "actual":
+            print("Actual")
+            break
 
-phon_link = "{http://phon.ling.mun.ca/ns/phonbank}"
-ipaTier_model = str((".//" + phon_link + "ipaTier"))
-transcription = str((".//" + phon_link + "w"))
-transcription_pg = str((".//" + phon_link + "pg/*"))
-speaker = str((".//" + phon_link + "u"))
-orthography_w = str((".//" + phon_link + "g/*"))
-transcription_indices = str((".//" + phon_link + "sb/*"))
-alignment_segmental = str((".//" + phon_link + "alignment"))
-transcription_length = str((".//" + phon_link + "ag/*"))
+        else:
+            print("Please select either model (target) or actual. ")
+            continue
 
-start = timeit.default_timer()
+    phon_link = "{http://phon.ling.mun.ca/ns/phonbank}"
+    ipaTier_model = str((".//" + phon_link + "ipaTier"))
+    transcription = str((".//" + phon_link + "w"))
+    transcription_pg = str((".//" + phon_link + "pg/*"))
+    speaker = str((".//" + phon_link + "u"))
+    orthography_w = str((".//" + phon_link + "g/*"))
+    transcription_indices = str((".//" + phon_link + "sb/*"))
+    alignment_segmental = str((".//" + phon_link + "alignment"))
+    transcription_length = str((".//" + phon_link + "ag/*"))
 
-# Go through all XML files in the directory
-for files in xml_files:
+    start = timeit.default_timer()
 
-    tree = ET.parse(files)
-    root = tree.getroot()
+    # Go through all XML files in the directory
+    for files in xml_files:
 
-    def get_transcription_information():
+        tree = ET.parse(files)
+        root = tree.getroot()
 
-        # Get ids
+        def get_transcription_information():
 
-        ids = [id.attrib["id"] for id in root.findall(speaker)]
+            # Get ids
 
-        # Get transcriptions
+            ids = [id.attrib["id"] for id in root.findall(speaker)]
 
-        id_transcriptions = [
-            transcription.text  # Get transcription
-            for id in ids  # Iterate over ids
-            for transcription in root.findall(  # Get transcription for each unique id
-                speaker
-                + str("[@id=" + "'" + id + "'" + "]/")
-                + ipaTier_model
-                + "[@form='"
-                + ipaTier
-                + "']/"
-                + transcription_pg
-            )
-            if transcription.tag != str(phon_link + "sb")  # Exclude sb tag and if there is no text
-            and transcription.text is not None
-        ]
+            # Get transcriptions for each unique id into a list
 
-        diacritic_fix = {
-            (id, transcriptions): [ # Dictionary with id and transcription as keys
-                list(map(str, index.get("indexes").split())) # Get indexes for phoneme with diacritics
-                if len(index.get("indexes")) > 1 # Check if diacritic exists in indexes
-                else index.get("indexes") # If there is no diacritic, then just get indexes
-                for index in root.findall(
+            id_transcriptions = []
+
+            # Iterate over ids
+            for id in ids:
+                transcriptions = []
+
+                # Get transcription for each unique id
+                for transcription in root.findall(
                     speaker
                     + str("[@id=" + "'" + id + "'" + "]/")
                     + ipaTier_model
                     + "[@form='"
                     + ipaTier
                     + "']/"
-                    + transcription_indices
-                )
-            ]
-            for (id, transcriptions) in zip(ids, id_transcriptions) # Iterate over ids and transcriptions
-        }
-        print(diacritic_fix) 
+                    + transcription_pg
+                ):
+                    # Exclude sb tag and if there is no text
+                    if (
+                        transcription.tag != str(phon_link + "sb")
+                        and transcription.text is not None
+                    ):
 
-    get_transcription_information()
+                        transcriptions.append(transcription.text)
+                transcriptions = " ".join(transcriptions)
+                id_transcriptions.append(transcriptions)
 
-stop = timeit.default_timer()
+            diacritic_fix = {
+                (id, transcriptions): [  # Dictionary with id and transcription as keys
+                
+                    list(
+                        map(str, index.get("indexes").split())
+                    )  # Get indexes for phoneme with diacritics
 
-print("Time: ", stop - start)
+                    if len(index.get("indexes"))
+                    > 1  # Check if diacritic exists in indexes
+
+                    else index.get(
+                        "indexes"
+                    )  # If there is no diacritic, then just get indexes
+
+                    for index in root.findall(
+                        speaker
+                        + str("[@id=" + "'" + id + "'" + "]/")
+                        + ipaTier_model
+                        + "[@form='"
+                        + ipaTier
+                        + "']/"
+                        + transcription_indices
+                    )
+                ]
+                for (id, transcriptions) in zip(
+                    ids, id_transcriptions
+                )  # Iterate over ids and transcriptions
+            }
+            # print(diacritic_fix)
+            # time.sleep(2)
+
+        get_transcription_information()
+
+    stop = timeit.default_timer()
+
+    print("Time: ", stop - start)
+
+
+Diacritic_fixer()
+
+# Old
+
+# Get transcriptions
+
+# id_transcriptions = [
+#     transcription.text  # Get transcription
+#     for id in ids  # Iterate over ids
+#     for transcription in root.findall(  # Get transcription for each unique id
+#         speaker
+#         + str("[@id=" + "'" + id + "'" + "]/")
+#         + ipaTier_model
+#         + "[@form='"
+#         + ipaTier
+#         + "']/"
+#         + transcription_pg
+#     )
+#     if transcription.tag != str(phon_link + "sb")  # Exclude sb tag and if there is no text
+#     and transcription.text is not None
+# ]
