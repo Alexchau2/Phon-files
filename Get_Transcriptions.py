@@ -15,7 +15,7 @@ import timeit
 import openpyxl
 import xlrd
 import re
-from diacritics_list import diacritics_list
+# from diacritics_list import diacritics_list
 
 media_folder = "C:\\Users\\alex\\Documents\\GitHub\\Combiths Lab\\Phon\\XML Files"
 
@@ -58,8 +58,6 @@ start = timeit.default_timer()
 # xml_file = "1007_CCP_CCP Pre.xml"
 
 # Go through all XML files in the directory
-diacritics = set()
-not_diacritics = set()
 for files in xml_files:
 
     # Parse through files

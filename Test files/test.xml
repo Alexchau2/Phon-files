@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<session xmlns="http://phon.ling.mun.ca/ns/phonbank" id="Test Session" corpus="Test Corpus" version="PB1.2">
+    <header>
+        <date>2022-01-05</date>
+        <media>C:\Users\alex\Downloads\final_62556182db16ba007b6ca872_171795.mp4</media>
+    </header>
+    <participants>
+        <participant id="CHI">
+            <role>Target Child</role>
+        </participant>
+    </participants>
+    <transcribers/>
+    <userTiers/>
+    <tierOrder>
+        <tier tierName="Orthography" visible="true" locked="false" font="default"/>
+        <tier tierName="IPA Target" visible="true" locked="false" font="default"/>
+        <tier tierName="IPA Actual" visible="true" locked="false" font="default"/>
+        <tier tierName="Notes" visible="true" locked="false" font="default"/>
+        <tier tierName="Segment" visible="true" locked="false" font="default"/>
+    </tierOrder>
+    <transcript>
+        <u speaker="CHI" id="2ad054ac-27e9-4130-afe9-96131edc6bc9" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>Bowl</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>boʊɫ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>brɫ</w>
+                    <sb>
+                        <ph indexes="0" scType="OEHS"/>
+                        <ph indexes="1" scType="OEHS"/>
+                        <ph indexes="2" scType="OEHS"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="-1 1"/>
+                    <phomap value="1 -1"/>
+                    <phomap value="2 -1"/>
+                    <phomap value="3 2"/>
+                </ag>
+            </alignment>
+            <segment startTime="619.0" duration="1243.0" unitType="ms"/>
+        </u>
+        <u speaker="CHI" id="85baf87b-99fe-44f0-bf73-ae65e1bb446c" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>Owl</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>aʊl</w>
+                    <sb>
+                        <ph indexes="0" scType="N" hiatus="true"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>arl</w>
+                    <sb>
+                        <ph indexes="0" scType="N" hiatus="true"/>
+                        <ph indexes="1" scType="C"/>
+                        <ph indexes="2" scType="RA"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="-1 1"/>
+                    <phomap value="1 -1"/>
+                    <phomap value="2 2"/>
+                </ag>
+            </alignment>
+            <segment startTime="1872.0" duration="1824.0" unitType="ms"/>
+        </u>
+        <u id="7c88fbe8-c4ff-4f5e-8ccc-08a49e4c8d02" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>Bowl</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>boʊɫ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>brɫ</w>
+                    <sb>
+                        <ph indexes="0" scType="OEHS"/>
+                        <ph indexes="1" scType="OEHS"/>
+                        <ph indexes="2" scType="OEHS"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="-1 1"/>
+                    <phomap value="1 -1"/>
+                    <phomap value="2 -1"/>
+                    <phomap value="3 2"/>
+                </ag>
+            </alignment>
+            <segment startTime="0.0" duration="0.0" unitType="ms"/>
+        </u>
+    </transcript>
+</session>

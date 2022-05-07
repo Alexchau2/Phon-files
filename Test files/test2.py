@@ -18,7 +18,7 @@ import openpyxl
 import xlrd
 import re
 import unicodedata
-from diacritics_list import diacritics_list
+from diacritics_list import *
 # from Diacritic_fixer import Diacritic_fixer
 
 # Test set
@@ -442,12 +442,12 @@ def transcription_suffix(word):
 
                             # Else, append phoneme into list.
                             phoneme_with_suffix.append(keys[1][int(index)])
-
+                            print(phoneme_with_suffix)
                             # Iterate over indices
                             for i in indexes:
-
+                                print(keys[1][int(i)])
                                 # Check if diacritic
-                                if keys[1][int(i)] in diacritics_list:
+                                if keys[1][int(i)] in all_diacritics:
 
                                     # Check if diacritic index is larger than phoneme index
                                     # Basically, checking if diacritic is after phoneme
@@ -459,7 +459,11 @@ def transcription_suffix(word):
                                         suffixes.append(keys[1][int(i)])
 
                                         # phoneme_with_suffix.append(keys[1][int(index)])
-
+                                    else:
+                                        try:
+                                            phoneme_with_suffix.remove(keys[1][int(index)])
+                                        except:
+                                            skip
                                 # Check if suffixes list is empty
                                 if len(suffixes) == 0:
                                     pass
@@ -570,7 +574,7 @@ def transcription_suffix(word):
                         # except:
                             # skip
 
-# transcription_prefix_suffix(diacritic_fixed)
+transcription_prefix_suffix(diacritic_fixed)
 transcription_suffix(diacritic_fixed)
 # transcription_prefix(test_word)
 # transcription_prefix(test_word_2)
