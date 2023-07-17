@@ -1,22 +1,22 @@
+import itertools
+import os
+import re
+import string
+import time
+import timeit
+import xml
+import xml.etree.ElementTree as ET
 from cgi import test
 from cmd import PROMPT
-import string
+from os import listdir
+from os.path import exists, isfile, join
 from types import NoneType
 from unittest import skip
-import xml
-import os
-from os.path import exists
-from os import listdir
-from os.path import isfile, join
-import xml.etree.ElementTree as ET
-import time
-import itertools
-import timeit
+
 import openpyxl
 import xlrd
-import re
 
-media_folder = "C:\\Users\\alex\\Documents\\GitHub\\Combiths Lab\\Phon\\XML Files"
+media_folder = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files"
 
 os.chdir(media_folder)
 
@@ -57,12 +57,10 @@ speaker = str((".//" + phon_link + "u"))
 
 # Go through all XML files in the directory
 for files in xml_files:
-
     tree = ET.parse(files)
     root = tree.getroot()
 
     def search_for_word():
-
         # Get ids
 
         ids = [id.attrib["id"] for id in root.findall(speaker)]
@@ -101,7 +99,6 @@ for files in xml_files:
                     and form.tag != str(phon_link + "sb")
                     and form.text is not None
                 ):
-
                     transcriptions.append(transcription.text)
                     forms.append(form.text)
 
@@ -118,26 +115,3 @@ for files in xml_files:
 stop = timeit.default_timer()
 
 print("Time: ", stop - start)
-
-# Old
-
-# words_transcriptions = {
-#     transcription.text: form.text  # Get word and its associated transcription
-#     for id in ids  # Iterate over ids
-#     for (transcription, form) in zip( # Iterate over transcriptions and orthographic representation
-#         root.findall(  # Get word for each unique id
-#             speaker + str("[@id=" + "'" + id + "'" + "]/") + orthography_w
-#         ),
-#         root.findall(  # Get transcription for each unique id
-#             speaker
-#             + str("[@id=" + "'" + id + "'" + "]/")
-#             + ipaTier_model
-#             + "[@form='"
-#             + ipaTier
-#             + "']/"
-#             + transcription_pg
-#         ),
-#     )
-#     if transcription.tag != str(phon_link + "sb")  # Exclude sb tag and if there is no text
-#     and transcription.text is not None
-# }

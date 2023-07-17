@@ -1,20 +1,21 @@
+import itertools
+import os
+import re
+import string
+import time
+import timeit
+import xml
+import xml.etree.ElementTree as ET
 from cgi import test
 from cmd import PROMPT
-import string
+from os import listdir
+from os.path import exists, isfile, join
 from types import NoneType
 from unittest import skip
-import xml
-import os
-from os.path import exists
-from os import listdir
-from os.path import isfile, join
-import xml.etree.ElementTree as ET
-import time
-import itertools
-import timeit
+
 import openpyxl
 import xlrd
-import re
+
 # from diacritics_list import diacritics_list
 
 media_folder = "C:\\Users\\alex\\Documents\\GitHub\\Combiths Lab\\Phon\\XML Files"
@@ -32,7 +33,6 @@ xml_files = [
 # Ask user if they want model/target or actual transcriptions
 
 while True:
-
     ipaTier = input("Model (target) or actual transcription? ")
 
     if ipaTier == "model":
@@ -59,14 +59,12 @@ start = timeit.default_timer()
 
 # Go through all XML files in the directory
 for files in xml_files:
-
     # Parse through files
 
     tree = ET.parse(files)
     root = tree.getroot()
 
     def get_transcriptions():
-
         # Get ids
 
         ids = [id.attrib["id"] for id in root.findall(speaker)]
@@ -94,7 +92,6 @@ for files in xml_files:
                     transcription.tag != str(phon_link + "sb")
                     and transcription.text is not None
                 ):
-
                     transcriptions.append(transcription.text)
             transcriptions = " ".join(transcriptions)
             id_transcriptions.append(transcriptions)

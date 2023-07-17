@@ -1,0 +1,2100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<session xmlns="http://phon.ling.mun.ca/ns/phonbank" id="1042_GFTA_GFTA Pre" corpus="Data" version="PB1.2">
+    <header>
+        <date>2018-01-27</date>
+    </header>
+    <participants>
+        <participant id="PAR">
+            <role>Participant</role>
+            <name>1042</name>
+        </participant>
+    </participants>
+    <transcribers/>
+    <userTiers>
+        <userTier tierName="Target" grouped="false"/>
+        <userTier tierName="DI" grouped="false"/>
+        <userTier tierName="NumProductions" grouped="false"/>
+        <userTier tierName="CA" grouped="false"/>
+        <userTier tierName="Probe" grouped="false"/>
+        <userTier tierName="Session" grouped="false"/>
+    </userTiers>
+    <tierOrder>
+        <tier tierName="Orthography" visible="true" locked="false" font="default"/>
+        <tier tierName="IPA Target" visible="true" locked="false" font="default"/>
+        <tier tierName="IPA Actual" visible="true" locked="false" font="default"/>
+        <tier tierName="Notes" visible="true" locked="false" font="default"/>
+        <tier tierName="Segment" visible="true" locked="false" font="default"/>
+        <tier tierName="Target" visible="true" locked="false" font="default"/>
+        <tier tierName="DI" visible="true" locked="false" font="default"/>
+        <tier tierName="NumProductions" visible="true" locked="false" font="default"/>
+        <tier tierName="CA" visible="true" locked="false" font="default"/>
+        <tier tierName="Probe" visible="true" locked="false" font="default"/>
+        <tier tierName="Session" visible="true" locked="false" font="default"/>
+    </tierOrder>
+    <transcript>
+        <u speaker="PAR" id="4c6b642f-833e-412b-b6b8-8808e00ed78c" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>house</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈhaʊs</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>haʊs</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">h s</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="2d91126e-3bc4-4fa4-92c1-1f9984f6df27" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>telephone</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈtɛləˌfoʊn</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="SS"/>
+                        <ph indexes="6" scType="O"/>
+                        <ph indexes="7" scType="N" hiatus="false"/>
+                        <ph indexes="8" scType="N" hiatus="false"/>
+                        <ph indexes="9" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>sɛwəfoʊn</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="O"/>
+                        <ph indexes="5" scType="N" hiatus="false"/>
+                        <ph indexes="6" scType="N" hiatus="false"/>
+                        <ph indexes="7" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="8">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                    <phomap value="5 5"/>
+                    <phomap value="6 6"/>
+                    <phomap value="7 7"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">t f</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="a9a2bdaa-9c8a-45af-9fac-6b06b3a71f87" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>cup</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈkʌp</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>kʌp</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="3">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">k p</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="c3c4cd79-79f8-4da0-8f9c-3ab95b779df0" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>gun</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈɡʌn</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ɡʌn</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="3">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">g n</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="2052ef6d-9a89-4fd4-b130-6d782bd7281c" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>knife</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈnaɪf</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>naɪf</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n f</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="43d028fd-144a-4011-8d6d-549bd54f5f42" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>window</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈwɪndoʊ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="O"/>
+                        <ph indexes="5" scType="N" hiatus="false"/>
+                        <ph indexes="6" scType="N" hiatus="false"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>wɪndoʊ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="false"/>
+                        <ph indexes="5" scType="N" hiatus="false"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="6">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                    <phomap value="5 5"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">w d</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="0a7576c5-f8fa-4fbd-b360-836ac058baa2" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>wagon</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈwæɡɪn</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>wæɡɪn</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">g</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="8d94de2e-a619-4548-9b07-6a2c8e9aca82" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>wheel</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈwiʊl</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>wijʊˡ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3 4" scType="N" hiatus="false"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 -1"/>
+                    <phomap value="3 2"/>
+                    <phomap value="-1 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">hw</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="ffb62d98-35fd-4223-a1ba-bba94e616ed2" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>chicken</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈʧɪkɪn</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>sɪkɪn</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">k</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="746d54d7-d038-4fed-ba16-0fc1b150dccc" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>zipper</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈzɪpʊɹ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>zɪpʊ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">z p</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="8f4180f6-f0fd-4f65-94dc-7d9fa13a2014" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>scissors</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈsɪzʊɹz</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="C"/>
+                        <ph indexes="6" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>sɪz̥ʊz</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2 3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="6">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 -1"/>
+                    <phomap value="5 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">s z</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="54051cd8-c217-42d7-a52a-d4334169994e" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>duck</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈdʌk</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>dʌk</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="3">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">d k</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="82b72f4d-9de9-4b20-905c-ce105a6a2f60" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>yellow</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈjɛloʊ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="false"/>
+                        <ph indexes="5" scType="N" hiatus="false"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>ɛwoʊ</w>
+                    <sb>
+                        <ph indexes="0" scType="N" hiatus="false"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 -1"/>
+                    <phomap value="1 0"/>
+                    <phomap value="2 1"/>
+                    <phomap value="3 2"/>
+                    <phomap value="4 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">j l</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="39b75a0a-5494-4f82-802c-68880025665d" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>vacuum</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈvækjum</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="false"/>
+                        <ph indexes="5" scType="N" hiatus="false"/>
+                        <ph indexes="6" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>vækum</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="6">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 -1"/>
+                    <phomap value="4 3"/>
+                    <phomap value="5 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">v</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="3136c987-4c9d-4062-a20e-d4926b997e15" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>matches</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈmæʧɪz</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>mæʦɪz̥</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4 5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">m ʧ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="0eab1018-9893-4fb5-a8a7-4b96388bd466" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>lamp</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈlæmp</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>wæmp</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">l</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="0f6a4acc-6e4b-4def-bb17-8e1deb513ea4" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>shovel</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈʃʌvʊl</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>sʌv̥ʊ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2 3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">ʃ v</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="3663aaee-2b63-4dad-a908-9c417a22ea99" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>car</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈkɑɹ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>kɔː</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1 2" scType="N" hiatus="true"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="3">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="2cec261a-d717-4a61-9eae-43f666f50f91" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>rabbit</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈɹæˌbɪt</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="SS"/>
+                        <ph indexes="4" scType="O"/>
+                        <ph indexes="5" scType="N" hiatus="true"/>
+                        <ph indexes="6" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>wæbɪt</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r b</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="c9e35ce1-1bcb-465b-84fd-58cbe369a4b0" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>fishing</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈfɪʃɪŋ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>fɪsɪŋ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">f ʃ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="89be02d0-0537-4497-8e46-d16bac1c0536" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>church</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈʧʊɹʧ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>sʊwʊʦ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="-1 3"/>
+                    <phomap value="3 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">ʧ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="2dbe3f67-75d1-4195-8069-50707fbd94d3" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>feather</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈfɛðʊɹ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>fɛɾʊ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">ð</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="d3251b99-c81f-4824-b922-5d19acf79d02" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>pencils</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈpɛnsʊlz</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="O"/>
+                        <ph indexes="5" scType="N" hiatus="true"/>
+                        <ph indexes="6" scType="C"/>
+                        <ph indexes="7" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>pɪnʦʊʷz̥</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4 5" scType="N" hiatus="true"/>
+                        <ph indexes="6 7" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="7">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                    <phomap value="5 -1"/>
+                    <phomap value="6 5"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">p s</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="e6c6d61e-58b5-4d76-bc90-083650a0a5be" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>this</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈðɪs</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>dæt</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="3">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">ð</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="58d80e7d-97d5-43ef-b499-88342f7d991d" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>carrot</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈkɛɹɪt</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>kɛwɪt</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">r t</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="72c7ea94-392a-44f6-83e8-b8d486aa3943" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>orange</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈoʊɹɪnʤ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="C"/>
+                        <ph indexes="6" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>oʊwɪnʣ̥</w>
+                    <sb>
+                        <ph indexes="0" scType="N" hiatus="false"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5 6" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="6">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                    <phomap value="5 5"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">ʤ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="453ea070-02d7-4e0a-bc2d-100456bb2989" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>bathtub</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈbæθtʌb</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="O"/>
+                        <ph indexes="5" scType="N" hiatus="true"/>
+                        <ph indexes="6" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bæfsʌb</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="7">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="-1 2"/>
+                    <phomap value="2 3"/>
+                    <phomap value="3 -1"/>
+                    <phomap value="4 4"/>
+                    <phomap value="5 5"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">θ t b</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="23182cfe-03cd-4052-bdc4-bb7ea532e13a" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>bath</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈbæθ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bæθ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="3">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">b θ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="9df2f8c8-cad0-4247-82dc-a6c41d158b7e" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>thumb</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈθʌm</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>fʌm</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="3">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">θ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="908c7597-8cb6-4fa1-8a2e-ff64ab3b90f0" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>finger</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈfɪŋɡʊɹ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="O"/>
+                        <ph indexes="5" scType="N" hiatus="true"/>
+                        <ph indexes="6" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>fɪŋɡʊ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="6">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                    <phomap value="5 -1"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">ŋ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="ed6526a7-752f-4249-b1c9-a754455d72cf" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>ring</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈɹiŋ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>win</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="3">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">ŋ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="04986dd6-af76-443b-b2f9-2b9da608eb01" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>jumping</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈʤʌmpɪŋ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="O"/>
+                        <ph indexes="5" scType="N" hiatus="true"/>
+                        <ph indexes="6" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>dʌmpɪŋ</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="6">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                    <phomap value="5 5"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">ʤ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="f09c1d34-4c06-43af-b185-7efc284c3e3f" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>pajamas</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>pəˈʤæməz</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="SS"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="O"/>
+                        <ph indexes="6" scType="N" hiatus="true"/>
+                        <ph indexes="7" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>pədɑməz̥</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="O"/>
+                        <ph indexes="5" scType="N" hiatus="true"/>
+                        <ph indexes="6 7" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="7">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                    <phomap value="5 5"/>
+                    <phomap value="6 6"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">ʤ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="980c815c-445c-432a-a9a7-34ea296e7950" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>plane</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈpleɪn</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="N" hiatus="false"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>pweɪn</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">pl</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="14473aaa-914a-47cc-97f5-6c7f70bd1196" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>blue</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈblu</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bwu</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="3">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">bl</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="d05e2185-a65d-4069-9cf6-9198569ee1b7" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>brush</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈbɹʌʃ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bwʌs</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">br ʃ</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="9cbdcc1c-b400-4252-b2dd-0158966fdea8" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>drum</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈdɹʌm</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>dwʌm</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">dr m</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="33559676-ebd9-42b8-9fa4-097d2f69e4a4" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>flag</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈflæɡ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>fwæɡ̥</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="4">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">fl g</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="8ec23923-a692-4a4d-a23b-40346fe74c51" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>santa</w>
+                    <w>claus</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈsæntə</w>
+                    <w>ˈklɔz</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="O"/>
+                        <ph indexes="5" scType="N" hiatus="true"/>
+                        <ph indexes="6" scType="WB"/>
+                        <ph indexes="7" scType="SS"/>
+                        <ph indexes="8" scType="O"/>
+                        <ph indexes="9" scType="O"/>
+                        <ph indexes="10" scType="N" hiatus="true"/>
+                        <ph indexes="11" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>sæntəkwɔz̥</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="O"/>
+                        <ph indexes="6" scType="O"/>
+                        <ph indexes="7" scType="N" hiatus="true"/>
+                        <ph indexes="8 9" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="9">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                    <phomap value="5 5"/>
+                    <phomap value="6 6"/>
+                    <phomap value="7 7"/>
+                    <phomap value="8 8"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">n kl</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="1740cf21-2947-497c-b7d5-a229c32c9a2c" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>christmas</w>
+                    <w>tree</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈkɹɪsməs</w>
+                    <w>ˈtɹi</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="C"/>
+                        <ph indexes="5" scType="O"/>
+                        <ph indexes="6" scType="N" hiatus="true"/>
+                        <ph indexes="7" scType="C"/>
+                        <ph indexes="8" scType="WB"/>
+                        <ph indexes="9" scType="SS"/>
+                        <ph indexes="10" scType="O"/>
+                        <ph indexes="11" scType="O"/>
+                        <ph indexes="12" scType="N" hiatus="true"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>kwɪsməswi</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                        <ph indexes="4" scType="O"/>
+                        <ph indexes="5" scType="N" hiatus="true"/>
+                        <ph indexes="6" scType="C"/>
+                        <ph indexes="7" scType="O"/>
+                        <ph indexes="8" scType="N" hiatus="true"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="10">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                    <phomap value="5 5"/>
+                    <phomap value="6 -1"/>
+                    <phomap value="7 6"/>
+                    <phomap value="8 7"/>
+                    <phomap value="9 8"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">kr m tr</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="10b2a151-9c04-407d-899f-f87861f6d095" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>squirrel</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈskwʊɹəl</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="LA"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="O"/>
+                        <ph indexes="6" scType="N" hiatus="true"/>
+                        <ph indexes="7" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>swʊwʊ</w>
+                    <sb>
+                        <ph indexes="0" scType="LA"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="8">
+                    <phomap value="0 0"/>
+                    <phomap value="1 -1"/>
+                    <phomap value="2 1"/>
+                    <phomap value="3 -1"/>
+                    <phomap value="4 -1"/>
+                    <phomap value="5 2"/>
+                    <phomap value="6 3"/>
+                    <phomap value="-1 4"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">skw l</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="079243c5-edb7-4263-89d1-514a1bec46d1" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>sleeping</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈslipɪŋ</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="LA"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="true"/>
+                        <ph indexes="4" scType="O"/>
+                        <ph indexes="5" scType="N" hiatus="true"/>
+                        <ph indexes="6" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>swipɪŋ</w>
+                    <sb>
+                        <ph indexes="0" scType="LA"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="O"/>
+                        <ph indexes="4" scType="N" hiatus="true"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="6">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                    <phomap value="3 3"/>
+                    <phomap value="4 4"/>
+                    <phomap value="5 5"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">sl</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="7e31244e-4290-4ac3-82fd-abef196cefa0" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>bed</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈbɛd</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="O"/>
+                        <ph indexes="2" scType="N" hiatus="true"/>
+                        <ph indexes="3" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>bɛd</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="true"/>
+                        <ph indexes="2" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="3">
+                    <phomap value="0 0"/>
+                    <phomap value="1 1"/>
+                    <phomap value="2 2"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">d</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+        <u speaker="PAR" id="e3aeba63-ef18-4029-80cb-ff04d65ca67e" excludeFromSearches="false">
+            <orthography>
+                <g>
+                    <w>stove</w>
+                </g>
+            </orthography>
+            <ipaTier form="model">
+                <pg>
+                    <w>ˈstoʊv</w>
+                    <sb>
+                        <ph indexes="0" scType="SS"/>
+                        <ph indexes="1" scType="LA"/>
+                        <ph indexes="2" scType="O"/>
+                        <ph indexes="3" scType="N" hiatus="false"/>
+                        <ph indexes="4" scType="N" hiatus="false"/>
+                        <ph indexes="5" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <ipaTier form="actual">
+                <pg>
+                    <w>soʊv̥</w>
+                    <sb>
+                        <ph indexes="0" scType="O"/>
+                        <ph indexes="1" scType="N" hiatus="false"/>
+                        <ph indexes="2" scType="N" hiatus="false"/>
+                        <ph indexes="3 4" scType="C"/>
+                    </sb>
+                </pg>
+            </ipaTier>
+            <alignment type="segmental">
+                <ag length="5">
+                    <phomap value="0 0"/>
+                    <phomap value="1 -1"/>
+                    <phomap value="2 1"/>
+                    <phomap value="3 2"/>
+                    <phomap value="4 3"/>
+                </ag>
+            </alignment>
+            <flatTier tierName="Target">st v</flatTier>
+            <flatTier tierName="DI"></flatTier>
+            <flatTier tierName="NumProductions"></flatTier>
+            <flatTier tierName="Probe">GFTA</flatTier>
+            <flatTier tierName="CA">4;6;17</flatTier>
+            <flatTier tierName="Session">GFTA Pre</flatTier>
+        </u>
+    </transcript>
+</session>

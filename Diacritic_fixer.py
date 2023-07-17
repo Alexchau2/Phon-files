@@ -1,20 +1,20 @@
+import itertools
+import os
+import re
+import string
+import time
+import timeit
+import xml
+import xml.etree.ElementTree as ET
 from cgi import test
 from cmd import PROMPT
-import string
+from os import listdir
+from os.path import exists, isfile, join
 from types import NoneType
 from unittest import skip
-import xml
-import os
-from os.path import exists
-from os import listdir
-from os.path import isfile, join
-import xml.etree.ElementTree as ET
-import time
-import itertools
-import timeit
-import openpyxl
-import xlrd
-import re
+
+# import openpyxl
+# import xlrd
 
 # Example
 # ɛlᵖ has 3 characters in the string
@@ -28,36 +28,24 @@ import re
 # Output: {('8c437a92-64f3-4438-8098-62273be265a7', 'ɛlᵖ'): ['0', ['1', '2']]}
 
 
-def Diacritic_fixer():
-    media_folder = "C:\\Users\\alex\\Documents\\GitHub\\Combiths Lab\\Phon\\XML Files"
+def Diacritic_fixer(record_xml_element, tiers=["model", "actual"]):
+    # os.chdir(media_folder)
 
-    os.chdir(media_folder)
+    # # Get XML files
+    # xml_files = [
+    #     xml_file
+    #     for xml_file in listdir(media_folder)
+    #     if isfile(join(media_folder, xml_file))
+    # ]
 
-    # Get XML files
-    xml_files = [
-        xml_file
-        for xml_file in listdir(media_folder)
-        if isfile(join(media_folder, xml_file))
-    ]
-
-    while True:
-
-        # Ask for model/target or actual transcription information
-        ipaTier = input("Model (target) or actual transcription? ")
-
-        if ipaTier == "model":
-            print("Model")
-            break
-
-        elif ipaTier == "actual":
-            print("Actual")
-            break
-
-        else:
-            print("Please select either model (target) or actual. ")
-            continue
+    # Replaced user input with function parameter ipaTier
+    # For streamlined use when called from another script
+    # assert (
+    #     ipaTier == "model" or ipaTier == "actual"
+    # ), "ipaTier must be specified as either model (target) or actual"
 
     phon_link = "{http://phon.ling.mun.ca/ns/phonbank}"
+    ns = {"": "http://phon.ling.mun.ca/ns/phonbank"}
     ipaTier_model = str((".//" + phon_link + "ipaTier"))
     transcription = str((".//" + phon_link + "w"))
     transcription_pg = str((".//" + phon_link + "pg/*"))
@@ -68,103 +56,51 @@ def Diacritic_fixer():
     transcription_length = str((".//" + phon_link + "ag/*"))
 
     start = timeit.default_timer()
+    id = record_xml_element.get("id")
+    # Instantiate output dictionary
+    output = {}
 
-    # Go through all XML files in the directory
-    for files in xml_files:
-
-        tree = ET.parse(files)
-        root = tree.getroot()
-
-        def get_transcription_information():
-
-            # Get ids
-
-            ids = [id.attrib["id"] for id in root.findall(speaker)]
-
-            # Get transcriptions for each unique id into a list
-
-            id_transcriptions = []
-
-            # Iterate over ids
-            for id in ids:
-                transcriptions = []
-
-                # Get transcription for each unique id
-                for transcription in root.findall(
-                    speaker
-                    + str("[@id=" + "'" + id + "'" + "]/")
-                    + ipaTier_model
-                    + "[@form='"
-                    + ipaTier
-                    + "']/"
-                    + transcription_pg
-                ):
-                    # Exclude sb tag and if there is no text
-                    if (
-                        transcription.tag != str(phon_link + "sb")
-                        and transcription.text is not None
-                    ):
-
-                        transcriptions.append(transcription.text)
-                transcriptions = " ".join(transcriptions)
-                id_transcriptions.append(transcriptions)
-
-            diacritic_fix = {
-                (id, transcriptions): [  # Dictionary with id and transcription as keys
-                
+    for tier in tiers:
+        tier_e = record_xml_element.find(f".//ipaTier[@form='{tier}']", ns)
+        pg_list = tier_e.findall(".//pg", ns)  # Prosodic Groups
+        count_pg = len(pg_list)  # debugging
+        pgs = []  # List for diacritic_fix dict for each pg
+        for i, pg in enumerate(pg_list):
+            transcriptions = [w.text for w in pg.findall("w", ns)]
+            count_w = len(transcriptions)  # debugging
+            indices = pg.findall(".//ph", ns)  # Character indices
+            transcriptions = " ".join(transcriptions)
+            # Fix indexing for this prosodic group (pg)
+            diacritic_fix = {  # Dictionary with id and transcription as keys
+                "id": id,
+                "tier": tier,
+                "pg": i,
+                "transcriptions": transcriptions,
+                "indices": [  # fixed embedded character indices
                     list(
-                        map(str, index.get("indexes").split())
+                        map(int, index.get("indexes").split())
                     )  # Get indexes for phoneme with diacritics
-
-                    if len(index.get("indexes"))
+                    if len(index.get("indexes").split())
                     > 1  # Check if diacritic exists in indexes
-
-                    else index.get(
-                        "indexes"
-                    )  # If there is no diacritic, then just get indexes
-
-                    for index in root.findall(
-                        speaker
-                        + str("[@id=" + "'" + id + "'" + "]/")
-                        + ipaTier_model
-                        + "[@form='"
-                        + ipaTier
-                        + "']/"
-                        + transcription_indices
-                    )
+                    else int(index.get("indexes"))  # If no diacritic just get indexes
+                    for index in indices
                 ]
-                for (id, transcriptions) in zip(
-                    ids, id_transcriptions
-                )  # Iterate over ids and transcriptions
+                # Could zip in the sctype and hiatus info here
             }
-            # print(diacritic_fix)
-            # time.sleep(2)
+            stop = timeit.default_timer()
+            print(f"{tier}, pg:{i} time: ", stop - start)
+            # Add diacritic_fix dict for this pg to output dictionary
+            pgs.append(diacritic_fix)
+        output[tier] = pgs
+    # Example acces: output['actual'][0]["indices"]
+    return output
 
-        get_transcription_information()
 
-    stop = timeit.default_timer()
-
-    print("Time: ", stop - start)
-
-
-Diacritic_fixer()
-
-# Old
-
-# Get transcriptions
-
-# id_transcriptions = [
-#     transcription.text  # Get transcription
-#     for id in ids  # Iterate over ids
-#     for transcription in root.findall(  # Get transcription for each unique id
-#         speaker
-#         + str("[@id=" + "'" + id + "'" + "]/")
-#         + ipaTier_model
-#         + "[@form='"
-#         + ipaTier
-#         + "']/"
-#         + transcription_pg
-#     )
-#     if transcription.tag != str(phon_link + "sb")  # Exclude sb tag and if there is no text
-#     and transcription.text is not None
-# ]
+if __name__ == "__main__":
+    ns = {"": "http://phon.ling.mun.ca/ns/phonbank"}
+    test_dir = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/dpa"
+    test_file = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/groups-words/Anne_Pre_PC.xml"
+    test_tree = ET.parse(test_file)
+    test_root = test_tree.getroot()
+    test_records = test_tree.findall(".//u", ns)
+    output = Diacritic_fixer(test_records[0])
