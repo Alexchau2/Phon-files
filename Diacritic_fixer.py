@@ -44,55 +44,60 @@ def Diacritic_fixer(record_xml_element, tiers=["model", "actual"]):
     #     ipaTier == "model" or ipaTier == "actual"
     # ), "ipaTier must be specified as either model (target) or actual"
 
-    phon_link = "{http://phon.ling.mun.ca/ns/phonbank}"
-    ns = {"": "http://phon.ling.mun.ca/ns/phonbank"}
-    ipaTier_model = str((".//" + phon_link + "ipaTier"))
-    transcription = str((".//" + phon_link + "w"))
-    transcription_pg = str((".//" + phon_link + "pg/*"))
-    speaker = str((".//" + phon_link + "u"))
-    orthography_w = str((".//" + phon_link + "g/*"))
-    transcription_indices = str((".//" + phon_link + "sb/*"))
-    alignment_segmental = str((".//" + phon_link + "alignment"))
-    transcription_length = str((".//" + phon_link + "ag/*"))
+    try:
+        phon_link = "{http://phon.ling.mun.ca/ns/phonbank}"
+        ns = {"": "http://phon.ling.mun.ca/ns/phonbank"}
+        ipaTier_model = str((".//" + phon_link + "ipaTier"))
+        transcription = str((".//" + phon_link + "w"))
+        transcription_pg = str((".//" + phon_link + "pg/*"))
+        speaker = str((".//" + phon_link + "u"))
+        orthography_w = str((".//" + phon_link + "g/*"))
+        transcription_indices = str((".//" + phon_link + "sb/*"))
+        alignment_segmental = str((".//" + phon_link + "alignment"))
+        transcription_length = str((".//" + phon_link + "ag/*"))
 
-    start = timeit.default_timer()
-    id = record_xml_element.get("id")
-    # Instantiate output dictionary
-    output = {}
+        start = timeit.default_timer()
+        id = record_xml_element.get("id")
+        # Instantiate output dictionary
+        output = {}
 
-    for tier in tiers:
-        tier_e = record_xml_element.find(f".//ipaTier[@form='{tier}']", ns)
-        pg_list = tier_e.findall(".//pg", ns)  # Prosodic Groups
-        count_pg = len(pg_list)  # debugging
-        pgs = []  # List for diacritic_fix dict for each pg
-        for i, pg in enumerate(pg_list):
-            transcriptions = [w.text for w in pg.findall("w", ns)]
-            count_w = len(transcriptions)  # debugging
-            indices = pg.findall(".//ph", ns)  # Character indices
-            transcriptions = " ".join(transcriptions)
-            # Fix indexing for this prosodic group (pg)
-            diacritic_fix = {  # Dictionary with id and transcription as keys
-                "id": id,
-                "tier": tier,
-                "pg": i,
-                "transcriptions": transcriptions,
-                "indices": [  # fixed embedded character indices
-                    list(
-                        map(int, index.get("indexes").split())
-                    )  # Get indexes for phoneme with diacritics
-                    if len(index.get("indexes").split())
-                    > 1  # Check if diacritic exists in indexes
-                    else int(index.get("indexes"))  # If no diacritic just get indexes
-                    for index in indices
-                ]
-                # Could zip in the sctype and hiatus info here
-            }
-            stop = timeit.default_timer()
-            print(f"{tier}, pg:{i} time: ", stop - start)
-            # Add diacritic_fix dict for this pg to output dictionary
-            pgs.append(diacritic_fix)
-        output[tier] = pgs
-    # Example acces: output['actual'][0]["indices"]
+        for tier in tiers:
+            tier_e = record_xml_element.find(f".//ipaTier[@form='{tier}']", ns)
+            pg_list = tier_e.findall(".//pg", ns)  # Prosodic Groups
+            count_pg = len(pg_list)  # debugging
+            pgs = []  # List for diacritic_fix dict for each pg
+            for i, pg in enumerate(pg_list):
+                transcriptions = [w.text for w in pg.findall("w", ns)]
+                count_w = len(transcriptions)  # debugging
+                indices = pg.findall(".//ph", ns)  # Character indices
+                transcriptions = " ".join(transcriptions)
+                # Fix indexing for this prosodic group (pg)
+                diacritic_fix = {  # Dictionary with id and transcription as keys
+                    "id": id,
+                    "tier": tier,
+                    "pg": i,
+                    "transcriptions": transcriptions,
+                    "indices": [  # fixed embedded character indices
+                        list(
+                            map(int, index.get("indexes").split())
+                        )  # Get indexes for phoneme with diacritics
+                        if len(index.get("indexes").split())
+                        > 1  # Check if diacritic exists in indexes
+                        else int(
+                            index.get("indexes")
+                        )  # If no diacritic just get indexes
+                        for index in indices
+                    ]
+                    # Could zip in the sctype and hiatus info here
+                }
+                stop = timeit.default_timer()
+                print(f"{tier}, pg:{i} time: ", stop - start)
+                # Add diacritic_fix dict for this pg to output dictionary
+                pgs.append(diacritic_fix)
+            output[tier] = pgs
+        # Example acces: output['actual'][0]["indices"]
+    except TypeError:
+        pass
     return output
 
 

@@ -1,3 +1,4 @@
+import os
 import xml.etree.ElementTree as ET
 
 from Diacritic_fixer import Diacritic_fixer
@@ -17,11 +18,12 @@ class Session:
         id (str): The session ID attribute.
         corpus (str): The session corpus attribute.
         version (str): The session version attribute.
-        date (str): The date extracted from the header element.
+        date (str): The date extracted from the header element of the session.
         transcribers (list): List of transcriber elements in the session.
         participants (list): List of participant elements in the session.
     """
 
+    # To Do: Address differences betweeen sessions with and without blind transcriptions.
     def __init__(self, source):
         self.ns = {"": "http://phon.ling.mun.ca/ns/phonbank"}
         if isinstance(source, str):  # If data is a filepath
@@ -56,12 +58,21 @@ class Session:
         self.date = header.find("date", self.ns).text
 
         # Extract transcribers
-        self.transcribers = session.find(".//transcribers/transcriber", self.ns)
+        self.transcribers = session.findall(".//transcribers/transcriber", self.ns)
 
         # Extract participants
         self.participants = session.findall(".//participants/participant", self.ns)
 
     def get_tier_list(self, include="all"):
+        """Return list of tiers in the session.
+
+        Args:
+            include (str, optional): Choose from ["all", "userTier", "defaultTiers"].
+            Defaults to "all".
+
+        Returns:
+            dict: {ET.Element:str}
+        """
         tier_dict = {}
         userTier_dict = {}
         defaultTier_dict = {}
@@ -78,8 +89,17 @@ class Session:
             defaultTier_dict = {key: tier_dict[key] for key in default_keys}
             return defaultTier_dict
 
+    def get_transcribers(self):
+        transcriber_list = [transcriber.get("id") for transcriber in self.transcribers]
+        return transcriber_list
+
     # To Do: Add consideration of excludeFromSearch and use Record class
     def get_records(self):
+        """Return list of record Elements from session Element.
+
+        Returns:
+            list: [ET.Element]
+        """
         record_list = self.root.findall(".//transcript/u", self.ns)
         return record_list
 
@@ -93,22 +113,26 @@ class Record:
         root (Session): The parent Session object of the record.
         speaker (str): The speaker attribute of the record element.
         id (str): The ID attribute of the record element.
+        segment
         excludeFromSearches (str): The excludeFromSearches attribute of the record element.
         orthography (str): The orthography text extracted from the record.
         flat_tiers (dict): A dictionary of tier names and their corresponding text content.
         model_ipa_tier (xml.etree.ElementTree.Element): The IPA tier with 'model' form.
         actual_ipa_tier (xml.etree.ElementTree.Element): The IPA tier with 'actual' form.
         alignment_tier (xml.etree.ElementTree.Element): The alignment tier with 'segmental' type.
-
+        blind_tiers
     Functions
         get_transcription: Get the aligned transcriptions for the record (dictionary).
     """
 
+    # To Do: Handle when an element is empty or not present in the record.
     def __init__(self, element, root):
         self.element = element
         self.root = Session(root)
+        self.session_id = root.get("id") + ", " + root.get("corpus")
         self.speaker = element.get("speaker")
         self.id = element.get("id")
+        self.segment = element.get("segment")
         self.excludeFromSearches = element.get("excludeFromSearches")
         self.orthography = element.find("orthography/g/w", ns).text
         self.flat_tiers = {
@@ -116,16 +140,40 @@ class Record:
         }
         self.model_ipa_tier = self.element.find(".//ipaTier[@form='model']", ns)
         self.actual_ipa_tier = self.element.find(".//ipaTier[@form='actual']", ns)
+        self.blind_transcriptions = self.element.findall(".//blindTranscription", ns)
         self.alignment_tier = self.element.find(".//alignment[@type='segmental']", ns)
 
+    def get_blind_transcriptions(self):
+        """
+        Extract blind transcriptions for different transcribers to a nested dictionary.
+
+        Returns
+        -------
+        blind_dict : dict
+            A nested dictionary containing blind transcriptions for each transcriber and their respective tiers.
+        """
+        transcribers = self.root.get_transcribers()
+        blind_dict = {}
+        for tr in transcribers:
+            blind_dict[tr] = tr_dict = {}
+            for tr_tier in self.element.findall(
+                f".//blindTranscription[@user='{tr}']", ns
+            ):
+                bgs = [[w.text for w in bg] for bg in tr_tier.findall("bg", ns)]
+                tr_dict[tr_tier.get("form")] = bgs
+        return blind_dict
+
+    # To Do: Return output in zipped format with a list representing each index in
+    # the alignment as a unit with the associated Target and Actual segments.
     def get_transcription(self):
         """
         Get the aligned transcriptions for the record.
 
         Returns:
-            dict: A dictionary containing aligned model, actual, alignment indexes.
+            dict: {str:[[[str OR int]]]}.
+            Contains parallel aligned model, actual, alignment tier contents.
+            When tier missing, returns present tiers with indices and no alignment.
         """
-
         orthography = self.element.find(".//orthography", ns)
         gs = []
         char_indexes = {}
@@ -139,25 +187,29 @@ class Record:
             pgs = []
             tier_element = self.element.find(f".//ipaTier[@form='{tier}']", ns)
             tier_pg_list = tier_element.findall(".//pg", ns)
-            for pg_e, pg_i in zip(tier_pg_list, embedded_indices[tier]):
-                t = " ".join([w.text for w in pg_e.findall("w", ns)])
-                # Iterate embedded indices.
-                # For each iteration, the chunk to extract from the transcription
-                # is determined by the length of the element.
-                temp_t = t
-                alignments = []
-                # Extract transcription characters and group with embedded indexes
-                for i in pg_i["indices"]:
-                    if type(i) == int:
-                        num_chars = 1
-                    else:
-                        num_chars = len(i)
-                    extract = temp_t[:num_chars]
-                    temp_t = temp_t[num_chars:]
-                    alignments.append([extract, i])
-                # Could streamline by extracting the embedded indices directly from the ph element
-                pgs.append(alignments)
-            char_indexes[tier] = pgs
+            try:
+                for pg_e, pg_i in zip(tier_pg_list, embedded_indices[tier]):
+                    t = " ".join([w.text for w in pg_e.findall("w", ns)])
+                    # Iterate embedded indices.
+                    # For each iteration, the chunk to extract from the transcription
+                    # is determined by the length of the element.
+                    temp_t = t
+                    alignments = []
+                    # Extract transcription characters and group with embedded indexes
+                    for i in pg_i["indices"]:
+                        if type(i) == int:
+                            num_chars = 1
+                        else:
+                            num_chars = len(i)
+                        extract = temp_t[:num_chars]
+                        temp_t = temp_t[num_chars:]
+                        alignments.append([extract, i])
+                    # Could streamline by extracting the embedded indices directly from the ph element
+                    pgs.append(alignments)
+                char_indexes[tier] = pgs
+            except KeyError as e:
+                print(e, "tier missing or errored.")
+                continue
 
         def align_transcriptions(self, char_indexes):
             alignment = [
@@ -251,8 +303,13 @@ class Record:
 
             return aligned_tiers
 
-        aligned_transcriptions = align_transcriptions(self, char_indexes)
-
+        try:
+            aligned_transcriptions = align_transcriptions(self, char_indexes)
+        except KeyError as e:
+            print(
+                "Incomplete or missing tier data. No aligned transcriptions extracted."
+            )
+            return char_indexes
         return aligned_transcriptions
 
 
@@ -278,10 +335,40 @@ def write_xml_to_file(xml_tree, output_file):
 
 # Test
 if __name__ == "__main__":
-    test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/groups-words/Anne_Pre_PC.xml"
-    test_dir_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/dpa"
+    # Test 1: Single tutorial session. First record.
+    # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/groups-words/Anne_Pre_PC.xml"
+    # s = Session(test_path)
+    # t = s.get_records()
+    # r1 = Record(t[0], s.root)
+    # r2 = Record(t[0], s.tree)
+    # test_result = r1.get_transcription()
+
+    # Test 2: Single tutorial session. Multiple records
+    # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/groups-words/Anne_Pre_PC.xml"
+    # s = Session(test_path)
+    # records = s.get_records()
+    # t2 = [Record(record, s.root) for record in records]
+    # t2_transcription = [record.get_transcription() for record in t2]
+    # pass  # Access e.g.: t2_0['model'][0][0]
+
+    # Test 3: 7 DPA sessions.
+    # test_dir_path = os.path.abspath("XML Test/dpa")
+
+    # t3_sessions = []
+    # for file in os.listdir(test_dir_path):
+    #     s = Session(os.path.join(test_dir_path, file))
+    #     print("Session:", s.id)  # DEBUGGING
+    #     records = s.get_records()
+    #     t3 = [Record(record, s.root) for record in records]
+    #     t3_transcriptions = [record.get_transcription() for record in t3]
+    #     t3_sessions.append(t3_transcriptions)
+    # pass
+
+    # Test 4: Single blind session. Multiple records
+    test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/blind/B319.xml"
     s = Session(test_path)
-    t = s.get_records()
-    r1 = Record(t[0], s.root)
-    r2 = Record(t[0], s.tree)
-    test_result = r1.get_transcription()
+    records = s.get_records()
+    t2 = [Record(record, s.root) for record in records]
+    t2_transcription = [record.get_transcription() for record in t2]
+    t2[0].get_blind_transcriptions()
+    pass  # Access e.g.: t2_0['model'][0][0]
