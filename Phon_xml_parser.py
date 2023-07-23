@@ -1,4 +1,5 @@
-import os
+"""Classes for parsing Phon XML session files."""
+
 import xml.etree.ElementTree as ET
 
 from Diacritic_fixer import Diacritic_fixer
@@ -30,17 +31,11 @@ class Session:
             self.tree = ET.parse(source)
             self.root = self.tree.getroot()
         elif isinstance(source, ET.Element):  # If data is an element
-            try:
-                self.tree = ET.ElementTree(source)
-                self.root = source
-            except Exception as exc:
-                raise Exception from exc
+            self.tree = ET.ElementTree(source)
+            self.root = source
         elif isinstance(source, ET.ElementTree):  # If data is element tree
-            try:
-                self.tree = source
-                self.root = self.tree.getroot()
-            except Exception as exc:
-                raise Exception from exc
+            self.tree = source
+            self.root = self.tree.getroot()
         else:
             raise ValueError(
                 "Input must be either a filepath or an XML Element object."
@@ -273,7 +268,7 @@ class Record:
                 aligned_actual.append(ag_actual)
             # DEBUGGING: Check for equal length of aligned tiers
             assert len(aligned_model) == len(aligned_actual) == len(alignment), (
-                f"aligned tiers are not equal length\n"
+                "aligned tiers are not equal length\n"
                 + f"u id:{id}\n"
                 + f"model:{len(aligned_model)}\n+"
                 + f"actual:{len(aligned_actual)}\n"
@@ -305,7 +300,7 @@ class Record:
 
         try:
             aligned_transcriptions = align_transcriptions(self, char_indexes)
-        except KeyError as e:
+        except KeyError:
             print(
                 "Incomplete or missing tier data. No aligned transcriptions extracted."
             )
