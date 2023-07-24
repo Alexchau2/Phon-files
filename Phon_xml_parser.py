@@ -1,15 +1,17 @@
 """Classes for parsing Phon XML session files."""
 
+import os
 import xml.etree.ElementTree as ET
+
+import pandas as pd
 
 from Diacritic_fixer import Diacritic_fixer
 
 ns = {"": "http://phon.ling.mun.ca/ns/phonbank"}
 
-
 class Session:
     """
-    Session class representing a Phon session XML.
+    Class representing a single Phon session XML.
 
     Attributes:
         source (str or xml.etree.Element): The source data, either a file path or an XML Element.
@@ -24,7 +26,6 @@ class Session:
         participants (list): List of participant elements in the session.
     """
 
-    # To Do: Address differences betweeen sessions with and without blind transcriptions.
     def __init__(self, source):
         self.ns = {"": "http://phon.ling.mun.ca/ns/phonbank"}
         if isinstance(source, str):  # If data is a filepath
@@ -40,7 +41,6 @@ class Session:
             raise ValueError(
                 "Input must be either a filepath or an XML Element object."
             )
-
         # Extract session attributes
         self.source = source
         session = self.root
@@ -58,7 +58,14 @@ class Session:
         # Extract participants
         self.participants = session.findall(".//participants/participant", self.ns)
 
-    def get_tier_list(self, include="all"):
+        # Extract records
+        self.records = self.root.findall(".//transcript/u", self.ns)
+        self.labelled_records = {record.get("id"):i+1 for i, record in enumerate(self.records)}
+
+    def __len__(self):
+        return len(self.records)
+
+    def get_tier_list(self, include="all") -> dict:
         """Return list of tiers in the session.
 
         Args:
@@ -66,7 +73,7 @@ class Session:
             Defaults to "all".
 
         Returns:
-            dict: {ET.Element:str}
+            defaultTier_dict: dict[ET.Element, str]
         """
         tier_dict = {}
         userTier_dict = {}
@@ -85,18 +92,43 @@ class Session:
             return defaultTier_dict
 
     def get_transcribers(self):
+        """Get list of strings for transcriber usernames.
+
+        Returns:
+            list: List of transcriber username strings from session
+        """
         transcriber_list = [transcriber.get("id") for transcriber in self.transcribers]
         return transcriber_list
 
     # To Do: Add consideration of excludeFromSearch and use Record class
     def get_records(self):
-        """Return list of record Elements from session Element.
+        """Get list of Record objects from session Element with ids and numbering.
 
         Returns:
-            list: [ET.Element]
+            record_list: list[list[int, str, Record]]
         """
-        record_list = self.root.findall(".//transcript/u", self.ns)
-        return record_list
+        record_counter = 0
+        numbered_record_list = []
+        for record_element in self.records:
+            record = Record(record_element, self.root)
+            record_counter+=1
+            record_num = record_counter
+            numbered_record_list.append([record_num, record.id, record])
+        return numbered_record_list
+    
+    def check_session(self, to_csv=False):
+       result_list = []
+       for record in self.get_records():
+            result = record[2].check_record()
+            result['record'] = record[0]
+            result_list.append(result)
+       result_pd = pd.DataFrame(result_list)
+       result_pd.set_index('record', inplace=True)
+       if to_csv:
+           output_name = "check_session.csv"
+           result_pd.to_csv(output_name, index=True, encoding="utf-8")
+           print(f"{output_name} saved to {os.getcwd()}")
+       return result_pd
 
 
 class Record:
@@ -124,12 +156,23 @@ class Record:
     def __init__(self, element, root):
         self.element = element
         self.root = Session(root)
+        self.root_element = root
         self.session_id = root.get("id") + ", " + root.get("corpus")
         self.speaker = element.get("speaker")
         self.id = element.get("id")
+        self.record_num = self.root.labelled_records[self.id]
         self.segment = element.get("segment")
-        self.excludeFromSearches = element.get("excludeFromSearches")
-        self.orthography = element.find("orthography/g/w", ns).text
+        # self.exclude_from_searches = element.get("excludeFromSearches")
+        # if element.get("excludeFromSearches").lower()=="true":
+        #     self.exclude_from_searches = True
+        # else:
+        #     self.exclude_from_searches = False
+        self.exclude_from_searches = True if element.get("excludeFromSearches").lower() == "true" else False
+        try:
+            self.orthography = element.find("orthography/g/w", ns).text
+        except AttributeError:
+            self.orthography=None
+        
         self.flat_tiers = {
             tier.get("tierName"): tier.text for tier in element.findall("flatTier", ns)
         }
@@ -138,34 +181,44 @@ class Record:
         self.blind_transcriptions = self.element.findall(".//blindTranscription", ns)
         self.alignment_tier = self.element.find(".//alignment[@type='segmental']", ns)
 
+    def __len__(self):
+        return len(self.alignment_tier.findall(".//phomap", ns))
+
     def get_blind_transcriptions(self):
         """
-        Extract blind transcriptions for different transcribers to a nested dictionary.
+        Get blind transcriptions for different transcribers in a nested dictionary.
 
         Returns
         -------
         blind_dict : dict
-            A nested dictionary containing blind transcriptions for each transcriber and their respective tiers.
+            A nested dictionary containing blind transcriptions for each transcriber 
+            and their respective tiers.
         """
         transcribers = self.root.get_transcribers()
-        blind_dict = {}
+        blind_dict: dict[str, dict[str, list[list[str]]]] = {}
         for tr in transcribers:
             blind_dict[tr] = tr_dict = {}
             for tr_tier in self.element.findall(
                 f".//blindTranscription[@user='{tr}']", ns
             ):
-                bgs = [[w.text for w in bg] for bg in tr_tier.findall("bg", ns)]
+                bgs: list[list[str]] = [[w.text for w in bg] for bg in tr_tier.findall("bg", ns)]
                 tr_dict[tr_tier.get("form")] = bgs
         return blind_dict
 
-    # To Do: Return output in zipped format with a list representing each index in
-    # the alignment as a unit with the associated Target and Actual segments.
-    def get_transcription(self):
+
+    # To Do: Export consistent dictionary format every time, even with empty tiers
+    def get_transcription(self, zip_tiers=True) :
         """
         Get the aligned transcriptions for the record.
 
         Returns:
-            dict: {str:[[[str OR int]]]}.
+            aligned_transcriptions: dict[str,list[list[list[str | int]]]]
+                When zip_tiers=False
+            aligned_segments: list[list[list[list[str, str], list[int, int]]]
+                When zip_tiers=True
+            char_indexes: list[str,list[list[[[str]]|[str,int]]]]
+                When missing tier data prevents alignment.
+
             Contains parallel aligned model, actual, alignment tier contents.
             When tier missing, returns present tiers with indices and no alignment.
         """
@@ -202,8 +255,8 @@ class Record:
                     # Could streamline by extracting the embedded indices directly from the ph element
                     pgs.append(alignments)
                 char_indexes[tier] = pgs
-            except KeyError as e:
-                print(e, "tier missing or errored.")
+            except KeyError as error:
+                print(error, "tier missing or errored.")
                 continue
 
         def align_transcriptions(self, char_indexes):
@@ -252,6 +305,7 @@ class Record:
                         ag_model.append(" ")
                     else:
                         # Align model segment
+                        m, m_i = rev_char_indexes["model"][ag_i][a[0]-1]  # Deprecated fix attempt
                         m, m_i = rev_char_indexes["model"][ag_i][a[0]]
                         ag_model.append(m)
                         model_dict[m] = m_i  # DEBUGGING
@@ -261,6 +315,7 @@ class Record:
                         ag_actual.append(" ")
                     else:
                         # Align actual segment
+                        # a, a_i = rev_char_indexes["actual"][ag_i][a[1]-1]  # Deprecated fix attempt
                         a, a_i = rev_char_indexes["actual"][ag_i][a[1]]
                         ag_actual.append(a)
                         actual_dict[a] = a_i  # DEBUGGING
@@ -275,21 +330,24 @@ class Record:
                 + f"{len(alignment)}"
             )
             aligned_tiers = {
+                "orthography": char_indexes["orthography"],
                 "model": aligned_model,
                 "actual": aligned_actual,
                 "alignment": alignment,
             }
-            # Zip aligned tiers
-            aligned_segments = []
-            for i in range(len(alignment)):
-                group = [
-                    list(y)
-                    for y in zip(
-                        [list(x) for x in zip(aligned_model[i], aligned_actual[i])],
-                        alignment[i],
-                    )
-                ]
-                aligned_segments.append(group)
+            if zip_tiers:
+            # Zip aligned tiers (does not include orthography)
+                aligned_segments = []
+                for i in range(len(alignment)):
+                    group = [
+                        list(y)
+                        for y in zip(
+                            [list(x) for x in zip(aligned_model[i], aligned_actual[i])],
+                            alignment[i],
+                        )
+                    ]
+                    aligned_segments.append(group)
+                return aligned_segments
 
             # DEBUGGING
             # for i_g, group in enumerate(aligned_tiers["alignment"]):
@@ -300,12 +358,123 @@ class Record:
 
         try:
             aligned_transcriptions = align_transcriptions(self, char_indexes)
-        except KeyError:
+        except KeyError as error:
+            print("***************************")
+            print(f"{self.root.corpus}>{self.root.id}>{self.record_num}")  # {self.get_record_num()}
+            print(char_indexes)
+            print("\t",error)
             print(
-                "Incomplete or missing tier data. No aligned transcriptions extracted."
+                "\tIncomplete or missing tier data. No aligned transcriptions extracted."
+            )
+            
+            return char_indexes
+        except IndexError as error:
+            print("***************************")
+            print(f"{self.root.corpus}>{self.root.id}>{self.record_num}")  # {self.get_record_num()}
+            print(char_indexes)
+            print("\t",error)
+            print(
+                "\tError aligning tier data. No aligned transcriptions extracted."
             )
             return char_indexes
         return aligned_transcriptions
+    
+    def get_record_num(self):
+        """
+        Get the record number associated with the current session ID.
+
+        Returns:
+            record_num: int. The record number associated with the current session ID.
+
+        Raises:
+            Exception: If the session ID is not found in the session record list.
+        """
+        record_num=0
+        for record_list in self.root.get_records():
+            if self.id==record_list[1]:
+                record_num = record_list[0]
+        if record_num==0:
+            raise Exception("Record ID not found in session record list.")
+        return record_num
+
+    def check_record(self):
+        
+        check_list = ['orthography_present', 
+                      'model_present', 
+                      'actual_present', 
+                      'alignment_present']
+        check_dict = {}
+        t = self.get_transcription(zip_tiers=False)
+        
+        check_dict['not_excluded'] = not self.exclude_from_searches
+
+        def check_tier_content():
+            # Check for presence of tiers
+            tier_list = ['orthography', 'model', 'actual', 'alignment']
+            for tier in tier_list:
+                if tier not in t.keys():
+                    check_dict[f"{tier}_present"] = False
+                    print(f"{tier} tier empty")
+                else:
+                    check_dict[f"{tier}_present"] = True
+            if check_dict['orthography_present'] and check_dict['model_present'] and check_dict['actual_present']:
+                check_dict['transcriptions_present']=True
+            else:
+                check_dict['transcriptions_present']=False
+
+            # Check for equal number of groups across tiers
+            try:
+                if len(t['model']) == len(t['actual']) == len(t['alignment']):
+                    check_dict['equal_num_groups'] = True
+                else:
+                    check_dict['equal_num_groups'] = False
+                    print("Unequal number of groups across tiers.")
+            except KeyError:
+                check_dict['equal_num_groups'] = False
+                print("A tier is empty.")
+            return
+        
+        check_tier_content()
+
+        def check_blind_transcription():
+            
+            bts = self.get_blind_transcriptions()
+            # Check for named transcribers
+            for t in self.root.get_transcribers():
+                if t not in bts.keys():
+                    check_dict[f"{t}_model_transcription"] = False
+                    check_dict[f"{t}_actual_transcription"] = False
+                else:
+                    for tier in ['model', 'actual']:
+                        if tier not in bts[t].keys():
+                            check_dict[f"{t}_{tier}_transcription"] = False
+                        else:
+                            check_dict[f"{t}_{tier}_transcription"] = True
+            # Check for presence of any transcription
+            try:
+                check_dict['num_transcribers'] = len(bts)
+                check_dict['blind_transcription_present'] = True
+            except TypeError:
+                check_dict['num_transcribers'] = 0
+                check_dict['blind_transcription_present'] = False
+            return
+        check_blind_transcription()
+
+        def check_validation():
+            if check_dict['blind_transcription_present'] and check_dict['transcriptions_present']:
+                check_dict['validated'] = True
+                if check_dict['alignment_present']:
+                    check_dict['validated_aligned'] = True
+                else:
+                    check_dict['validated_aligned'] = False
+            else:
+                check_dict['validated'] = False
+                check_dict['validated_aligned'] = False
+            return
+        
+        check_validation()
+
+        return check_dict  
 
 
 # This function is untested
@@ -326,6 +495,46 @@ def write_xml_to_file(xml_tree, output_file):
         print("XML tree successfully written to", output_file)
     except Exception as e:
         print("Error writing XML tree to file:", e)
+
+def check_sessions(directory, to_csv=True, ignore_autosave=True):
+    file_list = []
+    for dirpath, folders, files in os.walk(directory):
+        for file in files:
+            if file.endswith('.xml'):
+                if ignore_autosave and "_autosave_" in file:
+                    continue
+                s = Session(os.path.join(dirpath, file))
+                rs = s.get_records()
+                check_col_labels = rs[0][2].check_record().keys()
+                s_dict = {}
+                s_dict['filename'] = file
+                s_dict['session'] = s.id
+                s_dict['corpus'] = s.corpus
+                s_dict['transcribers'] = s.get_transcribers()
+                s_dict['num_records'] = len(s)
+                for col in check_col_labels:
+                    s_dict[col] = []
+                for r in rs:
+                    result = r[2].check_record()
+                    for col in check_col_labels:
+                        if result[col]:
+                            continue
+                        else:
+                            s_dict[col].append(r[0])
+                file_list.append(s_dict)
+    all_session_check = pd.DataFrame(file_list)
+    all_session_check.set_index(['corpus', 'session'], inplace=True)
+    if to_csv:
+        output_filename = "all_session_check.csv"
+        all_session_check.to_csv(output_filename, index=True, encoding='utf-8')
+    return file_list
+                # s.check_session
+
+
+                # For each column, look for errored values. 
+                # Return the record numbers for rows with erorred value.
+                # List of record numbers become the entry for that session in that column
+                # of the new DataFrame.
 
 
 # Test
@@ -359,11 +568,31 @@ if __name__ == "__main__":
     #     t3_sessions.append(t3_transcriptions)
     # pass
 
-    # Test 4: Single blind session. Multiple records
-    test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/blind/B319.xml"
-    s = Session(test_path)
-    records = s.get_records()
-    t2 = [Record(record, s.root) for record in records]
-    t2_transcription = [record.get_transcription() for record in t2]
-    t2[0].get_blind_transcriptions()
-    pass  # Access e.g.: t2_0['model'][0][0]
+    # Test 4: Blind sessions
+    # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/blind/B319.xml"
+    # test_dir = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/blind"
+    # s = Session(test_path)
+    # s_list = []
+    # for dirpath, dirs, files in os.walk(test_dir):
+    #     for file in files:
+    #         s_list.append(Session(os.path.join(dirpath, file)))
+    # for s in s_list:
+    #     records = s.get_records()
+    #     t2 = [record[2] for record in records]
+    #     t2_transcriptions_aligned = [record.get_transcription(zip_tiers=True) for record in t2]
+    #     t2_transcriptions = [record.get_transcription(zip_tiers=False) for record in t2]
+    #     # for record in t2:
+    #     #     print(record.get_transcription())
+    #     t2[0].get_blind_transcriptions()
+    #     print("START")
+    #     print("***************************")
+    #     for t in t2:
+    #         # print(t.get_blind_transcriptions())
+    #         t.check_record()
+
+    #     # t2[0].check_record()
+    # print("DONE")
+    # check_result = s.check_session(to_csv=False)
+    check_dir = "/Users/pcombiths/Documents/PhonWorkspace/SSDTx Phase III Blind"
+    all_check_result = check_sessions(check_dir)
+    pass

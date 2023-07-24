@@ -11,6 +11,7 @@ from cmd import PROMPT
 from os import listdir
 from os.path import exists, isfile, join
 from types import NoneType
+from typing import Any, List, Union
 from unittest import skip
 
 # import openpyxl
@@ -28,7 +29,7 @@ from unittest import skip
 # Output: {('8c437a92-64f3-4438-8098-62273be265a7', 'ɛlᵖ'): ['0', ['1', '2']]}
 
 
-def Diacritic_fixer(record_xml_element, tiers=["model", "actual"]):
+def Diacritic_fixer(record_xml_element, tiers=["model", "actual"]) -> dict[list[dict[str, str]], list[dict[str,str]]]:
     # os.chdir(media_folder)
 
     # # Get XML files
@@ -61,9 +62,10 @@ def Diacritic_fixer(record_xml_element, tiers=["model", "actual"]):
         # Instantiate output dictionary
         output = {}
 
+        tier: ET.Element
         for tier in tiers:
-            tier_e = record_xml_element.find(f".//ipaTier[@form='{tier}']", ns)
-            pg_list = tier_e.findall(".//pg", ns)  # Prosodic Groups
+            tier_e: ET.Element = record_xml_element.find(f".//ipaTier[@form='{tier}']", ns)
+            pg_list:list[ET.Element]= tier_e.findall(".//pg", ns)  # Prosodic Groups
             count_pg = len(pg_list)  # debugging
             pgs = []  # List for diacritic_fix dict for each pg
             for i, pg in enumerate(pg_list):
@@ -91,7 +93,7 @@ def Diacritic_fixer(record_xml_element, tiers=["model", "actual"]):
                     # Could zip in the sctype and hiatus info here
                 }
                 stop = timeit.default_timer()
-                print(f"{tier}, pg:{i} time: ", stop - start)
+                # print(f"{tier}, pg:{i} time: ", stop - start)  # Debugging
                 # Add diacritic_fix dict for this pg to output dictionary
                 pgs.append(diacritic_fix)
             output[tier] = pgs
