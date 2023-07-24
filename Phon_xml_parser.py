@@ -594,5 +594,6 @@ if __name__ == "__main__":
     # print("DONE")
     # check_result = s.check_session(to_csv=False)
     check_dir = "/Users/pcombiths/Documents/PhonWorkspace/SSDTx Phase III Blind"
+    check_dir = r"R:\CLD Lab\Workspace\SSD Tx III"
     all_check_result = check_sessions(check_dir)
     pass

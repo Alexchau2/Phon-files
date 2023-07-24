@@ -10,7 +10,7 @@ from cgi import test
 from cmd import PROMPT
 from os import listdir
 from os.path import exists, isfile, join
-from types import NoneType
+# from types import NoneType
 from typing import Any, List, Union
 from unittest import skip
 
@@ -29,7 +29,8 @@ from unittest import skip
 # Output: {('8c437a92-64f3-4438-8098-62273be265a7', 'ɛlᵖ'): ['0', ['1', '2']]}
 
 
-def Diacritic_fixer(record_xml_element, tiers=["model", "actual"]) -> dict[list[dict[str, str]], list[dict[str,str]]]:
+def Diacritic_fixer(record_xml_element, tiers=["model", "actual"]):
+    # -> dict[list[dict[str, str]], list[dict[str,str]]]
     # os.chdir(media_folder)
 
     # # Get XML files
