@@ -398,7 +398,50 @@ class Record:
         return record_num
 
     def check_record(self):
-        
+
+        """Check the contents of the record for properties that may indicate errors.
+
+        This method checks the contents of the record and determines several properties related to the presence of specific tiers, 
+        equal number of groups across tiers, existence of named transcribers, and validation status. The results are stored in a 
+        dictionary and returned.
+
+        Returns:
+            dict: A dictionary containing the results of various checks.
+
+        Detailed Description:
+        - The `check_list` contains the names of tiers to be checked for presence in the record.
+        - The `t` variable is assigned the transcription data from the record by calling the `get_transcription` method.
+        - The `check_dict` is initialized as an empty dictionary to store the check results.
+
+        check_tier_content():
+            - This inner function checks for the presence of specified tiers in the transcription data.
+            - It checks for the presence of 'orthography', 'model', 'actual', and 'alignment' tiers in the `t` data.
+            - The results are stored in `check_dict` with keys such as 'orthography_present', 'model_present', etc.
+            - If any of the essential tiers ('orthography', 'model', 'actual') are missing, 'transcriptions_present' is set to False.
+
+        check_blind_transcription():
+            - This inner function checks for named transcribers in the record.
+            - It retrieves the blind transcriptions using the `get_blind_transcriptions` method.
+            - It checks for the presence of named transcribers in the root and if they have 'model' and 'actual' transcriptions.
+            - The results are stored in `check_dict` with keys like '{transcriber}_model_transcription', '{transcriber}_actual_transcription'.
+            - If no blind transcriptions are found, 'blind_transcription_present' is set to False.
+
+        check_validation():
+            - This inner function checks the overall validation status based on the presence of blind transcriptions and essential tiers.
+            - If both blind transcriptions and essential tiers are present, the record is considered 'validated'.
+            - If the 'alignment' tier is also present in addition to validation, the record is considered 'validated_aligned'.
+
+        The `check_dict` dictionary is returned containing the results of all the checks, including:
+            - 'not_excluded': True if the record is not excluded from searches, False otherwise.
+            - 'orthography_present', 'model_present', 'actual_present', 'alignment_present': True if the respective tier is present, False otherwise.
+            - 'transcriptions_present': True if all essential tiers ('orthography', 'model', 'actual') are present, False otherwise.
+            - 'equal_num_groups': True if the number of groups is equal across tiers, False otherwise.
+            - 'blind_transcription_present': True if there are any blind transcriptions, False otherwise.
+            - 'num_transcribers': The number of named transcribers found in the record.
+            - 'validated': True if the record is validated (blind transcriptions and essential tiers present), False otherwise.
+            - 'validated_aligned': True if the record is validated and also has the 'alignment' tier, False otherwise.
+        """
+
         check_list = ['orthography_present', 
                       'model_present', 
                       'actual_present', 
@@ -409,6 +452,22 @@ class Record:
         check_dict['not_excluded'] = not self.exclude_from_searches
 
         def check_tier_content():
+            """
+            Check for presence of tiers and equal number of groups across tiers.
+
+            This function iterates through the list of tiers (orthography, model, actual, and alignment) and checks
+            their presence in the transcription data `t`. The results are stored in the `check_dict` dictionary with
+            keys suffixed by '_present'. If a tier is not present, it is marked as False, and if it is present, it is
+            marked as True.
+
+            Additionally, the function checks whether the 'orthography', 'model', and 'actual' tiers are all present. If
+            they are, the 'transcriptions_present' key in `check_dict` is set to True, otherwise, it is set to False.
+
+            The function also verifies if the number of groups is equal across the 'model', 'actual', and 'alignment'
+            tiers. If they are equal, the 'equal_num_groups' key in `check_dict` is set to True. If not, it is set to
+            False, and an error message is printed.
+            """
+
             # Check for presence of tiers
             tier_list = ['orthography', 'model', 'actual', 'alignment']
             for tier in tier_list:
@@ -461,6 +520,17 @@ class Record:
         check_blind_transcription()
 
         def check_validation():
+            """
+            Check the validation status of the record.
+
+            This function checks whether the record is considered 'validated' based on the presence of blind transcriptions
+            and essential tiers ('orthography', 'model', 'actual'). If both are present, the 'validated' key in `check_dict`
+            is set to True; otherwise, it is set to False.
+
+            Additionally, if the 'alignment' tier is also present, the 'validated_aligned' key in `check_dict` is set to True;
+            otherwise, it is set to False.
+            """
+
             if check_dict['blind_transcription_present'] and check_dict['transcriptions_present']:
                 check_dict['validated'] = True
                 if check_dict['alignment_present']:
@@ -474,7 +544,7 @@ class Record:
         
         check_validation()
 
-        return check_dict  
+        return check_dict
 
 
 # This function is untested
@@ -594,6 +664,5 @@ if __name__ == "__main__":
     # print("DONE")
     # check_result = s.check_session(to_csv=False)
     check_dir = "/Users/pcombiths/Documents/PhonWorkspace/SSDTx Phase III Blind"
-    check_dir = r"R:\CLD Lab\Workspace\SSD Tx III"
     all_check_result = check_sessions(check_dir)
     pass
