@@ -25,7 +25,7 @@ class Session:
         date (str): The date extracted from the header element of the session.
         transcribers (list): List of transcriber elements in the session.
         participants (list): List of participant elements in the session.
-        records (list): List of records (XML Elements)
+        records (list): List of records (XML Element)
         labelled_records (dict): Dictionary {record id (str): record number (int)}
     Functions: 
         get_tier_list : Return list of tiers in the session.
@@ -111,19 +111,28 @@ class Session:
         transcriber_list = [transcriber.get("id") for transcriber in self.transcribers]
         return transcriber_list
 
-    # To Do: Add consideration of excludeFromSearch and use Record class
-    def get_records(self):
+
+    def get_records(self, exclude_records=True):
         """Return list of Record objects from session Element with ids and numbering.
 
+        Args:
+            exclude_records (bool) While True excludes records marekd as "exclude from search". 
+                Default is True.
         Returns:
             record_list: list[list[int, str, Record]]
         """
         record_counter = 0
+        excluded_record_counter = 0
         numbered_record_list = []
         for record_element in self.records:
             record = Record(record_element, self.root)
             record_counter+=1
             record_num = record_counter
+            if exclude_records:
+                if record.exclude_from_searches:
+                    print("Record", record_num, "excluded.")  # DEBUGGING
+                    excluded_record_counter += 1
+                    continue
             numbered_record_list.append([record_num, record.id, record])
         return numbered_record_list
     
@@ -737,7 +746,10 @@ if __name__ == "__main__":
 
     # Test 4: One DPA session
     test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files/2275_PKP_PKP Pre.xml"
+    test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/blind/C401_exclusions.xml"
     s = Session(test_path)
     p = s.participants[0]
-    r = get_element_contents(p)
+    r_list = s.records
+    r = Record(r_list[0], s.root) #Add functionality so it can take the Session object too.
+    records = s.get_records(exclude_records=True)
     pass
