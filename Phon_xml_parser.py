@@ -657,9 +657,6 @@ def get_element_contents(element: ET.Element) -> dict:
     print("**************************")
     return {"attributes":attributes, "children":child_elements}
 
-# This function is untested
-# 
-
 
 def write_xml_to_file(xml_tree:ET.ElementTree, output_file):
     """
@@ -795,5 +792,5 @@ if __name__ == "__main__":
     rs = s.get_records()
     r = rs[0][2]
     t = r.get_transcription()
-    write_xml_to_file(s.tree, "output_file_B.xml")
+    write_xml_to_file(s.tree, "output_file_A.xml")
     pass
