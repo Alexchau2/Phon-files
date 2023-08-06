@@ -8,7 +8,8 @@ import pandas as pd
 
 from Diacritic_fixer import Diacritic_fixer
 
-ns = {"": "http://phon.ling.mun.ca/ns/phonbank"}
+ET.register_namespace("","http://phon.ling.mun.ca/ns/phonbank") # Register namespace
+ns = {"": "http://phon.ling.mun.ca/ns/phonbank"} # Define namespace dictionary
 
 class Session:
     """
@@ -657,6 +658,9 @@ def get_element_contents(element: ET.Element) -> dict:
     return {"attributes":attributes, "children":child_elements}
 
 # This function is untested
+# 
+
+
 def write_xml_to_file(xml_tree:ET.ElementTree, output_file):
     """
     Write an XML ElementTree to a file.
@@ -670,7 +674,7 @@ def write_xml_to_file(xml_tree:ET.ElementTree, output_file):
     """
     try:
         with open(output_file, "wb") as file:
-            xml_tree.write(file, encoding="utf-8", xml_declaration=True)
+            xml_tree.write(file, encoding="utf-8", xml_declaration=True)  # Works without default_namespace
         print("XML tree successfully written to", output_file)
     except Exception as e:
         print("Error writing XML tree to file:", e)
@@ -791,5 +795,5 @@ if __name__ == "__main__":
     rs = s.get_records()
     r = rs[0][2]
     t = r.get_transcription()
-    
+    write_xml_to_file(s.tree, "output_file_B.xml")
     pass
