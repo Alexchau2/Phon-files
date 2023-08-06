@@ -112,18 +112,23 @@ class Session:
         return transcriber_list
 
 
-    def get_records(self, exclude_records=True):
-        """Return list of Record objects from session Element with ids and numbering.
+    def get_records(self, exclude_records=True, simple_return=False, element_format=False):
+        """Return list of Record objects from session Element, optionally with ids and numbering.
 
         Args:
-            exclude_records (bool) While True excludes records marekd as "exclude from search". 
+            exclude_records (bool): While True excludes records marekd as "exclude from search". 
                 Default is True.
+            simple_return (bool): When True, returns list of Record objects. When False,
+                returns record_list: list[list[int, str, Record]]
         Returns:
             record_list: list[list[int, str, Record]]
+            OR
+            record_list: list[Record]
         """
         record_counter = 0
         excluded_record_counter = 0
         numbered_record_list = []
+        record_list = []
         for record_element in self.records:
             record = Record(record_element, self.root)
             record_counter+=1
@@ -133,8 +138,19 @@ class Session:
                     print("Record", record_num, "excluded.")  # DEBUGGING
                     excluded_record_counter += 1
                     continue
-            numbered_record_list.append([record_num, record.id, record])
-        return numbered_record_list
+            if simple_return:
+                if element_format:
+                    record_list.append(record_element)
+                elif not element_format:
+                    record_list.append(record)
+                return record_list
+            elif not simple_return:
+                if element_format:
+                    numbered_record_list.append([record_num, record.id, record_element])
+                elif not element_format:
+                    numbered_record_list.append([record_num, record.id, record])
+                return numbered_record_list
+
     
     def check_session(self, to_csv=False):
         """
@@ -193,14 +209,28 @@ class Record:
         
     Functions
         get_transcriptions: Return the aligned transcriptions for the record (dictionary).
-        get_blind_transcriptions: Return blind transcriptions for different transcribers in a nested dictionary.
+        get_blind_transcriptisourceons: Return blind transcriptions for different transcribers in a nested dictionary.
         get_record_num: Return the record number associated with the current session ID.
         check_record: Check the contents of the record for properties that may indicate errors.
     """
 
-    # To Do: Handle when an element is empty or not present in the record.
+    # To Do: Check handling when an element is empty or not present in the record.
     def __init__(self, element, root):
         self.element = element
+        if isinstance(root, Session):  # If data is a Session object
+            root = root.root
+        elif isinstance(root, str):  # If data is a filepath
+            tree = ET.parse(root)
+            root = tree.getroot()
+        elif isinstance(root, ET.Element):  # If data is an element
+            tree = ET.ElementTree(root)
+        elif isinstance(root, ET.ElementTree):  # If data is element tree
+            tree = root
+            root = tree.getroot()
+        else:
+            raise ValueError(
+                "Input must be either a filepath or an XML Element object."
+            )
         self.root = Session(root)
         self.root_element = root
         self.session_id = root.get("id") + ", " + root.get("corpus")
@@ -624,9 +654,9 @@ def get_element_contents(element: ET.Element) -> dict:
     return {"attributes":attributes, "children":child_elements}
 
 # This function is untested
-def write_xml_to_file(xml_tree, output_file):
+def write_xml_to_file(xml_tree:ET.ElementTree, output_file):
     """
-    Write an XML tree to a file.
+    Write an XML ElementTree to a file.
 
     Args:
         xml_tree (xml.etree.ElementTree.ElementTree): The XML ElementTree object to be written.
@@ -707,13 +737,12 @@ if __name__ == "__main__":
     # Test 3: 7 DPA sessions.
 
     # test_dir_path = os.path.abspath("XML Test/dpa")
-
     # t3_sessions = []
     # for file in os.listdir(test_dir_path):
     #     s = Session(os.path.join(test_dir_path, file))
     #     print("Session:", s.id)  # DEBUGGING
-    #     records = s.get_records()
-    #     t3 = [Record(record, s.root) for record in records]
+    #     records = s.get_records(simple_return=True, element_format=True)
+    #     t3 = [Record(record, s. root) for record in records]
     #     t3_transcriptions = [record.get_transcription() for record in t3]
     #     t3_sessions.append(t3_transcriptions)
     # pass
@@ -744,12 +773,16 @@ if __name__ == "__main__":
     # print("DONE")
     # check_result = s.check_session(to_csv=False)
 
-    # Test 4: One DPA session
+    # Test 4: A session with excluded records
+    
+    # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/blind/C401_exclusions.xml"
+    # s = Session(test_path)
+    # p = s.participants[0]
+    # r_list = s.records
+    # r = Record(r_list[0], s.root) #Add functionality so it can take the Session object too.
+    # records = s.get_records(exclude_records=True)
+
+    # Test 4: Write to file
     test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files/2275_PKP_PKP Pre.xml"
-    test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/blind/C401_exclusions.xml"
     s = Session(test_path)
-    p = s.participants[0]
-    r_list = s.records
-    r = Record(r_list[0], s.root) #Add functionality so it can take the Session object too.
-    records = s.get_records(exclude_records=True)
     pass
