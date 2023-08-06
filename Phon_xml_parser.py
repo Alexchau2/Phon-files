@@ -1,5 +1,35 @@
 """Classes for parsing Phon XML session files."""
 
+# To Do
+"""
+Output from Diacritic_fixer is in correct form for sending back to XML.
+Instantiate Transcription and Segment classes immediately.
+
+
+Output example:
+1007_PKP_PKP_Pre.xml
+Record 1, id='2da2997d-1ca8-4879-ac28-b21c1b9a6ae8'
+
+
+Diacritic_fixer() output/embedded_indices:
+{'model': [{...}], 'actual': [{...}]}]
+	{'id': '2da2997d-1ca8-4879-ac28-b21c1b9a6ae8', 'tier': 'model', 'pg': 0, 'transcriptions': 'ʤəˈɹæf', 'indices': [0, 1, 2, 3, 4, 5]}
+	
+char_indexes:
+{'orthography': [[...]], 'model': [[...]], 'actual': [[...]]}
+		[['giraffe']]
+        [['ʤ', 0], ['ə', 1], ['ɹ', 2], ['æ', 3], ['f', 4]]
+        [['v', 0], ['ɹ', 1], ['æ', 2]]
+
+aligned_transcription:
+[[[...], [...]], [[...], [...]], [[...], [...]], [[...], [...]], [[...], [...]]]
+	[['ʤ', 'v'], [0, 0]]
+	[['ə', ' '], [1, -1]]
+	[['ɹ', 'ɹ'], [2, 1]]
+	[['æ', 'æ'], [3, 2]]
+	[['f', ' '], [4, -1]]
+"""
+
 import os
 import re
 import xml.etree.ElementTree as ET
@@ -318,7 +348,7 @@ class Record:
             except KeyError as error:
                 print(error, "tier missing or errored.")
                 continue
-
+        
         def align_transcriptions(self, char_indexes):
             alignment = [
                 [
@@ -840,9 +870,8 @@ if __name__ == "__main__":
 
     # Test 4: A session with excluded records
     
-    test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/blind/C401_exclusions.xml"
+    test_path = r"C:\Users\Philip\Documents\github\Phon-files\XML Files\1007_PKP_PKP Pre.xml"
     s = Session(test_path)
-    p = s.participants[0]
     r_list = s.records
     r = Record(r_list[0], s.root)
     records = s.get_records(exclude_records=True)
@@ -858,7 +887,7 @@ if __name__ == "__main__":
     # write_xml_to_file(s.tree, "output_file_A.xml")
 
     # Test 6: Transcription Object
-    test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/blind/C401_exclusions.xml"
+    test_path = r"C:\Users\Philip\Documents\github\Phon-files\XML Files\1007_PKP_PKP Pre.xml"
     s = Session(test_path)
     r_list = s.records
     r = Record(r_list[0], s.root)

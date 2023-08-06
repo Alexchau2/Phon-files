@@ -98,7 +98,7 @@ def Diacritic_fixer(record_xml_element, tiers=["model", "actual"]):
                 # Add diacritic_fix dict for this pg to output dictionary
                 pgs.append(diacritic_fix)
             output[tier] = pgs
-        # Example acces: output['actual'][0]["indices"]
+        # Example access: output['actual'][0]["indices"]
     except TypeError:
         pass
     return output
