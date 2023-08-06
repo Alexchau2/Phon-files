@@ -1,6 +1,7 @@
 """Classes for parsing Phon XML session files."""
 
 import os
+import re
 import xml.etree.ElementTree as ET
 
 import pandas as pd
@@ -15,7 +16,7 @@ class Session:
 
     Attributes:
         source (str or xml.etree.Element): The source data, either a file path or an XML Element.
-        ns (dict): Namespace dictionary for XML element search.
+        ns (dict): Fixed namespace dictionary for XML element search.
         tree (xml.etree.ElementTree.ElementTree): The XML ElementTree object.
         root (xml.etree.ElementTree.Element): The root element of the XML.
         id (str): The session ID attribute.
@@ -24,6 +25,13 @@ class Session:
         date (str): The date extracted from the header element of the session.
         transcribers (list): List of transcriber elements in the session.
         participants (list): List of participant elements in the session.
+        records (list): List of records (XML Elements)
+        labelled_records (dict): Dictionary {record id (str): record number (int)}
+    Functions: 
+        get_tier_list : Return list of tiers in the session.
+        get_transcribers : Return list of strings for transcriber usernames.
+        get_records : Return list of Record objects from session Element with ids and numbering.
+        check_session : Check each session record with check_record() and create a DataFrame with the results.
     """
 
     def __init__(self, source):
@@ -64,6 +72,9 @@ class Session:
 
     def __len__(self):
         return len(self.records)
+    
+    def __str__(self):
+        return self.id + self.corpus
 
     def get_tier_list(self, include="all") -> dict:
         """Return list of tiers in the session.
@@ -92,7 +103,7 @@ class Session:
             return defaultTier_dict
 
     def get_transcribers(self):
-        """Get list of strings for transcriber usernames.
+        """Return list of strings for transcriber usernames.
 
         Returns:
             list: List of transcriber username strings from session
@@ -102,7 +113,7 @@ class Session:
 
     # To Do: Add consideration of excludeFromSearch and use Record class
     def get_records(self):
-        """Get list of Record objects from session Element with ids and numbering.
+        """Return list of Record objects from session Element with ids and numbering.
 
         Returns:
             record_list: list[list[int, str, Record]]
@@ -117,18 +128,40 @@ class Session:
         return numbered_record_list
     
     def check_session(self, to_csv=False):
-       result_list = []
-       for record in self.get_records():
+        """
+        Check each session record with check_record() and create a DataFrame with the results.
+
+        Parameters:
+            to_csv (bool, optional): If True, the result DataFrame will be saved to a CSV file.
+                                        Default is False.
+
+        Returns:
+            pandas.DataFrame: DataFrame containing the check results, indexed by 'record'.
+
+        Example:
+            # Initialize the class instance
+            obj = YourClassName()
+
+            # Perform the check on the records and get the results in DataFrame format
+            results = obj.check_session(to_csv=True)
+
+        Note:
+            - The 'get_records()' method should return an iterable containing records.
+            - The 'check_record()' method should return a dictionary representing the check results for each record.
+            - The 'record' key will be added to each result dictionary, representing the record's identifier.
+        """
+        result_list = []
+        for record in self.get_records():
             result = record[2].check_record()
             result['record'] = record[0]
             result_list.append(result)
-       result_pd = pd.DataFrame(result_list)
-       result_pd.set_index('record', inplace=True)
-       if to_csv:
-           output_name = "check_session.csv"
-           result_pd.to_csv(output_name, index=True, encoding="utf-8")
-           print(f"{output_name} saved to {os.getcwd()}")
-       return result_pd
+        result_pd = pd.DataFrame(result_list)
+        result_pd.set_index('record', inplace=True)
+        if to_csv:
+            output_name = "check_session.csv"
+            result_pd.to_csv(output_name, index=True, encoding="utf-8")
+            print(f"{output_name} saved to {os.getcwd()}")
+        return result_pd
 
 
 class Record:
@@ -146,10 +179,14 @@ class Record:
         flat_tiers (dict): A dictionary of tier names and their corresponding text content.
         model_ipa_tier (xml.etree.ElementTree.Element): The IPA tier with 'model' form.
         actual_ipa_tier (xml.etree.ElementTree.Element): The IPA tier with 'actual' form.
+        blind_transcriptions (list): List of blind transcription elements
         alignment_tier (xml.etree.ElementTree.Element): The alignment tier with 'segmental' type.
-        blind_tiers
+        
     Functions
-        get_transcription: Get the aligned transcriptions for the record (dictionary).
+        get_transcriptions: Return the aligned transcriptions for the record (dictionary).
+        get_blind_transcriptions: Return blind transcriptions for different transcribers in a nested dictionary.
+        get_record_num: Return the record number associated with the current session ID.
+        check_record: Check the contents of the record for properties that may indicate errors.
     """
 
     # To Do: Handle when an element is empty or not present in the record.
@@ -183,29 +220,8 @@ class Record:
 
     def __len__(self):
         return len(self.alignment_tier.findall(".//phomap", ns))
-
-    def get_blind_transcriptions(self):
-        """
-        Get blind transcriptions for different transcribers in a nested dictionary.
-
-        Returns
-        -------
-        blind_dict : dict
-            A nested dictionary containing blind transcriptions for each transcriber 
-            and their respective tiers.
-        """
-        transcribers = self.root.get_transcribers()
-        blind_dict: dict[str, dict[str, list[list[str]]]] = {}
-        for tr in transcribers:
-            blind_dict[tr] = tr_dict = {}
-            for tr_tier in self.element.findall(
-                f".//blindTranscription[@user='{tr}']", ns
-            ):
-                bgs: list[list[str]] = [[w.text for w in bg] for bg in tr_tier.findall("bg", ns)]
-                tr_dict[tr_tier.get("form")] = bgs
-        return blind_dict
-
-
+    
+    
     # To Do: Export consistent dictionary format every time, even with empty tiers
     def get_transcription(self, zip_tiers=True) :
         """
@@ -379,12 +395,36 @@ class Record:
             return char_indexes
         return aligned_transcriptions
     
+
+    def get_blind_transcriptions(self):
+        """
+        Return blind transcriptions for different transcribers in a nested dictionary.
+
+        Returns
+        -------
+        blind_dict : dict
+            A nested dictionary containing blind transcriptions for each transcriber 
+            and their respective tiers.
+        """
+        transcribers = self.root.get_transcribers()
+        blind_dict: dict[str, dict[str, list[list[str]]]] = {}
+        for tr in transcribers:
+            blind_dict[tr] = tr_dict = {}
+            for tr_tier in self.element.findall(
+                f".//blindTranscription[@user='{tr}']", ns
+            ):
+                bgs: list[list[str]] = [[w.text for w in bg] for bg in tr_tier.findall("bg", ns)]
+                tr_dict[tr_tier.get("form")] = bgs
+        return blind_dict
+
+
+
     def get_record_num(self):
         """
-        Get the record number associated with the current session ID.
+        Return the record number associated with the current session ID.
 
         Returns:
-            record_num: int. The record number associated with the current session ID.
+            record_num (int): The record number associated with the current session ID.
 
         Raises:
             Exception: If the session ID is not found in the session record list.
@@ -546,6 +586,33 @@ class Record:
 
         return check_dict
 
+def get_element_contents(element: ET.Element) -> dict:
+    """
+    Extract and print attributes and child elements from an XML element.
+
+    Args:
+        element (xml.etree.ElementTree.Element): The XML element to analyze.
+
+    Returns:
+        dict: A dictionary with attributes and child elements.
+
+    """
+    key = r'{http://phon.ling.mun.ca/ns/phonbank}'
+    attributes = element.attrib
+    print("**************************")
+    print("Element Attributes:")
+    print("\t", attributes)
+    child_elements = {}
+    counter = 0
+    for child in element.iter():
+        child_str = re.search(r"(?<=}).+(?=')", str(child)).group()
+        child_elements[child_str] = child
+        print("\t", child_str, child.text.strip())
+        if counter == 0:
+            print("Child Elements:")
+        counter += 1
+    print("**************************")
+    return {"attributes":attributes, "children":child_elements}
 
 # This function is untested
 def write_xml_to_file(xml_tree, output_file):
@@ -609,7 +676,9 @@ def check_sessions(directory, to_csv=True, ignore_autosave=True):
 
 # Test
 if __name__ == "__main__":
+
     # Test 1: Single tutorial session. First record.
+
     # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/groups-words/Anne_Pre_PC.xml"
     # s = Session(test_path)
     # t = s.get_records()
@@ -618,6 +687,7 @@ if __name__ == "__main__":
     # test_result = r1.get_transcription()
 
     # Test 2: Single tutorial session. Multiple records
+
     # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/groups-words/Anne_Pre_PC.xml"
     # s = Session(test_path)
     # records = s.get_records()
@@ -626,6 +696,7 @@ if __name__ == "__main__":
     # pass  # Access e.g.: t2_0['model'][0][0]
 
     # Test 3: 7 DPA sessions.
+
     # test_dir_path = os.path.abspath("XML Test/dpa")
 
     # t3_sessions = []
@@ -639,6 +710,7 @@ if __name__ == "__main__":
     # pass
 
     # Test 4: Blind sessions
+
     # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/blind/B319.xml"
     # test_dir = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/blind"
     # s = Session(test_path)
@@ -659,10 +731,13 @@ if __name__ == "__main__":
     #     for t in t2:
     #         # print(t.get_blind_transcriptions())
     #         t.check_record()
-
     #     # t2[0].check_record()
     # print("DONE")
     # check_result = s.check_session(to_csv=False)
-    check_dir = "/Users/pcombiths/Documents/PhonWorkspace/SSDTx Phase III Blind"
-    all_check_result = check_sessions(check_dir)
+
+    # Test 4: One DPA session
+    test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files/2275_PKP_PKP Pre.xml"
+    s = Session(test_path)
+    p = s.participants[0]
+    r = get_element_contents(p)
     pass
