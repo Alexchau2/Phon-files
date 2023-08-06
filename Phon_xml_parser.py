@@ -143,13 +143,16 @@ class Session:
                     record_list.append(record_element)
                 elif not element_format:
                     record_list.append(record)
-                return record_list
+
             elif not simple_return:
                 if element_format:
                     numbered_record_list.append([record_num, record.id, record_element])
                 elif not element_format:
                     numbered_record_list.append([record_num, record.id, record])
-                return numbered_record_list
+        if simple_return:
+            return record_list
+        elif not simple_return:
+            return numbered_record_list
 
     
     def check_session(self, to_csv=False):
@@ -785,4 +788,8 @@ if __name__ == "__main__":
     # Test 4: Write to file
     test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files/2275_PKP_PKP Pre.xml"
     s = Session(test_path)
+    rs = s.get_records()
+    r = rs[0][2]
+    t = r.get_transcription()
+    
     pass
