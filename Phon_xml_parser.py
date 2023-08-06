@@ -3,6 +3,7 @@
 import os
 import re
 import xml.etree.ElementTree as ET
+from dataclasses import dataclass, field
 
 import pandas as pd
 
@@ -328,6 +329,7 @@ class Record:
             ]
             # Create reindexed char_indexes with non-aligned characters removed
             ignore_chars = ["ˈ", "ˌ", "|", "‖", ".", " "]
+            
             rev_char_indexes = char_indexes
             for tier in ["model", "actual"]:
                 rev_tier_list = []
@@ -628,6 +630,65 @@ class Record:
         check_validation()
 
         return check_dict
+    
+    # Woring on this. Not sure if funciton can be within the "Record" class because it
+    # calls on the Segment and Transcription classes
+
+    def edit_record(self, replace_type:str, form:str, replacement:str, original:str=None, group:int=0, position:int=-2):
+        t = Transcription(self)
+        if replace_type=="position":  # "position" replace_type
+            t.groups[group][position] = t.groups[group][position].replace(replacement, form)
+        if replace_type =="search":  # "search" replace_type
+            for group in t.groups:
+                for s in group:
+                    if form=="actual":  # "actual" form
+                        if s.actual==original:
+                            s = s.replace(replacement, form)
+                    elif form=="model":  # "model" form
+                        if s.model==original:
+                            s = s.replace(replacement, form)
+        return t
+
+# To Do: Add syllable constituency
+class Segment:
+    def __init__(self, input:list, index:int, r:Record):
+        self.position = index
+        self.model = input[0][0]
+        self.actual = input[0][1]
+        self.model_index = input[1][0]
+        self.target_index = input[1][1]
+
+    def replace(self, replacement:str, form:str):
+        if form=="model":
+            self.model = replacement
+        elif form=="actual":
+            self.actual = replacement
+
+
+class Transcription:
+    def __init__(self, r:Record):
+        self.record = r
+        t = r.get_transcription()
+        self.groups = [[Segment(phone, i, self.record) for i, phone in enumerate(group)] for group in t]
+
+        
+    def get_flat_transcription(self):
+        flat_transcription = []
+        for group in self.groups:
+            flat_transcription += group
+        return flat_transcription
+    
+    # Needs to send back to entire word string somehow.
+    # To Implement:
+    def to_xml(self):
+        root = self.record.root.root
+        record_ele = root.find(f".//u[@id='{self.record.id}']", ns)
+        model = record_ele.find(f".//ipaTier[@form='model']", ns)
+        actual = record_ele.find(f".//ipaTier[@form='actual']", ns)
+        return ""
+
+
+
 
 def get_element_contents(element: ET.Element) -> dict:
     """
@@ -779,18 +840,34 @@ if __name__ == "__main__":
 
     # Test 4: A session with excluded records
     
-    # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/blind/C401_exclusions.xml"
-    # s = Session(test_path)
-    # p = s.participants[0]
-    # r_list = s.records
-    # r = Record(r_list[0], s.root) #Add functionality so it can take the Session object too.
-    # records = s.get_records(exclude_records=True)
-
-    # Test 4: Write to file
-    test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files/2275_PKP_PKP Pre.xml"
+    test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/blind/C401_exclusions.xml"
     s = Session(test_path)
-    rs = s.get_records()
-    r = rs[0][2]
+    p = s.participants[0]
+    r_list = s.records
+    r = Record(r_list[0], s.root)
+    records = s.get_records(exclude_records=True)
     t = r.get_transcription()
-    write_xml_to_file(s.tree, "output_file_A.xml")
+
+    # Test 5: Write to file
+
+    # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files/2275_PKP_PKP Pre.xml"
+    # s = Session(test_path)
+    # rs = s.get_records()
+    # r = rs[0][2]
+    # t = r.get_transcription()
+    # write_xml_to_file(s.tree, "output_file_A.xml")
+
+    # Test 6: Transcription Object
+    test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/blind/C401_exclusions.xml"
+    s = Session(test_path)
+    r_list = s.records
+    r = Record(r_list[0], s.root)
+    records = s.get_records(exclude_records=True)
+    t = r.get_transcription()
+    # for group in t:
+    #     for i, phone in enumerate(group):
+    #         seg = Segment(phone, i)
+    #         pass
+    tran = Transcription(r)
+    r.edit_record(replace_type="search", form="actual", replacement="G", original="f")
     pass
