@@ -714,8 +714,11 @@ class Segment:
         self.position = index
         self.model = input[0][0]
         self.actual = input[0][1]
-        self.model_index = input[1][0]
-        self.target_index = input[1][1]
+        self.model_segments = input[1][0]
+        self.target_segments = input[1][1]
+
+    # def __len__(self):
+    #     self.model
 
     def replace(self, replacement:str, form:str):
         if form=="model":
@@ -737,7 +740,7 @@ class TranscriptionGroup:
             indexes (list): The list of indices related to this group.
 
         Parameters:
-            input (dict): A dictionary containing the necessary information to create a TranscriptionGroup object.
+            input (dict): A dictionary from get_transcription()[2].
                 The dictionary should have the following keys:
                     - "id" (int): The ID of the transcription group.
                     - "tier" (str): The tier of the transcription group.
@@ -752,14 +755,18 @@ class TranscriptionGroup:
         self.group_index = input["pg"]
         self.transcription = input["transcriptions"]
         self.indexes = input["indices"]
+        self.words = self.transcription.split(" ")
+    
+
+    def __len__(self):
+        return len(self.words)
 
 
 class Transcription:
     """
-    Represents a complete transcription of a record.
+    Represent a complete transcription of a record.
 
-    This class is used to store and organize the transcription tiers and aligned s
-        segments for a given record.
+    This class stores the transcription tiers and aligned segments for a record.
 
     Attributes:
         record (Record): The record object associated with this transcription.
@@ -768,11 +775,10 @@ class Transcription:
         orthography (list of str): A list of groups from Orthography tier
         model (list of TranscriptionGroup): A list of TranscriptionGroup objects representing the model tier.
         actual (list of TranscriptionGroup): A list of TranscriptionGroup objects representing the actual tier.
-
+        segment (dict of str): Dictionary keys for record segmentation: "start", "duration", "unit".
     Parameters:
         r (Record): a Record object. Created with Record().
     """
-
 
     def __init__(self, r:Record):
         self.record = r
@@ -781,6 +787,8 @@ class Transcription:
         t[1]  # Character Indexes
         t[2]  # Embedded Indexes
         self.orthography = r.orthography
+        self.segment = r.segment
+        self.notes = r.notes
         self.aligned_groups = [[Segment(phone, i, self.record) for i, phone in enumerate(group)] for group in t[0]]
         for tier in t[2]:
             # Model Tier
@@ -793,6 +801,9 @@ class Transcription:
                 self.actual = []
                 for group in t[2][tier]:
                     self.actual.append(TranscriptionGroup(group))
+        
+    def __len__(self):
+        return len(self.aligned_groups)
 
         
     def get_flat_transcription(self):
@@ -809,8 +820,6 @@ class Transcription:
         model = record_ele.find(f".//ipaTier[@form='model']", ns)
         actual = record_ele.find(f".//ipaTier[@form='actual']", ns)
         return ""
-
-
 
 
 def get_element_contents(element: ET.Element) -> dict:
@@ -965,7 +974,7 @@ if __name__ == "__main__":
     
     test_path = r"C:\Users\Philip\Documents\github\Phon-files\XML Files\1007_PKP_PKP Pre.xml"
     test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files/1007_PKP_PKP Pre.xml"
-    test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/groups-words/C401_groups.xml"
+    test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/groups-words/C401_words.xml"
     s = Session(test_path)
     r_list = s.records
     r = Record(r_list[0], s.root)
