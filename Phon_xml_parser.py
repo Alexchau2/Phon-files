@@ -2,7 +2,6 @@
 
 # To Do
 
-
 """
 Use Transcription and TranscriptionGroup and Segment classes
 to create a mapping between alignment indices and trancription
@@ -244,9 +243,9 @@ class Record:
         root (Session): The parent Session object of the record.
         speaker (str): The speaker attribute of the record element.
         id (str): The ID attribute of the record element.
-        segment
+        segment (dict): Dictionary keys for record segmentation: "start", "duration", "unit".
         excludeFromSearches (str): The excludeFromSearches attribute of the record element.
-        orthography (str): The orthography text extracted from the record.
+        orthography (list of list of str): Embedded list of orthography words within groups.
         flat_tiers (dict): A dictionary of tier names and their corresponding text content.
         model_ipa_tier (xml.etree.ElementTree.Element): The IPA tier with 'model' form.
         actual_ipa_tier (xml.etree.ElementTree.Element): The IPA tier with 'actual' form.
@@ -283,25 +282,25 @@ class Record:
         self.speaker = element.get("speaker")
         self.id = element.get("id")
         self.record_num = self.root.labelled_records[self.id]
-        self.segment = element.get("segment")
-        # self.exclude_from_searches = element.get("excludeFromSearches")
-        # if element.get("excludeFromSearches").lower()=="true":
-        #     self.exclude_from_searches = True
-        # else:
-        #     self.exclude_from_searches = False
         self.exclude_from_searches = True if element.get("excludeFromSearches").lower() == "true" else False
-        try:
-            self.orthography = element.find("orthography/g/w", ns).text
-        except AttributeError:
-            self.orthography=None
-        
+        s = element.find(".//segment", ns)
+        self.segment = {"start":s.get("startTime"), 
+                        "duration":s.get("duration"), 
+                        "unit":s.get("unitType")
+        }
         self.flat_tiers = {
             tier.get("tierName"): tier.text for tier in element.findall("flatTier", ns)
-        }
+        }     
+        self.notes = element.find(".//notes", ns).text
+        try:
+            self.orthography = [[w.text for w in g.findall(".//w", ns)] for g in element.findall("orthography/g", ns)]
+        except AttributeError:
+            self.orthography=None
         self.model_ipa_tier = self.element.find(".//ipaTier[@form='model']", ns)
         self.actual_ipa_tier = self.element.find(".//ipaTier[@form='actual']", ns)
         self.blind_transcriptions = self.element.findall(".//blindTranscription", ns)
         self.alignment_tier = self.element.find(".//alignment[@type='segmental']", ns)
+
 
     def __len__(self):
         return len(self.alignment_tier.findall(".//phomap", ns))
@@ -711,8 +710,6 @@ class Segment:
         r (Record): The Record object associated with this segment.
     """
 
-
-
     def __init__(self, input:list, index:int, r:Record):
         self.position = index
         self.model = input[0][0]
@@ -759,7 +756,7 @@ class TranscriptionGroup:
 
 class Transcription:
     """
-    Represents a transcription of a record.
+    Represents a complete transcription of a record.
 
     This class is used to store and organize the transcription tiers and aligned s
         segments for a given record.
@@ -768,6 +765,7 @@ class Transcription:
         record (Record): The record object associated with this transcription.
         aligned_groups (list of list of Segment): A 2D list of Segment objects representing aligned groups
             of phones in the transcription.
+        orthography (list of str): A list of groups from Orthography tier
         model (list of TranscriptionGroup): A list of TranscriptionGroup objects representing the model tier.
         actual (list of TranscriptionGroup): A list of TranscriptionGroup objects representing the actual tier.
 
@@ -782,6 +780,7 @@ class Transcription:
         t[0]  # Aligned Transcription
         t[1]  # Character Indexes
         t[2]  # Embedded Indexes
+        self.orthography = r.orthography
         self.aligned_groups = [[Segment(phone, i, self.record) for i, phone in enumerate(group)] for group in t[0]]
         for tier in t[2]:
             # Model Tier
@@ -794,7 +793,7 @@ class Transcription:
                 self.actual = []
                 for group in t[2][tier]:
                     self.actual.append(TranscriptionGroup(group))
-        
+
         
     def get_flat_transcription(self):
         flat_transcription = []
