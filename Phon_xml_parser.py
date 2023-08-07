@@ -688,7 +688,8 @@ class Record:
                             s = s.replace(replacement, form)
         return t
 
-# To Do: Add syllable constituency
+# To Do: Add syllable constituency, absolute char indexes
+
 class Segment:
     """
     Represent a segment aligned across tiers.
@@ -700,8 +701,8 @@ class Segment:
         position (int): The position of the segment within the transcription group.
         model (str): The model transcription of the segment.
         actual (str): The actual transcription of the segment.
-        model_index (int): The index of the segment in the model tier.
-        target_index (int): The index of the segment in the target tier.
+        model_align_index (int): The index of the segment in the model tier.
+        target_align_index (int): The index of the segment in the target tier.
 
     Parameters:
         input (list): A list containing two sub-lists, where the first sub-list contains model and actual transcriptions,
@@ -714,8 +715,9 @@ class Segment:
         self.position = index
         self.model = input[0][0]
         self.actual = input[0][1]
-        self.model_index = input[1][0]
-        self.target_index = input[1][1]
+        self.model_align_index = input[1][0]
+        self.target_align_index = input[1][1]
+        # self.model_abs_index = 
 
     def __len__(self):
         return len(self.actual)
@@ -730,23 +732,23 @@ class Segment:
 
 class TranscriptionGroup:
     """
-        Represent a transcription tier group.
+        Represent a transcription tier group contents
 
         Attributes:
-            id (int): The ID of the transcription group.
-            form (str): The tier of the transcription group.
-            group_index (int): The index of the transcription group.
-            transcription (str): The transcriptions associated with this group.
-            indexes (list): The list of indices related to this group.
+            id (int): The ID of the parent record.
+            form (str): The tier/form, of ["actual", "model"].
+            group_index (int): The index for the prosodic group in the record.
+            transcription (str): The transcription string.
+            indexes (list): The list of embedded character indices.
 
         Parameters:
             input (dict): A dictionary from get_transcription()[2].
                 The dictionary should have the following keys:
-                    - "id" (int): The ID of the transcription group.
-                    - "tier" (str): The tier of the transcription group.
-                    - "pg" (int): The index of the transcription group.
-                    - "transcriptions" (str): The transcriptions associated with this group.
-                    - "indices" (list): The list of indices related to this group.
+                    - "id" (int): The ID of the parent record.
+                    - "tier" (str): The tier/form, of ["actual", "model"].
+                    - "pg" (int): The index for the prosodic group in the record.
+                    - "transcriptions" (str): The transcription string.
+                    - "indices" (list): The list of embedded character indices.
     """
 
     def __init__(self, input:dict):
