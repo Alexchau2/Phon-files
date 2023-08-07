@@ -689,10 +689,10 @@ class Record:
         return t
 
 # To Do: Add syllable constituency, absolute char indexes
-
+# To Do: Handle input of a raw transcription string with alignment key
 class Segment:
     """
-    Represent a segment aligned across tiers.
+    Represent an aligned actual and target/model segment
 
     This class is used to store information about a segment, including its position
     within the group, aligned model and actual segment, and associated indexes.
@@ -705,19 +705,19 @@ class Segment:
         target_align_index (int): The index of the segment in the target tier.
 
     Parameters:
-        input (list): A list containing two sub-lists, where the first sub-list contains model and actual transcriptions,
-                        and the second sub-list contains model_index and target_index.
-        index (int): The position of the segment within the transcription group.
-        r (Record): The Record object associated with this segment.
+        input (list): A list containing two sub-lists, where the first sub-list contains model and actual segments,
+                        and the second sub-list contains segment alignment indices.
+        index (int): The position of the segment within the prosodic group.
+        r (Record): The Record object associated with this segment. Should match align_indexes.
     """
 
-    def __init__(self, input:list, index:int, r:Record):
+    def __init__(self, input:list, index:int, r:Record): # index is redundant if unerrored.
         self.position = index
         self.model = input[0][0]
         self.actual = input[0][1]
         self.model_align_index = input[1][0]
         self.target_align_index = input[1][1]
-        # self.model_abs_index = 
+
 
     def __len__(self):
         return len(self.actual)
