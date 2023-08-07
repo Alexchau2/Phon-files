@@ -714,11 +714,11 @@ class Segment:
         self.position = index
         self.model = input[0][0]
         self.actual = input[0][1]
-        self.model_segments = input[1][0]
-        self.target_segments = input[1][1]
+        self.model_index = input[1][0]
+        self.target_index = input[1][1]
 
-    # def __len__(self):
-    #     self.model
+    def __len__(self):
+        return len(self.actual)
 
     def replace(self, replacement:str, form:str):
         if form=="model":
@@ -789,7 +789,7 @@ class Transcription:
         self.orthography = r.orthography
         self.segment = r.segment
         self.notes = r.notes
-        self.aligned_groups = [[Segment(phone, i, self.record) for i, phone in enumerate(group)] for group in t[0]]
+        self.aligned_segments = [[Segment(phone, i, self.record) for i, phone in enumerate(group)] for group in t[0]]
         for tier in t[2]:
             # Model Tier
             if tier == "model":
@@ -981,6 +981,9 @@ if __name__ == "__main__":
     # records = s.get_records(exclude_records=True)
     t = r.get_transcription()
     transcription = Transcription(r)
+    seg = transcription.aligned_segments[0][0]
+    seg2 = transcription.aligned_segments[0][1]
+    seg5 = transcription.aligned_segments[0][4]
     # Test 5: Write to file
 
     # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files/2275_PKP_PKP Pre.xml"
