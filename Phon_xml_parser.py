@@ -1,20 +1,28 @@
 """Classes for parsing Phon XML session files."""
 
 # To Do
-"""
-Output from Diacritic_fixer is in correct form for sending back to XML.
-Instantiate Transcription and Segment classes immediately.
 
+
+"""
+Use Transcription and TranscriptionGroup and Segment classes
+to create a mapping between alignment indices and trancription
+tier indices.
+
+Potentially, iterate over tier string by its index(es) and aligned segments. 
+If tier character(s) and aligned segment do not match, proceed to next tier string char
+    but do not increase the aligned segment index (because no aligned segment was matched).
+    Also align the char with a dummy alignment.
+When tier character(s) and aligned segment match, align them, and increase index.
+- For this, may need to add to the Segment class.
 
 Output example:
 1007_PKP_PKP_Pre.xml
 Record 1, id='2da2997d-1ca8-4879-ac28-b21c1b9a6ae8'
 
-
 Diacritic_fixer() output/embedded_indices:
 {'model': [{...}], 'actual': [{...}]}]
 	{'id': '2da2997d-1ca8-4879-ac28-b21c1b9a6ae8', 'tier': 'model', 'pg': 0, 'transcriptions': 'ʤəˈɹæf', 'indices': [0, 1, 2, 3, 4, 5]}
-	
+	{'id': '2da2997d-1ca8-4879-ac28-b21c1b9a6ae8', 'tier': 'actual', 'pg': 0, 'transcriptions': 'vɹæ', 'indices': [0, 1, 2]}
 char_indexes:
 {'orthography': [[...]], 'model': [[...]], 'actual': [[...]]}
 		[['giraffe']]
@@ -28,6 +36,9 @@ aligned_transcription:
 	[['ɹ', 'ɹ'], [2, 1]]
 	[['æ', 'æ'], [3, 2]]
 	[['f', ' '], [4, -1]]
+
+Revised get_transcription output:
+    [aligned_transcription, char_indexes, embedded_indices]
 """
 
 import os
@@ -458,7 +469,7 @@ class Record:
                 "\tIncomplete or missing tier data. No aligned transcriptions extracted."
             )
             
-            return char_indexes
+            return [char_indexes, embedded_indices]
         except IndexError as error:
             print("***************************")
             print(f"{self.root.corpus}>{self.root.id}>{self.record_num}")  # {self.get_record_num()}
@@ -467,8 +478,8 @@ class Record:
             print(
                 "\tError aligning tier data. No aligned transcriptions extracted."
             )
-            return char_indexes
-        return aligned_transcriptions
+            return [char_indexes, embedded_indices]
+        return [aligned_transcriptions, char_indexes, embedded_indices]
     
 
     def get_blind_transcriptions(self):
@@ -491,7 +502,6 @@ class Record:
                 bgs: list[list[str]] = [[w.text for w in bg] for bg in tr_tier.findall("bg", ns)]
                 tr_dict[tr_tier.get("form")] = bgs
         return blind_dict
-
 
 
     def get_record_num(self):
@@ -562,7 +572,7 @@ class Record:
                       'actual_present', 
                       'alignment_present']
         check_dict = {}
-        t = self.get_transcription(zip_tiers=False)
+        t = self.get_transcription(zip_tiers=False)[0]
         
         check_dict['not_excluded'] = not self.exclude_from_searches
 
@@ -681,6 +691,28 @@ class Record:
 
 # To Do: Add syllable constituency
 class Segment:
+    """
+    Represent a segment aligned across tiers.
+
+    This class is used to store information about a segment, including its position
+    within the group, aligned model and actual segment, and associated indexes.
+
+    Attributes:
+        position (int): The position of the segment within the transcription group.
+        model (str): The model transcription of the segment.
+        actual (str): The actual transcription of the segment.
+        model_index (int): The index of the segment in the model tier.
+        target_index (int): The index of the segment in the target tier.
+
+    Parameters:
+        input (list): A list containing two sub-lists, where the first sub-list contains model and actual transcriptions,
+                        and the second sub-list contains model_index and target_index.
+        index (int): The position of the segment within the transcription group.
+        r (Record): The Record object associated with this segment.
+    """
+
+
+
     def __init__(self, input:list, index:int, r:Record):
         self.position = index
         self.model = input[0][0]
@@ -694,13 +726,75 @@ class Segment:
         elif form=="actual":
             self.actual = replacement
 
+# class FlatTier:
+
+class TranscriptionGroup:
+    """
+        Represent a transcription tier group.
+
+        Attributes:
+            id (int): The ID of the transcription group.
+            form (str): The tier of the transcription group.
+            group_index (int): The index of the transcription group.
+            transcription (str): The transcriptions associated with this group.
+            indexes (list): The list of indices related to this group.
+
+        Parameters:
+            input (dict): A dictionary containing the necessary information to create a TranscriptionGroup object.
+                The dictionary should have the following keys:
+                    - "id" (int): The ID of the transcription group.
+                    - "tier" (str): The tier of the transcription group.
+                    - "pg" (int): The index of the transcription group.
+                    - "transcriptions" (str): The transcriptions associated with this group.
+                    - "indices" (list): The list of indices related to this group.
+    """
+
+    def __init__(self, input:dict):
+        self.id = input["id"]
+        self.form = input["tier"]
+        self.group_index = input["pg"]
+        self.transcription = input["transcriptions"]
+        self.indexes = input["indices"]
+
 
 class Transcription:
+    """
+    Represents a transcription of a record.
+
+    This class is used to store and organize the transcription tiers and aligned s
+        segments for a given record.
+
+    Attributes:
+        record (Record): The record object associated with this transcription.
+        aligned_groups (list of list of Segment): A 2D list of Segment objects representing aligned groups
+            of phones in the transcription.
+        model (list of TranscriptionGroup): A list of TranscriptionGroup objects representing the model tier.
+        actual (list of TranscriptionGroup): A list of TranscriptionGroup objects representing the actual tier.
+
+    Parameters:
+        r (Record): a Record object. Created with Record().
+    """
+
+
     def __init__(self, r:Record):
         self.record = r
         t = r.get_transcription()
-        self.groups = [[Segment(phone, i, self.record) for i, phone in enumerate(group)] for group in t]
-
+        t[0]  # Aligned Transcription
+        t[1]  # Character Indexes
+        t[2]  # Embedded Indexes
+        self.aligned_groups = [[Segment(phone, i, self.record) for i, phone in enumerate(group)] for group in t[0]]
+        for tier in t[2]:
+            # Model Tier
+            if tier == "model":
+                self.model = []
+                for group in t[2][tier]:
+                    self.model.append(TranscriptionGroup(group))
+            # Actual Tier
+            elif tier == "actual":
+                self.actual = []
+                for group in t[2][tier]:
+                    self.actual.append(TranscriptionGroup(group))
+        
         
     def get_flat_transcription(self):
         flat_transcription = []
@@ -871,12 +965,14 @@ if __name__ == "__main__":
     # Test 4: A session with excluded records
     
     test_path = r"C:\Users\Philip\Documents\github\Phon-files\XML Files\1007_PKP_PKP Pre.xml"
+    test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files/1007_PKP_PKP Pre.xml"
+    test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/groups-words/C401_groups.xml"
     s = Session(test_path)
     r_list = s.records
     r = Record(r_list[0], s.root)
-    records = s.get_records(exclude_records=True)
+    # records = s.get_records(exclude_records=True)
     t = r.get_transcription()
-
+    transcription = Transcription(r)
     # Test 5: Write to file
 
     # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files/2275_PKP_PKP Pre.xml"
@@ -887,16 +983,13 @@ if __name__ == "__main__":
     # write_xml_to_file(s.tree, "output_file_A.xml")
 
     # Test 6: Transcription Object
-    test_path = r"C:\Users\Philip\Documents\github\Phon-files\XML Files\1007_PKP_PKP Pre.xml"
-    s = Session(test_path)
-    r_list = s.records
-    r = Record(r_list[0], s.root)
-    records = s.get_records(exclude_records=True)
-    t = r.get_transcription()
-    # for group in t:
-    #     for i, phone in enumerate(group):
-    #         seg = Segment(phone, i)
-    #         pass
-    tran = Transcription(r)
-    r.edit_record(replace_type="search", form="actual", replacement="G", original="f")
+    # test_path = r"C:\Users\Philip\Documents\github\Phon-files\XML Files\1007_PKP_PKP Pre.xml"
+    # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files/1007_PKP_PKP Pre.xml"
+    # s = Session(test_path)
+    # r_list = s.records
+    # r = Record(r_list[0], s.root)
+    # records = s.get_records(exclude_records=True)
+    # t = r.get_transcription()
+    # tran = Transcription(r)
+    # r.edit_record(replace_type="search", form="actual", replacement="G", original="f")
     pass
