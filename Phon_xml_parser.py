@@ -259,7 +259,7 @@ class Record:
         check_record: Check the contents of the record for properties that may indicate errors.
     """
 
-    # To Do: Check handling when an element is empty or not present in the record.
+    # To Do: Complete try/except handling when an element is empty or not present in the record.
     def __init__(self, element, root):
         self.element = element
         if isinstance(root, Session):  # If data is a Session object
@@ -291,7 +291,10 @@ class Record:
         self.flat_tiers = {
             tier.get("tierName"): tier.text for tier in element.findall("flatTier", ns)
         }     
-        self.notes = element.find(".//notes", ns).text
+        try:
+            self.notes = element.find(".//notes", ns).text
+        except AttributeError:
+            self.notes=None
         try:
             self.orthography = [[w.text for w in g.findall(".//w", ns)] for g in element.findall("orthography/g", ns)]
         except AttributeError:
@@ -786,106 +789,119 @@ class Transcription:
 
     def __init__(self, r:Record):
         self.record = r
-        t = r.get_transcription()
-        self.t_segs = t[0]  # Zipped and Split Aligned Segments
-        self.t_tiers = t[1]  # Character Alignment Indexes (by Tier/form)
-        self.t_orig = t[2]  # Transcription strings with original character indexes
+        self.t = r.get_transcription()
+        self.t_segs = self.t[0]  # Zipped and Split Aligned Segments
+        self.t_tiers = self.t[1]  # Character Alignment Indexes (by Tier/form)
+        self.t_orig = self.t[2]  # Transcription strings with original character indexes
         self.orthography = r.orthography
         self.segment = r.segment
         self.notes = r.notes
-
         self.aligned_segments = [[Segment(phone, i, self.record) for i, phone in enumerate(group)] for group in self.t_segs]
         
-        for tier in t[2]:
+        for tier in self.t_orig:
             # Model Tier
             if tier == "model":
                 self.model = []
-                for group in t[2][tier]:
+                for group in self.t_orig[tier]:
                     self.model.append(TranscriptionGroup(group))
             # Actual Tier
             elif tier == "actual":
                 self.actual = []
-                for group in t[2][tier]:
+                for group in self.t_orig[tier]:
                     self.actual.append(TranscriptionGroup(group))
 
-    # match segments with alignment and character indexes
+    # To Do: Fix embedding so model and actual are within group
+
+    # Match segments with alignment and character indexess
     def get_indexes(self):
         indexes_dict = {}
         for form in ["actual", "model"]:
             form_list = []
-            # Isolate each group in the tier
+            # Get original string for each group in the tier
             o = [g["transcriptions"] for g in self.t_orig[form]]
-            # List of original string chars
-            orig = [[x for x in g] for g in o]
-            # Aligned segments
-            a = self.t_segs
+            # Get split list of original string chars for each group in the tier
+            o_split = [[x for x in g] for g in o]
+            # Get original character indexes for each group in the tier
+            o_i = [g["indices"] for g in self.t_orig[form]]
+            # Get split list of aligned segments for each group
+            a_split = self.t_segs
             # Use form for indexing
             if form == "model":
                 f = 0
             elif form == "actual":
                 f = 1
-            indexed_chars = []
-            for n, group in enumerate(orig):
-                c = 0  # counter
-                for i, x in enumerate(group):
-                    char = x  # char
-                    index = i  # index
-                    if char == a[n][c][0][f]:
-                        indexed_char = [char, i, a[n][c]]
-                        indexed_chars.append(indexed_char)
-                        c += 1
+            # Instantiate list for storing segment-char-index mappings
+            # form dicts belong here
+            indexed_groups = []
+            for n, group in enumerate(zip(o_split, o_i)):
+                o_c = 0  # counter for original chars list
+                o_i_c = 0  # counter for original chars list
+                a_c = 0  # counter for aligned segments list
+                o_skip_counter = 0
+                indexed_chars = []
+                for o_char in group[0]:  # group[0] = original chars
+                    # Advance in original chars list for multi-indexes
+                    if o_skip_counter > 0:
+                        o_skip_counter -= 1
                         continue
-                    else:
-                        indexed_char = [char, i, None]
-                        indexed_chars.append(indexed_char)
-                        continue
-            indexes_dict[form] = indexed_chars
+                    o_i = group[1][o_i_c]  # group[1] = original segment index(es)
+                    a_seg = a_split[n][a_c][0][f]  # aligned segment string
+                    a_i = a_split[n][a_c][1][f] # aligned segment index
+                    if o_char == a_seg and isinstance(o_i, int):  # If match and single index
+                        # indexed_char = [o_char, o_i, a_i]  # Debugging
+                        # indexed_chars.append(indexed_char)  # Debugging
+                        indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":a_i}])
+                        o_c += 1  # Advance in original and align lists
+                        o_i_c += 1
+                        a_c += 1
+                        pass
+                    elif o_char != a_seg and isinstance(o_i, list): # If not match and multi index
+                        # Match with multi-index
+                        span = len(o_i)
+                        # store o_char and add subsequenct chars via span (2 = 1 additional)
+                        for num in range(span-1):
+                            o_c += 1  # Advance in original list for each extra char
+                            o_char+=group[0][o_c]
+                            o_skip_counter = span-1
+                        indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":a_i}])
+                        # o_c += 1  # Advance in original and align lists
+                        o_c += 1
+                        o_i_c += 1
+                        a_c += 1
+                        pass
+                    elif o_char != a_seg and isinstance(o_i, int):
+                        # Nonmatch
+                        indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":None}])
+                        o_c += 1  # Advance only in original list
+                        o_i_c += 1
+                        pass
+                indexed_groups.append(indexed_chars)        
+            indexes_dict[form] = indexed_groups
         return indexes_dict
 
-    """Potentially, iterate over tier string by its index(es) and aligned segments. 
-    If tier character(s) and aligned segment do not match, proceed to next tier string char
-        but do not increase the aligned segment index (because no aligned segment was matched).
-        Also align the char with a dummy alignment.
-    When tier character(s) and aligned segment match, align them, and increase index.
-    - For this, may need to add to the Segment class."""
-
-
-    """
-        # Aligned Segments (t_segs)
-        [['f', 'f'], [0, 0]]
-
-        # Original String and Indexing for Return to XML (t_orig)
-        [{'id': '7c1e5a3f-6b73-4286-a5ed-ecdfbe22f77c', 'tier': 'model', 'pg': 0, 'transcriptions': 'ˈfɔɹhɛd ˈleɪm', 'indices': [...]}, {'id': '7c1e5a3f-6b73-4286-a5ed-ecdfbe22f77c', 'tier': 'model', 'pg': 1, 'transcriptions': 'ˈstɑp', 'indices': [...]}]
-        for group in t[2]["model"]:
-            group["transcriptions"]
-                'ˈfɔɹhɛd ˈleɪm'
-            group["indices"]
-                [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-        for group in t[2]["actual"]:
-            group["transcriptions"]
-                'fɔɹhɛːd lem'
-            group["indices"]
-                [0, 1, 2, 3, [4, 5], 6, 7, 8, 9, 10]
-
-        # Approach
-        
-
-        For range(len(groups)):
-
-
-
-    """
-    
+    # Len returns number of groups
     def __len__(self):
-        return len(self.aligned_groups)
+        return len(self.t_segs)
     
-    def get_flat_transcription(self):
-        flat_transcription = []
-        for group in self.groups:
-            flat_transcription += group
-        return flat_transcription
     
-    # Needs to send back to entire word string somehow.
+    # Return list of all Segment objects without group boundaries
+    def get_flat_segments(self):
+        flat_segments = []
+        for group_segments in self.aligned_segments:
+            flat_segments += group_segments
+        return flat_segments
+    
+     # Return list of original transcription strings without group boundaries
+    def get_flat_transcriptions(self):
+        flat_orig = self.t_orig
+        for form in ["model","actual"]:
+            flat_orig_transcriptions = ""
+            for group_orig in self.t_orig[form]:
+                flat_orig_transcriptions += " " + group_orig["transcriptions"]
+            flat_orig[form] = flat_orig_transcriptions
+        return flat_orig  
+    
+    # Needs to send back to entire word string use get_indexes
     # To Implement:
     def to_xml(self):
         root = self.record.root.root
@@ -1076,5 +1092,8 @@ if __name__ == "__main__":
     # t = r.get_transcription()
     # tran = Transcription(r)
     # r.edit_record(replace_type="search", form="actual", replacement="G", original="f")
-    transcription.get_indexes()
+    r_test = s.get_records(simple_return=True)
+    test_list = [Transcription(r).get_indexes() for r in r_test]
+
+
     pass
