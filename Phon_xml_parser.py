@@ -813,25 +813,26 @@ class Transcription:
 
     # Match segments with alignment and character indexess
     def get_indexes(self):
-        groups = []  # Step 1: Create a list to store groups
-        # indexes_dict = {}  # Remove
-        form_dict = {}
+        """
+        Return a list of groups with indexed characters for "actual" and "model" tiers.
+
+        Each group contains a dictionary with "actual" and "model" keys, where the values
+        are lists of indexed characters. Each indexed character is represented as a list
+        containing a phone segment string and a dictionary with "original_index" and
+        "alignment_index" keys.
+
+        Returns:
+            list: A list of groups, each containing indexed characters for both tiers.
+        """
+        groups = []  # Create a list to store groups
         for form in ["actual", "model"]:
             for g_i, group in enumerate(self.t_orig[form]):
-                # form_dict = {}
-         
-                # form_list = []
                 # Get original string for each group in the tier
                 o = group["transcriptions"]
-                # o = [g["transcriptions"] for g in self.t_orig[form]]  # REMOVE
                 # Get split list of original string chars for each group in the tier
                 o_split = [c for c in o]
-                # o_split = [[x for x in g] for g in o]  # REMOVE
                 # Get original character indexes for each group in the tier
-                
                 o_is = group["indices"]
-                # o_i = [g["indices"] for g in self.t_orig[form]]  # REMOVE
-
                 # Get split list of aligned segments for each group
                 a_split = self.t_segs
                 # Use form for indexing
@@ -839,24 +840,17 @@ class Transcription:
                     f = 0
                 elif form == "actual":
                     f = 1
-                # Instantiate list for storing segment-char-index mappings
-                
-                # indexed_groups = [] remove this
-
-                # Deprecated now that grouping happens in outer list
-                # For a given form, get groups
-                # for n, group in enumerate(zip(o_split, o_i)): REMOVE
                 o_c = 0  # counter for original chars list
                 o_i_c = 0  # counter for original chars list
                 a_c = 0  # counter for aligned segments list
                 o_skip_counter = 0
                 indexed_chars = []
-                for o_char in o_split:  # group[0] = original chars
+                for o_char in o_split:  # original chars
                     # Advance in original chars list for multi-indexes
                     if o_skip_counter > 0:
                         o_skip_counter -= 1
                         continue
-                    o_i = o_is[o_i_c]  # group[1] = original segment index(es)
+                    o_i = o_is[o_i_c]  # original segment index(es)
                     a_seg = a_split[g_i][a_c][0][f]  # aligned segment string
                     a_i = a_split[g_i][a_c][1][f] # aligned segment index
                     if o_char == a_seg and isinstance(o_i, int):  # If match and single index
@@ -870,7 +864,7 @@ class Transcription:
                     elif o_char != a_seg and isinstance(o_i, list): # If not match and multi index
                         # Match with multi-index
                         span = len(o_i)
-                        # store o_char and add subsequenct chars via span (2 = 1 additional)
+                        # Add subsequenct chars via span (2 = 1 additional)
                         for num in range(span-1):
                             o_c += 1  # Advance in original list for each extra char
                             o_char+=o_split[o_c]
@@ -887,7 +881,6 @@ class Transcription:
                         o_c += 1  # Advance only in original list
                         o_i_c += 1
                         pass
-                # indexed_groups.append(indexed_chars)
                 # Instantiate empty dictionary for each group
                 try:
                     groups[g_i]
@@ -895,8 +888,6 @@ class Transcription:
                     groups.append({})
                     pass
                 groups[g_i][form] = indexed_chars 
-                
-                # indexes_dict[form] = indexed_groups
         return groups
 
     # Len returns number of groups
@@ -1010,13 +1001,6 @@ def check_sessions(directory, to_csv=True, ignore_autosave=True):
         output_filename = "all_session_check.csv"
         all_session_check.to_csv(output_filename, index=True, encoding='utf-8')
     return file_list
-                # s.check_session
-
-
-                # For each column, look for errored values. 
-                # Return the record numbers for rows with erorred value.
-                # List of record numbers become the entry for that session in that column
-                # of the new DataFrame.
 
 
 # Test
@@ -1026,19 +1010,11 @@ if __name__ == "__main__":
 
     # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/groups-words/Anne_Pre_PC.xml"
     # s = Session(test_path)
-    # t = s.get_records()
-    # r1 = Record(t[0], s.root)
-    # r2 = Record(t[0], s.tree)
-    # test_result = r1.get_transcription()
 
     # Test 2: Single tutorial session. Multiple records
 
     # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/groups-words/Anne_Pre_PC.xml"
     # s = Session(test_path)
-    # records = s.get_records()
-    # t2 = [Record(record, s.root) for record in records]
-    # t2_transcription = [record.get_transcription() for record in t2]
-    # pass  # Access e.g.: t2_0['model'][0][0]
 
     # Test 3: 7 DPA sessions.
 
@@ -1051,33 +1027,6 @@ if __name__ == "__main__":
     #     t3 = [Record(record, s. root) for record in records]
     #     t3_transcriptions = [record.get_transcription() for record in t3]
     #     t3_sessions.append(t3_transcriptions)
-    # pass
-
-    # Test 4: Blind sessions
-
-    # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/blind/B319.xml"
-    # test_dir = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/blind"
-    # s = Session(test_path)
-    # s_list = []
-    # for dirpath, dirs, files in os.walk(test_dir):
-    #     for file in files:
-    #         s_list.append(Session(os.path.join(dirpath, file)))
-    # for s in s_list:
-    #     records = s.get_records()
-    #     t2 = [record[2] for record in records]
-    #     t2_transcriptions_aligned = [record.get_transcription(zip_tiers=True) for record in t2]
-    #     t2_transcriptions = [record.get_transcription(zip_tiers=False) for record in t2]
-    #     # for record in t2:
-    #     #     print(record.get_transcription())
-    #     t2[0].get_blind_transcriptions()
-    #     print("START")
-    #     print("***************************")
-    #     for t in t2:
-    #         # print(t.get_blind_transcriptions())
-    #         t.check_record()
-    #     # t2[0].check_record()
-    # print("DONE")
-    # check_result = s.check_session(to_csv=False)
 
     # Test 4: A session with excluded records
     
@@ -1102,20 +1051,8 @@ if __name__ == "__main__":
     # t = r.get_transcription()
     # write_xml_to_file(s.tree, "output_file_A.xml")
 
-    # Test 6: Transcription Object
-    # test_path = r"C:\Users\Philip\Documents\github\Phon-files\XML Files\1007_PKP_PKP Pre.xml"
-    # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files/1007_PKP_PKP Pre.xml"
-    # s = Session(test_path)
-    # r_list = s.records
-    # r = Record(r_list[0], s.root)
-    # records = s.get_records(exclude_records=True)
-    # t = r.get_transcription()
-    # tran = Transcription(r)
-    # r.edit_record(replace_type="search", form="actual", replacement="G", original="f")
-    
-    # r_test = s.get_records(simple_return=True)
-    # test_list = [Transcription(r).get_indexes() for r in r_test]
+    r_test = s.get_records(simple_return=True)
+    test_list = [Transcription(r).get_indexes() for r in r_test]
     x = transcription.get_indexes()
-
 
     pass
