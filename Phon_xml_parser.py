@@ -810,43 +810,55 @@ class Transcription:
                 for group in self.t_orig[tier]:
                     self.actual.append(TranscriptionGroup(group))
 
-    # To Do: Fix embedding so model and actual are within group
 
     # Match segments with alignment and character indexess
     def get_indexes(self):
-        indexes_dict = {}
+        groups = []  # Step 1: Create a list to store groups
+        # indexes_dict = {}  # Remove
+        form_dict = {}
         for form in ["actual", "model"]:
-            form_list = []
-            # Get original string for each group in the tier
-            o = [g["transcriptions"] for g in self.t_orig[form]]
-            # Get split list of original string chars for each group in the tier
-            o_split = [[x for x in g] for g in o]
-            # Get original character indexes for each group in the tier
-            o_i = [g["indices"] for g in self.t_orig[form]]
-            # Get split list of aligned segments for each group
-            a_split = self.t_segs
-            # Use form for indexing
-            if form == "model":
-                f = 0
-            elif form == "actual":
-                f = 1
-            # Instantiate list for storing segment-char-index mappings
-            # form dicts belong here
-            indexed_groups = []
-            for n, group in enumerate(zip(o_split, o_i)):
+            for g_i, group in enumerate(self.t_orig[form]):
+                # form_dict = {}
+         
+                # form_list = []
+                # Get original string for each group in the tier
+                o = group["transcriptions"]
+                # o = [g["transcriptions"] for g in self.t_orig[form]]  # REMOVE
+                # Get split list of original string chars for each group in the tier
+                o_split = [c for c in o]
+                # o_split = [[x for x in g] for g in o]  # REMOVE
+                # Get original character indexes for each group in the tier
+                
+                o_is = group["indices"]
+                # o_i = [g["indices"] for g in self.t_orig[form]]  # REMOVE
+
+                # Get split list of aligned segments for each group
+                a_split = self.t_segs
+                # Use form for indexing
+                if form == "model":
+                    f = 0
+                elif form == "actual":
+                    f = 1
+                # Instantiate list for storing segment-char-index mappings
+                
+                # indexed_groups = [] remove this
+
+                # Deprecated now that grouping happens in outer list
+                # For a given form, get groups
+                # for n, group in enumerate(zip(o_split, o_i)): REMOVE
                 o_c = 0  # counter for original chars list
                 o_i_c = 0  # counter for original chars list
                 a_c = 0  # counter for aligned segments list
                 o_skip_counter = 0
                 indexed_chars = []
-                for o_char in group[0]:  # group[0] = original chars
+                for o_char in o_split:  # group[0] = original chars
                     # Advance in original chars list for multi-indexes
                     if o_skip_counter > 0:
                         o_skip_counter -= 1
                         continue
-                    o_i = group[1][o_i_c]  # group[1] = original segment index(es)
-                    a_seg = a_split[n][a_c][0][f]  # aligned segment string
-                    a_i = a_split[n][a_c][1][f] # aligned segment index
+                    o_i = o_is[o_i_c]  # group[1] = original segment index(es)
+                    a_seg = a_split[g_i][a_c][0][f]  # aligned segment string
+                    a_i = a_split[g_i][a_c][1][f] # aligned segment index
                     if o_char == a_seg and isinstance(o_i, int):  # If match and single index
                         # indexed_char = [o_char, o_i, a_i]  # Debugging
                         # indexed_chars.append(indexed_char)  # Debugging
@@ -861,7 +873,7 @@ class Transcription:
                         # store o_char and add subsequenct chars via span (2 = 1 additional)
                         for num in range(span-1):
                             o_c += 1  # Advance in original list for each extra char
-                            o_char+=group[0][o_c]
+                            o_char+=o_split[o_c]
                             o_skip_counter = span-1
                         indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":a_i}])
                         # o_c += 1  # Advance in original and align lists
@@ -875,9 +887,17 @@ class Transcription:
                         o_c += 1  # Advance only in original list
                         o_i_c += 1
                         pass
-                indexed_groups.append(indexed_chars)        
-            indexes_dict[form] = indexed_groups
-        return indexes_dict
+                # indexed_groups.append(indexed_chars)
+                # Instantiate empty dictionary for each group
+                try:
+                    groups[g_i]
+                except IndexError:
+                    groups.append({})
+                    pass
+                groups[g_i][form] = indexed_chars 
+                
+                # indexes_dict[form] = indexed_groups
+        return groups
 
     # Len returns number of groups
     def __len__(self):
@@ -1092,8 +1112,10 @@ if __name__ == "__main__":
     # t = r.get_transcription()
     # tran = Transcription(r)
     # r.edit_record(replace_type="search", form="actual", replacement="G", original="f")
-    r_test = s.get_records(simple_return=True)
-    test_list = [Transcription(r).get_indexes() for r in r_test]
+    
+    # r_test = s.get_records(simple_return=True)
+    # test_list = [Transcription(r).get_indexes() for r in r_test]
+    x = transcription.get_indexes()
 
 
     pass
