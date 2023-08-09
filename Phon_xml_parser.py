@@ -1,45 +1,5 @@
 """Classes for parsing Phon XML session files."""
 
-# To Do
-
-"""
-Use Transcription and TranscriptionGroup and Segment classes
-to create a mapping between alignment indices and trancription
-tier indices.
-
-Potentially, iterate over tier string by its index(es) and aligned segments. 
-If tier character(s) and aligned segment do not match, proceed to next tier string char
-    but do not increase the aligned segment index (because no aligned segment was matched).
-    Also align the char with a dummy alignment.
-When tier character(s) and aligned segment match, align them, and increase index.
-- For this, may need to add to the Segment class.
-
-Output example:
-1007_PKP_PKP_Pre.xml
-Record 1, id='2da2997d-1ca8-4879-ac28-b21c1b9a6ae8'
-
-Diacritic_fixer() output/embedded_indices:
-{'model': [{...}], 'actual': [{...}]}]
-	{'id': '2da2997d-1ca8-4879-ac28-b21c1b9a6ae8', 'tier': 'model', 'pg': 0, 'transcriptions': 'ʤəˈɹæf', 'indices': [0, 1, 2, 3, 4, 5]}
-	{'id': '2da2997d-1ca8-4879-ac28-b21c1b9a6ae8', 'tier': 'actual', 'pg': 0, 'transcriptions': 'vɹæ', 'indices': [0, 1, 2]}
-char_indexes:
-{'orthography': [[...]], 'model': [[...]], 'actual': [[...]]}
-		[['giraffe']]
-        [['ʤ', 0], ['ə', 1], ['ɹ', 2], ['æ', 3], ['f', 4]]
-        [['v', 0], ['ɹ', 1], ['æ', 2]]
-
-aligned_transcription:
-[[[...], [...]], [[...], [...]], [[...], [...]], [[...], [...]], [[...], [...]]]
-	[['ʤ', 'v'], [0, 0]]
-	[['ə', ' '], [1, -1]]
-	[['ɹ', 'ɹ'], [2, 1]]
-	[['æ', 'æ'], [3, 2]]
-	[['f', ' '], [4, -1]]
-
-Revised get_transcription output:
-    [aligned_transcription, char_indexes, embedded_indices]
-"""
-
 import os
 import re
 import xml.etree.ElementTree as ET
@@ -112,6 +72,7 @@ class Session:
         self.records = self.root.findall(".//transcript/u", self.ns)
         self.labelled_records = {record.get("id"):i+1 for i, record in enumerate(self.records)}
 
+    # Len returns number of records
     def __len__(self):
         return len(self.records)
     
@@ -304,7 +265,7 @@ class Record:
         self.blind_transcriptions = self.element.findall(".//blindTranscription", ns)
         self.alignment_tier = self.element.find(".//alignment[@type='segmental']", ns)
 
-
+    # Len returns number of segments
     def __len__(self):
         return len(self.alignment_tier.findall(".//phomap", ns))
     
@@ -582,7 +543,7 @@ class Record:
             """
             Check for presence of tiers and equal number of groups across tiers.
 
-            This function iterates through the list of tiers (orthography, model, actual, and alignment) and checks
+            This inner function iterates through the list of tiers (orthography, model, actual, and alignment) and checks
             their presence in the transcription data `t`. The results are stored in the `check_dict` dictionary with
             keys suffixed by '_present'. If a tier is not present, it is marked as False, and if it is present, it is
             marked as True.
@@ -623,7 +584,16 @@ class Record:
         check_tier_content()
 
         def check_blind_transcription():
-            
+            """
+            Check the presence of blind transcriptions for different transcribers and tiers.
+
+            This inner function generates a dictionary containing boolean values indicating 
+            the presence of each transcriber's blind transcription for both "model" 
+            and "actual" tiers, as well as any blind transcription generally.
+
+            Returns:
+                dict: A dictionary containing check results for blind transcriptions.
+            """
             bts = self.get_blind_transcriptions()
             # Check for named transcribers
             for t in self.root.get_transcribers():
@@ -644,6 +614,7 @@ class Record:
                 check_dict['num_transcribers'] = 0
                 check_dict['blind_transcription_present'] = False
             return
+        
         check_blind_transcription()
 
         def check_validation():
@@ -721,11 +692,25 @@ class Segment:
         self.model_align_index = input[1][0]
         self.target_align_index = input[1][1]
 
-
+    # Len returns number of characters in segment
     def __len__(self):
         return len(self.actual)
 
     def replace(self, replacement:str, form:str):
+        """
+        Replace the content of the specified tier/form with the given replacement.
+
+        This method allows you to replace the content of either the "model" or "actual"
+        segment with the provided replacement string.
+
+        Args:
+            replacement (str): The string to replace the content with.
+            form (str): The form to replace the content in ("model" or "actual").
+
+        Returns:
+            None
+        """
+        
         if form=="model":
             self.model = replacement
         elif form=="actual":
@@ -895,15 +880,35 @@ class Transcription:
         return len(self.t_segs)
     
     
-    # Return list of all Segment objects without group boundaries
     def get_flat_segments(self):
+        """
+        Return a list of all Segment objects without group boundaries.
+
+        This method flattens the list of aligned segment objects by concatenating the segment
+        objects from each group without considering the group boundaries. It returns a list of
+        all the individual segment objects.
+
+        Returns:
+            list: A list containing all Segment objects without group boundaries.
+        """
         flat_segments = []
         for group_segments in self.aligned_segments:
             flat_segments += group_segments
         return flat_segments
     
-     # Return list of original transcription strings without group boundaries
+
     def get_flat_transcriptions(self):
+        """
+        Return a list of original transcription strings without group boundaries.
+
+        This method flattens the original transcriptions by concatenating the transcriptions
+        from each group without the group boundaries. It returns a dictionary containing
+        flattened transcriptions for "model" and "actual" forms.
+
+        Returns:
+            dict: A dictionary containing flattened transcriptions for "model" and 
+                "actual" forms.
+        """
         flat_orig = self.t_orig
         for form in ["model","actual"]:
             flat_orig_transcriptions = ""
@@ -956,7 +961,8 @@ def write_xml_to_file(xml_tree:ET.ElementTree, output_file):
     Write an XML ElementTree to a file.
 
     Args:
-        xml_tree (xml.etree.ElementTree.ElementTree): The XML ElementTree object to be written.
+        xml_tree (xml.etree.ElementTree.ElementTree): The XML ElementTree object 
+            to be written.
         output_file (str): The file path of the output file.
 
     Returns:
@@ -970,6 +976,20 @@ def write_xml_to_file(xml_tree:ET.ElementTree, output_file):
         print("Error writing XML tree to file:", e)
 
 def check_sessions(directory, to_csv=True, ignore_autosave=True):
+    """
+    Perform a check on sessions in the given directory, identifying records with issues.
+
+    Args:
+        directory (str): The directory containing session files.
+        to_csv (bool, optional): Whether to save the check results to a CSV file. 
+            Default is True.
+        ignore_autosave (bool, optional): Whether to ignore autosave files during the 
+            check. Default is True.
+
+    Returns:
+        list: A list of dictionaries containing check results for each session.
+    """
+    
     file_list = []
     for dirpath, folders, files in os.walk(directory):
         for file in files:
