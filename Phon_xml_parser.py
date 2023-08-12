@@ -666,7 +666,7 @@ class Record:
 
         return check_dict
     
-    # Working on this. Not sure if funciton can be within the "Record" class because it
+    # Working on this. Not sure if function can be within the "Record" class because it
     # calls on the Segment and Transcription classes. I think that's fine.
 
     def edit_record(self, replace_type:str, form:str, replacement:str, original:str=None, group:int=0, position:int=-2):
@@ -683,8 +683,9 @@ class Record:
                         if s.model==original:
                             s = s.replace(replacement, form)
         return t
+    
 # To Do: Incorporate Phoneme class from other scripts
-# To Do: Test error_type attribute
+# To Do: Test error_type attribute / use Phoneme class
 # To Do: Add syllable constituency, absolute char indexes
 # To Do: Handle input of a raw transcription string with alignment key
 class Segment:
@@ -708,9 +709,10 @@ class Segment:
         r (Record): The Record object associated with this segment. Should match align_indexes.
     """
 
-    def __init__(self, input:list, index:int, r:Record): # index is redundant if unerrored.
+    def __init__(self, input:list, position:int, group_i:int, r:Record): # index is redundant if unerrored.
         self.record = r  # parent record
-        self.position = index  # position of segment in list of segments
+        self.group_index = group_i
+        self.position = position  # position of segment in list of segments
         self.model = input[0][0]  # model/target segment string
         self.actual = input[0][1]  # actual segment string
         self.model_align_index = input[1][0]  # model/target "phomap" align index
@@ -746,15 +748,23 @@ class Segment:
     def __str__(self):
         return f"{self.model}<->{self.actual}"
 
-    def get_original_index(self):
+    def get_original_index(self, set_transcription_attrib=True):
         # This is an inherently inefficient method since it creates a Transcription object
-        # for the entire record and saves only the calling segment.
-
-        # Use the containing record to perform Transcription.
-        transcription = Transcription(r)
-
+        # for the entire record and saves only the calling segment. 
+        if set_transcription_attrib:
+            transcription = Transcription(r)
+            self.transcription = Transcription(r)  # set transcription attribute
+        else:
+            transcription = Transcription(r)
         # Get the segment in question. Assign to self.
+        self.position
+        transcription.aligned_segments
 
+
+    
+
+
+    # def change_alignment():
 
     def replace(self, replacement:str, form:str):
         """
@@ -844,7 +854,7 @@ class Transcription:
         self.orthography = r.orthography
         self.segment = r.segment
         self.notes = r.notes
-        self.aligned_segments = [[Segment(phone, i, self.record) for i, phone in enumerate(group)] for group in self.t_segs]
+        self.aligned_segments = [[Segment(phone, position, group_i, self.record) for position, phone in enumerate(group)] for group_i, group in enumerate(self.t_segs)]
         
         for tier in self.t_orig:
             # Model Tier
