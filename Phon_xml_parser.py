@@ -227,7 +227,7 @@ class Record:
         get_record_num: Return the record number associated with the current session ID.
         check_record: Check the contents of the record for properties that may indicate errors.
     """
-    
+
     # To Do: Complete try/except handling when an element is empty or not present in the record.
     def __init__(self, element, root):
         self.element = element
@@ -461,6 +461,10 @@ class Record:
     
 
     def get_transcriptions(self):
+        """
+        Return a Transcription object.
+        This method incorporates extract_transcriptions() generating Transcription object.
+        """
         return Transcription(self)
     
     def get_blind_transcriptions(self):
@@ -679,7 +683,8 @@ class Record:
                         if s.model==original:
                             s = s.replace(replacement, form)
         return t
-
+# To Do: Incorporate Phoneme class from other scripts
+# To Do: Test error_type attribute
 # To Do: Add syllable constituency, absolute char indexes
 # To Do: Handle input of a raw transcription string with alignment key
 class Segment:
@@ -704,15 +709,52 @@ class Segment:
     """
 
     def __init__(self, input:list, index:int, r:Record): # index is redundant if unerrored.
-        self.position = index
-        self.model = input[0][0]
-        self.actual = input[0][1]
-        self.model_align_index = input[1][0]
-        self.target_align_index = input[1][1]
+        self.record = r  # parent record
+        self.position = index  # position of segment in list of segments
+        self.model = input[0][0]  # model/target segment string
+        self.actual = input[0][1]  # actual segment string
+        self.model_align_index = input[1][0]  # model/target "phomap" align index
+        self.actual_align_index = input[1][1]  # actual "phomap" align index
+        self.model_original_index = None  # model/target original string index
+        self.actual_original_index = None  # actual original string index
+        # instantiate coarse error_type attribute
+        if self.actual == self.model:
+            self.error_type = "accurate"
+        elif self.actual is not self.model:
+            self.error_type = "substitution"
+        elif self.actual == " ":
+            self.error_type = "deletion"
+        elif self.model == " ":
+            self.error_type = "insertion"
+        else:
+            raise Exception  # Unknown error_type
+
+        # Debugging
+        # if self.model_align_index > -1 and self.actual_align_index > -1:
+        #     # assert self.position == self.actual_align_index == self.model_align_index, "Alignment error"
+        #     pass
+        # if self.model_align_index == -1:
+        #     assert self.position == self.actual_align_index, "Alignment error"
+        # elif self.actual_align_index == -1:
+        #     assert self.position == self.model_align_index, "Alignment error"
 
     # Len returns number of characters in segment
     def __len__(self):
         return len(self.actual)
+    
+    # Print returns model and actual strings
+    def __str__(self):
+        return f"{self.model}<->{self.actual}"
+
+    def get_original_index(self):
+        # This is an inherently inefficient method since it creates a Transcription object
+        # for the entire record and saves only the calling segment.
+
+        # Use the containing record to perform Transcription.
+        transcription = Transcription(r)
+
+        # Get the segment in question. Assign to self.
+
 
     def replace(self, replacement:str, form:str):
         """
@@ -742,7 +784,8 @@ class TranscriptionGroup:
     """
         Represent a single transcription tier group contents.
 
-        This class is used by the Transcription class.
+        This class organizes output directly from Record.get_transcription()[2]. T
+        his class is used by the Transcription class.
 
         Attributes:
             id (int): The ID of the parent record.
@@ -824,7 +867,8 @@ class Transcription:
         Each group contains a dictionary with "actual" and "model" keys, where the values
         are lists of indexed characters. Each indexed character is represented as a list
         containing a phone segment string and a dictionary with "original_index" and
-        "alignment_index" keys.
+        "alignment_index" keys for mapping segments to the original transcription
+        string.
 
         Returns:
             list: A list of groups, each containing indexed characters for both tiers.
