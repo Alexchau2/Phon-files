@@ -1,5 +1,13 @@
 """Classes for parsing Phon XML session files."""
 
+"""
+To Do: Create a class for the aligned_segments attribute of the Transcription class
+    Some things: represents a matrix of the alignment for the entire transcription.
+    Could also just be a function of Transcription or Record.
+
+To Do: Use the aligned_segments of the Transcription object to edit the record.
+"""
+
 import os
 import re
 import xml.etree.ElementTree as ET
@@ -219,7 +227,7 @@ class Record:
         get_record_num: Return the record number associated with the current session ID.
         check_record: Check the contents of the record for properties that may indicate errors.
     """
-
+    
     # To Do: Complete try/except handling when an element is empty or not present in the record.
     def __init__(self, element, root):
         self.element = element
@@ -271,9 +279,14 @@ class Record:
     
     
     # To Do: Export consistent dictionary format every time, even with empty tiers
-    def get_transcription(self, zip_tiers=True) :
+    def extract_transcriptions(self, zip_tiers=True):
         """
         Get the aligned transcriptions for the record.
+
+        Args:
+            zip_tiers (bool): When output_class is False, zip aligned tiers. Default is True
+            output_class(bool): Return Transcription class object. Default is True.
+
 
         Returns:
             aligned_transcriptions: dict[str,list[list[list[str | int]]]]
@@ -423,7 +436,7 @@ class Record:
 
         try:
             aligned_transcriptions = align_transcriptions(self, char_indexes)
-        except KeyError as error:
+        except KeyError as error:  # Omit aligned_transcriptions if missing tiers
             print("***************************")
             print(f"{self.root.corpus}>{self.root.id}>{self.record_num}")  # {self.get_record_num()}
             print(char_indexes)
@@ -433,7 +446,7 @@ class Record:
             )
             
             return [char_indexes, embedded_indices]
-        except IndexError as error:
+        except IndexError as error:  # Omit aligned_transcriptions if missing tiers
             print("***************************")
             print(f"{self.root.corpus}>{self.root.id}>{self.record_num}")  # {self.get_record_num()}
             print(char_indexes)
@@ -442,9 +455,14 @@ class Record:
                 "\tError aligning tier data. No aligned transcriptions extracted."
             )
             return [char_indexes, embedded_indices]
+        
+
         return [aligned_transcriptions, char_indexes, embedded_indices]
     
 
+    def get_transcriptions(self):
+        return Transcription(self)
+    
     def get_blind_transcriptions(self):
         """
         Return blind transcriptions for different transcribers in a nested dictionary.
@@ -535,7 +553,7 @@ class Record:
                       'actual_present', 
                       'alignment_present']
         check_dict = {}
-        t = self.get_transcription(zip_tiers=False)[0]
+        t = self.extract_transcriptions(zip_tiers=False)[0]
         
         check_dict['not_excluded'] = not self.exclude_from_searches
 
@@ -644,8 +662,8 @@ class Record:
 
         return check_dict
     
-    # Woring on this. Not sure if funciton can be within the "Record" class because it
-    # calls on the Segment and Transcription classes
+    # Working on this. Not sure if funciton can be within the "Record" class because it
+    # calls on the Segment and Transcription classes. I think that's fine.
 
     def edit_record(self, replace_type:str, form:str, replacement:str, original:str=None, group:int=0, position:int=-2):
         t = Transcription(self)
@@ -722,7 +740,9 @@ class Segment:
 # Diacritic_fixer
 class TranscriptionGroup:
     """
-        Represent a transcription tier group contents
+        Represent a single transcription tier group contents.
+
+        This class is used by the Transcription class.
 
         Attributes:
             id (int): The ID of the parent record.
@@ -774,7 +794,7 @@ class Transcription:
 
     def __init__(self, r:Record):
         self.record = r
-        self.t = r.get_transcription()
+        self.t = r.extract_transcriptions()
         self.t_segs = self.t[0]  # Zipped and Split Aligned Segments
         self.t_tiers = self.t[1]  # Character Alignment Indexes (by Tier/form)
         self.t_orig = self.t[2]  # Transcription strings with original character indexes
@@ -1057,7 +1077,7 @@ if __name__ == "__main__":
     r_list = s.records
     r = Record(r_list[0], s.root)
     # records = s.get_records(exclude_records=True)
-    t = r.get_transcription()
+    t = r.extract_transcriptions()
     transcription = Transcription(r)
     seg = transcription.aligned_segments[0][0]
     seg2 = transcription.aligned_segments[0][1]
