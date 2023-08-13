@@ -5,7 +5,13 @@ To Do: Create a class for the aligned_segments attribute of the Transcription cl
     Some things: represents a matrix of the alignment for the entire transcription.
     Could also just be a function of Transcription or Record.
 
-To Do: Use the aligned_segments of the Transcription object to edit the record.
+
+To Do: Incroporate Segment and Transcription classes throughout. Incorporate original and aligned indexes in Segment
+To Do: Use the aligned_segments and indexes of the Transcription object to edit the record.
+
+To Do: Add checking for presence of alignments in "session_check"
+To Do: Add creation of error/info log
+
 """
 
 import os
@@ -47,8 +53,12 @@ class Session:
     def __init__(self, source):
         self.ns = {"": "http://phon.ling.mun.ca/ns/phonbank"}
         if isinstance(source, str):  # If data is a filepath
-            self.tree = ET.parse(source)
-            self.root = self.tree.getroot()
+            try:
+                self.tree = ET.parse(source)
+                self.root = self.tree.getroot()
+            except ET.ParseError:
+                # print("Session source path must be a valid XML")
+                raise Exception("Session source path must be a valid XML.")
         elif isinstance(source, ET.Element):  # If data is an element
             self.tree = ET.ElementTree(source)
             self.root = source
@@ -253,10 +263,13 @@ class Record:
         self.record_num = self.root.labelled_records[self.id]
         self.exclude_from_searches = True if element.get("excludeFromSearches").lower() == "true" else False
         s = element.find(".//segment", ns)
-        self.segment = {"start":s.get("startTime"), 
-                        "duration":s.get("duration"), 
-                        "unit":s.get("unitType")
-        }
+        try:
+            self.segment = {"start":s.get("startTime"), 
+                            "duration":s.get("duration"), 
+                            "unit":s.get("unitType")
+            }
+        except AttributeError:
+            self.segment=None
         self.flat_tiers = {
             tier.get("tierName"): tier.text for tier in element.findall("flatTier", ns)
         }     
@@ -445,7 +458,7 @@ class Record:
                 "\tIncomplete or missing tier data. No aligned transcriptions extracted."
             )
             
-            return [char_indexes, embedded_indices]
+            return [None, char_indexes, embedded_indices]
         except IndexError as error:  # Omit aligned_transcriptions if missing tiers
             print("***************************")
             print(f"{self.root.corpus}>{self.root.id}>{self.record_num}")  # {self.get_record_num()}
@@ -454,7 +467,7 @@ class Record:
             print(
                 "\tError aligning tier data. No aligned transcriptions extracted."
             )
-            return [char_indexes, embedded_indices]
+            return [None, char_indexes, embedded_indices]
         
 
         return [aligned_transcriptions, char_indexes, embedded_indices]
@@ -711,7 +724,7 @@ class Segment:
 
     def __init__(self, input:list, position:int, group_i:int, r:Record): # index is redundant if unerrored.
         self.record = r  # parent record
-        self.group_index = group_i
+        self.group_index = group_i  # group index
         self.position = position  # position of segment in list of segments
         self.model = input[0][0]  # model/target segment string
         self.actual = input[0][1]  # actual segment string
@@ -722,12 +735,12 @@ class Segment:
         # instantiate coarse error_type attribute
         if self.actual == self.model:
             self.error_type = "accurate"
-        elif self.actual is not self.model:
-            self.error_type = "substitution"
         elif self.actual == " ":
             self.error_type = "deletion"
         elif self.model == " ":
             self.error_type = "insertion"
+        elif self.actual is not self.model:
+            self.error_type = "substitution"
         else:
             raise Exception  # Unknown error_type
 
@@ -748,7 +761,7 @@ class Segment:
     def __str__(self):
         return f"{self.model}<->{self.actual}"
 
-    def get_original_index(self, set_transcription_attrib=True):
+    def get_original_index(self, set_transcription_attrib=True, set_original_index_attrib=True):
         # This is an inherently inefficient method since it creates a Transcription object
         # for the entire record and saves only the calling segment. 
         if set_transcription_attrib:
@@ -756,9 +769,31 @@ class Segment:
             self.transcription = Transcription(r)  # set transcription attribute
         else:
             transcription = Transcription(r)
-        # Get the segment in question. Assign to self.
-        self.position
-        transcription.aligned_segments
+
+        # To Do: Handle get_indexes currently has non segment characters (e.g., ˈ) in list.
+            # These need to be skipped or not included in the original output.
+        for tier in ["actual", "model"]:
+            seg = transcription.get_indexes()[self.group_index][tier][self.position]
+            if tier == "actual":
+                # Alignment index should match unless seg[1]['alignment_index'] == 1
+                assert seg[1]['alignment_index'] == self.actual_align_index  or seg[1]['alignment_index'] is None, "Alignment error"  # Debugging
+                if set_original_index_attrib:
+                    actual_original_index = seg[1]['original_index']
+                    self.actual_original_index = seg[1]['original_index']  # Assign original index to attribute
+                else:
+                    actual_original_index = seg[1]['original_index']
+            elif tier == "model":
+                # Alignment index should match unless seg[1]['alignment_index'] == 1
+                assert seg[1]['alignment_index'] == self.model_align_index or seg[1]['alignment_index'] is None, "Alignment error"  # Debugging
+                if set_original_index_attrib:
+                    model_original_index = seg[1]['original_index']
+                    self.model_original_index = seg[1]['original_index']  # Assign original index to attribute 
+                else:
+                    model_original_index = seg[1]['original_index']
+        return [model_original_index, actual_original_index]
+
+
+
 
 
     
@@ -844,7 +879,7 @@ class Transcription:
     Parameters:
         r (Record): a Record object. Created with Record().
     """
-
+    # Handle when missing tiers
     def __init__(self, r:Record):
         self.record = r
         self.t = r.extract_transcriptions()
@@ -854,8 +889,10 @@ class Transcription:
         self.orthography = r.orthography
         self.segment = r.segment
         self.notes = r.notes
-        self.aligned_segments = [[Segment(phone, position, group_i, self.record) for position, phone in enumerate(group)] for group_i, group in enumerate(self.t_segs)]
-        
+        try:
+            self.aligned_segments = [[Segment(phone, position, group_i, self.record) for position, phone in enumerate(group)] for group_i, group in enumerate(self.t_segs)]
+        except TypeError:
+            self.aligned_segments = None
         for tier in self.t_orig:
             # Model Tier
             if tier == "model":
@@ -868,9 +905,10 @@ class Transcription:
                 for group in self.t_orig[tier]:
                     self.actual.append(TranscriptionGroup(group))
 
-
+    # Check that this deals appropriately with " " (used for omission and word space)
+    # Check that this works when tiers missing.
     # Match segments with alignment and character indexess
-    def get_indexes(self):
+    def get_indexes(self, segments_only=False):
         """
         Return a list of groups with indexed characters for "actual" and "model" tiers.
 
@@ -884,6 +922,14 @@ class Transcription:
             list: A list of groups, each containing indexed characters for both tiers.
         """
         groups = []  # Create a list to store groups
+        try:
+            self.t_orig['model']
+            self.t_orig['actual']
+        except KeyError:
+            return [{"actual":[""], "model":[""]}]
+            raise Exception("Unable to get indexes for records with missing tiers.")
+        
+
         for form in ["actual", "model"]:
             for g_i, group in enumerate(self.t_orig[form]):
                 # Get original string for each group in the tier
@@ -892,6 +938,13 @@ class Transcription:
                 o_split = [c for c in o]
                 # Get original character indexes for each group in the tier
                 o_is = group["indices"]
+
+                # No output when alignment is missing
+                if len(o_is)==0:
+                    print("Alignment missing for this tier")
+                    return groups
+                    # raise Exception("Alignment missing for this tier")  # Debugging
+
                 # Get split list of aligned segments for each group
                 a_split = self.t_segs
                 # Use form for indexing
@@ -912,14 +965,22 @@ class Transcription:
                     o_i = o_is[o_i_c]  # original segment index(es)
                     a_seg = a_split[g_i][a_c][0][f]  # aligned segment string
                     a_i = a_split[g_i][a_c][1][f] # aligned segment index
-                    if o_char == a_seg and isinstance(o_i, int):  # If match and single index
+
+                    # Append an extra item for deletions and insertions. 
+                    if a_i == -1:  # deletion (actual) or insertion (model)
+                        assert a_seg == " "  # Debugging
+                        indexed_chars.append([" ", {"original_index":o_i, "alignment_index":a_i}])
+                        a_c += 1
+                        # Re-extract variables due to counter update
+                        a_seg = a_split[g_i][a_c][0][f]  # aligned segment string
+                        a_i = a_split[g_i][a_c][1][f] # aligned segment index
+                    if o_char != " " and o_char == a_seg and isinstance(o_i, int):  # If match and single index
                         # indexed_char = [o_char, o_i, a_i]  # Debugging
                         # indexed_chars.append(indexed_char)  # Debugging
                         indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":a_i}])
                         o_c += 1  # Advance in original and align lists
                         o_i_c += 1
                         a_c += 1
-                        pass
                     elif o_char != a_seg and isinstance(o_i, list): # If not match and multi index
                         # Match with multi-index
                         span = len(o_i)
@@ -932,14 +993,19 @@ class Transcription:
                         # o_c += 1  # Advance in original and align lists
                         o_c += 1
                         o_i_c += 1
-                        a_c += 1
-                        pass
-                    elif o_char != a_seg and isinstance(o_i, int):
+                        a_c += 1                 
+                    # Non-segment characters to skip. Check that nothing else applies here.
+                    elif o_char != a_seg and isinstance(o_i, int):  # If not match and single index
                         # Nonmatch
                         indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":None}])
                         o_c += 1  # Advance only in original list
                         o_i_c += 1
-                        pass
+                    # Does this condition ever get accessed?
+                    elif o_char == a_seg == " ":  # If o_char is a space and matches an insertion
+                        indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":None}])
+                        indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":a_i}])
+                        o_c += 1  # Advance only in original list
+                        o_i_c += 1
                 # Instantiate empty dictionary for each group
                 try:
                     groups[g_i]
@@ -1127,15 +1193,16 @@ if __name__ == "__main__":
     test_path = r"C:\Users\Philip\Documents\github\Phon-files\XML Files\1007_PKP_PKP Pre.xml"
     test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files/1007_PKP_PKP Pre.xml"
     test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/groups-words/C401_words.xml"
+
     s = Session(test_path)
     r_list = s.records
     r = Record(r_list[0], s.root)
     # records = s.get_records(exclude_records=True)
-    t = r.extract_transcriptions()
-    transcription = Transcription(r)
-    seg = transcription.aligned_segments[0][0]
-    seg2 = transcription.aligned_segments[0][1]
-    seg5 = transcription.aligned_segments[0][4]
+    t1 = r.extract_transcriptions()
+    t2 = Transcription(r)
+    seg1 = t2.aligned_segments[0][0]
+    # seg2 = t2.aligned_segments[0][1]
+    # seg5 = t2.aligned_segments[0][4]
     # Test 5: Write to file
 
     # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files/2275_PKP_PKP Pre.xml"
@@ -1144,9 +1211,12 @@ if __name__ == "__main__":
     # r = rs[0][2]
     # t = r.get_transcription()
     # write_xml_to_file(s.tree, "output_file_A.xml")
-
-    r_test = s.get_records(simple_return=True)
-    test_list = [Transcription(r).get_indexes() for r in r_test]
-    x = transcription.get_indexes()
-
+    result = []
+    for file in os.listdir("XML Files"):
+        if file.endswith(".xml"):
+            s = Session(os.path.join("XML Files", file))
+            r_test = s.get_records(simple_return=True)
+            test_list = [Transcription(r).get_indexes() for r in r_test]
+            result.append(test_list)
+            pass
     pass
