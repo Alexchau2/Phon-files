@@ -5,14 +5,14 @@ To Do: Create a class for the aligned_segments attribute of the Transcription cl
     Some things: represents a matrix of the alignment for the entire transcription.
     Could also just be a function of Transcription or Record.
 
-
-To Do: Incroporate Segment and Transcription classes throughout. Incorporate original and aligned indexes in Segment
+To Do: Replace the char segment with a Segment object and zip that with the original and align indexes
+To Do: Incorporate original and aligned indexes in Segment.
 To Do: Use the aligned_segments and indexes of the Transcription object to edit the record.
 
 To Do: Use phoneme class from Phon
 
 To Do: Add checking for presence of alignments in "session_check"
-To Do: Add creation of error/info log
+To Do: Add verbose logging of steps
 
 """
 
@@ -37,28 +37,29 @@ ns = {"": "http://phon.ling.mun.ca/ns/phonbank"} # Define namespace dictionary
 
 class Session:
     """
-    Class representing a single Phon session XML.
+    Represents a single Phon session XML.
 
     Attributes:
-        source (str or xml.etree.Element): The source data, either a file path or an XML Element.
-        ns (dict): Fixed namespace dictionary for XML element search.
-        tree (xml.etree.ElementTree.ElementTree): The XML ElementTree object.
-        root (xml.etree.ElementTree.Element): The root element of the XML.
-        id (str): The session ID attribute.
-        corpus (str): The session corpus attribute.
-        version (str): The session version attribute.
-        date (str): The date extracted from the header element of the session.
-        transcribers (list): List of transcriber elements in the session.
-        participants (list): List of participant elements in the session.
-        records (list): List of records (XML Element)
-        labelled_records (dict): Dictionary {record id (str): record number (int)}
-    Functions: 
-        get_tier_list : Return list of tiers in the session.
-        get_transcribers : Return list of strings for transcriber usernames.
-        get_records : Return list of Record objects from session Element with ids and numbering.
-        check_session : Check each session record with check_record() and create a DataFrame with the results.
-    """
+        source (str or xml.etree.Element): Source data (file path or XML Element).
+        ns (dict): Namespace dictionary for XML element search.
+        tree (xml.etree.ElementTree.ElementTree): XML ElementTree object.
+        root (xml.etree.ElementTree.Element): Root element of the XML.
+        id (str): Session ID attribute.
+        corpus (str): Session corpus attribute.
+        version (str): Session version attribute.
+        date (str): Date extracted from the header element.
+        transcribers (list): List of transcriber elements.
+        participants (list): List of participant elements.
+        records (list): List of record XML Elements.
+        labelled_records (dict): Dictionary {record id (str): record number (int)}.
 
+    Methods: 
+        get_tier_list(include="all") -> dict: Return list of tiers in the session.
+        get_transcribers() -> list: Return list of strings for transcriber usernames.
+        get_records(exclude_records=True, simple_return=False, element_format=False) -> list: Return list of Record objects.
+        check_session(to_csv=False) -> pd.DataFrame: Check session records and create a DataFrame with results.
+
+    """
     def __init__(self, source):
         self.ns = {"": "http://phon.ling.mun.ca/ns/phonbank"}
         if isinstance(source, str):  # If data is a filepath
@@ -228,22 +229,24 @@ class Record:
     Record class representing a single record/utterance from a Phon session.
 
     Attributes:
-        element (xml.etree.ElementTree.Element): The XML element representing the record.
-        root (Session): The parent Session object of the record.
-        speaker (str): The speaker attribute of the record element.
-        id (str): The ID attribute of the record element.
-        segment (dict): Dictionary keys for record segmentation: "start", "duration", "unit".
-        excludeFromSearches (str): The excludeFromSearches attribute of the record element.
+        element (ET.Element): XML element representing the record.
+        root (Session): Parent Session object of the record.
+        speaker (str): Speaker attribute of the record element.
+        id (str): ID attribute of the record element.
+        segment (dict): Dictionary containing record segmentation information: "start", "duration", "unit".
+        exclude_from_searches (bool): Whether the record is excluded from searches.
         orthography (list of list of str): Embedded list of orthography words within groups.
-        flat_tiers (dict): A dictionary of tier names and their corresponding text content.
-        model_ipa_tier (xml.etree.ElementTree.Element): The IPA tier with 'model' form.
-        actual_ipa_tier (xml.etree.ElementTree.Element): The IPA tier with 'actual' form.
-        blind_transcriptions (list): List of blind transcription elements
-        alignment_tier (xml.etree.ElementTree.Element): The alignment tier with 'segmental' type.
+        flat_tiers (dict): Dictionary of tier names and their corresponding text content.
+        model_ipa_tier (ET.Element): IPA tier with 'model' form.
+        actual_ipa_tier (ET.Element): IPA tier with 'actual' form.
+        blind_transcriptions (list): List of blind transcription elements.
+        alignment_tier (ET.Element): Alignment tier with 'segmental' type.
+        transcription (Transcription): Return of get_transcriptions()
         
-    Functions
-        get_transcriptions: Return the aligned transcriptions for the record (dictionary).
-        get_blind_transcriptisourceons: Return blind transcriptions for different transcribers in a nested dictionary.
+    Methods:
+        extract_transcriptions: Return dict of aligned transcriptions for the record.
+        get_transcriptions: Return Transcription object for the record.
+        get_blind_transcriptions: Return blind transcriptions for different transcribers in a nested dictionary.
         get_record_num: Return the record number associated with the current session ID.
         check_record: Check the contents of the record for properties that may indicate errors.
     """
@@ -265,36 +268,37 @@ class Record:
             raise ValueError(
                 "Input must be either a filepath or an XML Element object."
             )
-        self.root = Session(root)
-        self.root_element = root
-        self.session_id = root.get("id") + ", " + root.get("corpus")
-        self.speaker = element.get("speaker")
-        self.id = element.get("id")
-        self.record_num = self.root.labelled_records[self.id]
-        self.exclude_from_searches = True if element.get("excludeFromSearches").lower() == "true" else False
+        self.root:Session = Session(root)
+        self.root_element:ET.Element = root
+        self.session_id:str = root.get("id") + ", " + root.get("corpus")
+        self.speaker:str = element.get("speaker")
+        self.id:str = element.get("id")
+        self.record_num:int = self.root.labelled_records[self.id]
+        self.exclude_from_searches:bool = True if element.get("excludeFromSearches").lower() == "true" else False
         s = element.find(".//segment", ns)
         try:
-            self.segment = {"start":s.get("startTime"), 
+            self.segment:dict = {"start":s.get("startTime"), 
                             "duration":s.get("duration"), 
                             "unit":s.get("unitType")
             }
         except AttributeError:
-            self.segment=None
+            self.segment = None
         self.flat_tiers = {
             tier.get("tierName"): tier.text for tier in element.findall("flatTier", ns)
         }     
         try:
-            self.notes = element.find(".//notes", ns).text
+            self.notes:str = element.find(".//notes", ns).text
         except AttributeError:
             self.notes=None
         try:
-            self.orthography = [[w.text for w in g.findall(".//w", ns)] for g in element.findall("orthography/g", ns)]
+            self.orthography:test_list = [[w.text for w in g.findall(".//w", ns)] for g in element.findall("orthography/g", ns)]
         except AttributeError:
             self.orthography=None
-        self.model_ipa_tier = self.element.find(".//ipaTier[@form='model']", ns)
-        self.actual_ipa_tier = self.element.find(".//ipaTier[@form='actual']", ns)
-        self.blind_transcriptions = self.element.findall(".//blindTranscription", ns)
-        self.alignment_tier = self.element.find(".//alignment[@type='segmental']", ns)
+        self.model_ipa_tier:ET.Element = self.element.find(".//ipaTier[@form='model']", ns)
+        self.actual_ipa_tier:ET.Element = self.element.find(".//ipaTier[@form='actual']", ns)
+        self.blind_transcriptions:list[ET.Element] = self.element.findall(".//blindTranscription", ns)
+        self.alignment_tier:ET.Element = self.element.find(".//alignment[@type='segmental']", ns)
+        self.transcriptions = Transcription(self)
 
     # Len returns number of segments
     def __len__(self):
@@ -471,7 +475,7 @@ class Record:
     def get_transcriptions(self):
         """
         Return a Transcription object.
-        This method incorporates extract_transcriptions() generating Transcription object.
+        This method incorporates extract_transcriptions() when generating Transcription object.
         """
         return Transcription(self)
     
@@ -700,23 +704,29 @@ class Record:
 # To Do: Handle input of a raw transcription string with alignment key
 class Segment:
     """
-    Represent an aligned actual and target/model segment
+    Represents an aligned actual and target/model segment.
 
     This class is used to store information about a segment, including its position
     within the group, aligned model and actual segment, and associated indexes.
 
     Attributes:
-        position (int): The position of the segment within the transcription group.
+        record (Record): The parent Record object.
+        group_index (int): The prosodic group index within the record.
+        position (int): The position of the segment within the list of segments in the group.
         model (str): The model transcription of the segment.
         actual (str): The actual transcription of the segment.
         model_align_index (int): The index of the segment in the model tier.
-        target_align_index (int): The index of the segment in the target tier.
+        actual_align_index (int): The index of the segment in the actual tier.
+        model_original_index (int): The original index in the model transcription.
+        actual_original_index (int): The original index in the actual transcription.
+        error_type (str): The type of error, such as "accurate", "deletion", "insertion", or "substitution".
 
     Parameters:
         input (list): A list containing two sub-lists, where the first sub-list contains model and actual segments,
                         and the second sub-list contains segment alignment indices.
-        index (int): The position of the segment within the prosodic group.
-        r (Record): The Record object associated with this segment. Should match align_indexes.
+        position (int): The position of the segment within the prosodic group.
+        group_i (int): The group index of the parent prosodic group.
+        r (Record): Parent Record object associated with this segment.
     """
 
     def __init__(self, input:list, position:int, group_i:int, r:Record): # index is redundant if unerrored.
@@ -789,13 +799,6 @@ class Segment:
                     model_original_index = seg[1]['original_index']
         return [model_original_index, actual_original_index]
 
-
-
-
-
-    
-
-
     # def change_alignment():
 
     def replace(self, replacement:str, form:str):
@@ -822,28 +825,30 @@ class Segment:
 
 # Represent transcription of a single prosodic group as string with indices fixed from
 # Diacritic_fixer
+# To Do: Create get_indexes function for a TranscriptionGroup (currently only for Transcription)
 class TranscriptionGroup:
     """
-        Represent a single transcription tier group contents.
+    Represents the contents of a single transcription tier prosodic group.
 
-        This class organizes output directly from Record.get_transcription()[2]. T
-        his class is used by the Transcription class.
+    This class organizes output directly from `Record.get_transcriptions()[2]`.
+    This class is used by the `Transcription` class.
 
-        Attributes:
-            id (int): The ID of the parent record.
-            form (str): The tier/form, of ["actual", "model"].
-            group_index (int): The index for the prosodic group in the record.
-            transcription (str): The transcription string.
-            indexes (list): The list of embedded character indices.
+    Attributes:
+        id (int): ID of the parent record.
+        form (str): Tier/form, either "actual" or "model".
+        group_index (int): Index for the prosodic group in the record.
+        transcription (str): Transcription string extracted from Diacritic_fixer()
+        indexes (list): List of embedded character indices.
+        words (list): List of words extracted from the transcription string.
 
-        Parameters:
-            input (dict): A dictionary from get_transcription()[2].
-                The dictionary should have the following keys:
-                    - "id" (int): The ID of the parent record.
-                    - "tier" (str): The tier/form, of ["actual", "model"].
-                    - "pg" (int): The index for the prosodic group in the record.
-                    - "transcriptions" (str): The transcription string.
-                    - "indices" (list): The list of embedded character indices.
+    Parameters:
+        input (dict): A dictionary from `Record.get_transcriptions()[2]`.
+            The dictionary should have the following keys:
+                - "id" (int): ID of the parent record.
+                - "tier" (str): Tier/form, either "actual" or "model".
+                - "pg" (int): Index for the prosodic group in the record.
+                - "transcriptions" (str): Transcription string.
+                - "indices" (list): List of embedded character indices.
     """
 
     def __init__(self, input:dict):
@@ -861,18 +866,23 @@ class TranscriptionGroup:
 # Combines raw word group strings and aligned segment data
 class Transcription:
     """
-    Represent a complete transcription of a record.
+    Represents a complete transcription of a record.
 
     This class stores the transcription tiers and aligned segments for a record.
 
     Attributes:
         record (Record): The record object associated with this transcription.
-        aligned_groups (list of list of Segment): A 2D list of Segment objects representing aligned groups
+        segments (List[List[Segment]]): A 2D list of Segment objects representing aligned groups
             of phones in the transcription.
-        orthography (list of str): A list of groups from Orthography tier
-        model (list of TranscriptionGroup): A list of TranscriptionGroup objects representing the model tier.
-        actual (list of TranscriptionGroup): A list of TranscriptionGroup objects representing the actual tier.
-        segment (dict of str): Dictionary keys for record segmentation: "start", "duration", "unit".
+        indexes (List[List[Dict]]): A list of groups with indexed characters for "actual" and "model" tiers.
+        t (List): Raw output from extract_transcriptions()
+        t_segs (List): Zipped and split aligned segment characters. May be None if tier or alignment missing.
+        t_tiers (List): Character alignment indexes (by tier/form).
+        t_orig (List): Transcription strings with original character indexes.
+        orthography (List[str]): A list of groups from the Orthography tier.
+        model (List[TranscriptionGroup]): A list of TranscriptionGroup objects representing the model tier.
+        actual (List[TranscriptionGroup]): A list of TranscriptionGroup objects representing the actual tier.
+
     Parameters:
         r (Record): a Record object. Created with Record().
     """
@@ -884,12 +894,12 @@ class Transcription:
         self.t_tiers = self.t[1]  # Character Alignment Indexes (by Tier/form)
         self.t_orig = self.t[2]  # Transcription strings with original character indexes
         self.orthography = r.orthography
-        self.segment = r.segment
         self.notes = r.notes
+        self.indexes = self.get_indexes()
         try:
-            self.aligned_segments = [[Segment(phone, position, group_i, self.record) for position, phone in enumerate(group)] for group_i, group in enumerate(self.t_segs)]
+            self.segments = [[Segment(phone, position, group_i, self.record) for position, phone in enumerate(group)] for group_i, group in enumerate(self.t_segs)]
         except TypeError:
-            self.aligned_segments = None
+            self.segments = None
         for tier in self.t_orig:
             # Model Tier
             if tier == "model":
@@ -901,11 +911,12 @@ class Transcription:
                 self.actual = []
                 for group in self.t_orig[tier]:
                     self.actual.append(TranscriptionGroup(group))
+        
 
     # Check that this deals appropriately with " " (used for omission and word space)
     # Check that this works when tiers missing.
     # Match segments with alignment and character indexess
-    def get_indexes(self, segments_only=False):
+    def get_indexes(self, segments_only=False)->list[dict]:
         """
         Return a list of groups with indexed characters for "actual" and "model" tiers.
 
@@ -940,7 +951,7 @@ class Transcription:
 
                 # No output when alignment is missing
                 if len(o_is)==0:
-                    logging.warning(f"Alignment missing: {form}, {self.record.root.corpus}>{self.record.root.id}>{self.record.record_num},{self.record.id}")
+                    logging.error(f"Alignment missing. May indicate transcription error: {form}, {self.record.root.corpus}>{self.record.root.id}>{self.record.record_num},{self.record.id}")
                     print(f"Alignment missing for this {form} tier")
                     return groups
                     # raise Exception("Alignment missing for this tier")  # Debugging
@@ -1031,7 +1042,7 @@ class Transcription:
             list: A list containing all Segment objects without group boundaries.
         """
         flat_segments = []
-        for group_segments in self.aligned_segments:
+        for group_segments in self.segments:
             flat_segments += group_segments
         return flat_segments
     
@@ -1200,7 +1211,7 @@ if __name__ == "__main__":
     # records = s.get_records(exclude_records=True)
     t1 = r.extract_transcriptions()
     t2 = Transcription(r)
-    seg1 = t2.aligned_segments[0][0]
+    seg1 = t2.segments[0][0]
     # seg2 = t2.aligned_segments[0][1]
     # seg5 = t2.aligned_segments[0][4]
     # Test 5: Write to file
