@@ -9,11 +9,14 @@ To Do: Create a class for the aligned_segments attribute of the Transcription cl
 To Do: Incroporate Segment and Transcription classes throughout. Incorporate original and aligned indexes in Segment
 To Do: Use the aligned_segments and indexes of the Transcription object to edit the record.
 
+To Do: Use phoneme class from Phon
+
 To Do: Add checking for presence of alignments in "session_check"
 To Do: Add creation of error/info log
 
 """
 
+import logging
 import os
 import re
 import xml.etree.ElementTree as ET
@@ -22,6 +25,12 @@ from dataclasses import dataclass, field
 import pandas as pd
 
 from Diacritic_fixer import Diacritic_fixer
+
+logging.basicConfig(
+    filename="Phon_xml_parser.log",
+    level=logging.DEBUG,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 ET.register_namespace("","http://phon.ling.mun.ca/ns/phonbank") # Register namespace
 ns = {"": "http://phon.ling.mun.ca/ns/phonbank"} # Define namespace dictionary
@@ -58,6 +67,7 @@ class Session:
                 self.root = self.tree.getroot()
             except ET.ParseError:
                 # print("Session source path must be a valid XML")
+                logging.error(f"Session source path must be a valid XML: {source}")
                 raise Exception("Session source path must be a valid XML.")
         elif isinstance(source, ET.Element):  # If data is an element
             self.tree = ET.ElementTree(source)
@@ -291,7 +301,8 @@ class Record:
         return len(self.alignment_tier.findall(".//phomap", ns))
     
     
-    # To Do: Export consistent dictionary format every time, even with empty tiers
+    # To Do: Export consistent dictionary format every time, even with empty tiers.
+        # May be partially completed
     def extract_transcriptions(self, zip_tiers=True):
         """
         Get the aligned transcriptions for the record.
@@ -346,7 +357,7 @@ class Record:
                     pgs.append(alignments)
                 char_indexes[tier] = pgs
             except KeyError as error:
-                print(error, "tier missing or errored.")
+                logging.warning(f"Tier missing or errored: {self.root.corpus}>{self.root.id}>{self.record_num},{self.id}")
                 continue
         
         def align_transcriptions(self, char_indexes):
@@ -439,34 +450,18 @@ class Record:
                     ]
                     aligned_segments.append(group)
                 return aligned_segments
-
             # DEBUGGING
             # for i_g, group in enumerate(aligned_tiers["alignment"]):
             #     print("".join(aligned_model[i_g]))
             #     print("".join(aligned_actual[i_g]))
-
             return aligned_tiers
-
         try:
             aligned_transcriptions = align_transcriptions(self, char_indexes)
         except KeyError as error:  # Omit aligned_transcriptions if missing tiers
-            print("***************************")
-            print(f"{self.root.corpus}>{self.root.id}>{self.record_num}")  # {self.get_record_num()}
-            print(char_indexes)
-            print("\t",error)
-            print(
-                "\tIncomplete or missing tier data. No aligned transcriptions extracted."
-            )
-            
+            logging.warning(f"Tier missing or errored. No aligned transcriptions extracted: {self.root.corpus}>{self.root.id}>{self.record_num},{self.id}")
             return [None, char_indexes, embedded_indices]
         except IndexError as error:  # Omit aligned_transcriptions if missing tiers
-            print("***************************")
-            print(f"{self.root.corpus}>{self.root.id}>{self.record_num}")  # {self.get_record_num()}
-            print(char_indexes)
-            print("\t",error)
-            print(
-                "\tError aligning tier data. No aligned transcriptions extracted."
-            )
+            logging.warning(f"Error aligning tier data. No aligned transcriptions extracted: {self.root.corpus}>{self.root.id}>{self.record_num},{self.id}")
             return [None, char_indexes, embedded_indices]
         
 
@@ -610,9 +605,11 @@ class Record:
                     check_dict['equal_num_groups'] = True
                 else:
                     check_dict['equal_num_groups'] = False
+                    logging.warning(f"Unequal number of groups across tiers: {self.root.corpus}>{self.root.id}>{self.record_num},{self.id}")
                     print("Unequal number of groups across tiers.")
             except KeyError:
                 check_dict['equal_num_groups'] = False
+                logging.warning(f"A tier is empty: {self.root.corpus}>{self.root.id}>{self.record_num},{self.id}")
                 print("A tier is empty.")
             return
         
@@ -925,8 +922,10 @@ class Transcription:
         try:
             self.t_orig['model']
             self.t_orig['actual']
+        # Return list with empty dictionary(s) when missing tiers prevent indexing.
         except KeyError:
-            return [{"actual":[""], "model":[""]}]
+            logging.warning(f"Unable to get indexes for records with missing tiers: {self.record.root.corpus}>{self.record.root.id}>{self.record.record_num},{self.record.id}")
+            return [{"actual":[""], "model":[""]} for x in self.orthography]
             raise Exception("Unable to get indexes for records with missing tiers.")
         
 
@@ -941,7 +940,8 @@ class Transcription:
 
                 # No output when alignment is missing
                 if len(o_is)==0:
-                    print("Alignment missing for this tier")
+                    logging.warning(f"Alignment missing: {form}, {self.record.root.corpus}>{self.record.root.id}>{self.record.record_num},{self.record.id}")
+                    print(f"Alignment missing for this {form} tier")
                     return groups
                     # raise Exception("Alignment missing for this tier")  # Debugging
 
@@ -1011,7 +1011,6 @@ class Transcription:
                     groups[g_i]
                 except IndexError:
                     groups.append({})
-                    pass
                 groups[g_i][form] = indexed_chars 
         return groups
 
@@ -1113,6 +1112,7 @@ def write_xml_to_file(xml_tree:ET.ElementTree, output_file):
             xml_tree.write(file, encoding="utf-8", xml_declaration=True)  # Works without default_namespace
         print("XML tree successfully written to", output_file)
     except Exception as e:
+        logging.warning(f"Error writing XML tree to file: {output_file}, {e}")
         print("Error writing XML tree to file:", e)
 
 def check_sessions(directory, to_csv=True, ignore_autosave=True):
