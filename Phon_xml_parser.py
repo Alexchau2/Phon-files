@@ -1,10 +1,18 @@
 """Classes for parsing Phon XML session files."""
 
 """
+Next Steps:
+1. Merge Transcription.indexes across tiers with Transcription.segments to create revised Segment
+    objects with model, actual, align indexes, and original indexes
+2. Create an Alignment class to contain the Segments represented in the record along the align index. Must also print
+    a visual representation of the segment alignment
+3. incorporate Phon segment and/or phoneme class from other script
+4. Use the new Alignment class with the revised Segment class to work with edit_records()
+
+Other To Do:
 To Do: Create a class for the aligned_segments attribute of the Transcription class
     Some things: represents a matrix of the alignment for the entire transcription.
     Could also just be a function of Transcription or Record.
-
 To Do: Replace the char segment with a Segment object and zip that with the original and align indexes
 To Do: Incorporate original and aligned indexes in Segment.
 To Do: Use the aligned_segments and indexes of the Transcription object to edit the record.
@@ -895,11 +903,14 @@ class Transcription:
         self.t_orig = self.t[2]  # Transcription strings with original character indexes
         self.orthography = r.orthography
         self.notes = r.notes
-        self.indexes = self.get_indexes()
         try:
             self.segments = [[Segment(phone, position, group_i, self.record) for position, phone in enumerate(group)] for group_i, group in enumerate(self.t_segs)]
         except TypeError:
             self.segments = None
+        try:
+            self.indexes = self.get_indexes()
+        except TypeError:
+            self.indexes = None
         for tier in self.t_orig:
             # Model Tier
             if tier == "model":
@@ -928,6 +939,7 @@ class Transcription:
 
         Returns:
             list: A list of groups, each containing indexed characters for both tiers.
+            # Return keeps tiers separate as there is not 1:1 alignment between them
         """
         groups = []  # Create a list to store groups
         try:
@@ -938,8 +950,6 @@ class Transcription:
             logging.warning(f"Unable to get indexes for records with missing tiers: {self.record.root.corpus}>{self.record.root.id}>{self.record.record_num},{self.record.id}")
             return [{"actual":[""], "model":[""]} for x in self.orthography]
             raise Exception("Unable to get indexes for records with missing tiers.")
-        
-
         for form in ["actual", "model"]:
             for g_i, group in enumerate(self.t_orig[form]):
                 # Get original string for each group in the tier
@@ -1022,7 +1032,37 @@ class Transcription:
                     groups[g_i]
                 except IndexError:
                     groups.append({})
-                groups[g_i][form] = indexed_chars 
+                groups[g_i][form] = indexed_chars
+
+        def combine_segs_indexes(indexes:list, segments:list):
+            combined = []
+            for i, g in enumerate(indexes):
+                segs_dict = {'model':None, 'actual':None}
+                for form in ['model', 'actual']:
+                    segs = []
+                    for seg in g[form]:
+                        if seg[1]['alignment_index']==None:
+                            rev_seg = seg[:1] + [None] + seg[1:]
+                            segs.append(rev_seg)
+                        else:
+                            for segment in self.segments[i]:
+                                chars = getattr(segment, form)
+                                align_index = getattr(segment, f"{form}_align_index")
+                                if seg[1]['alignment_index']==align_index:
+                                    rev_seg = seg[:1] + [segment] + seg[1:]
+                                    segs.append(rev_seg)
+                                    continue
+                                else:
+                                    continue
+                    segs_dict[form] = segs
+                combined.append(segs_dict)
+            return combined
+
+        result = combine_segs_indexes(groups, self.segments)
+
+        return result
+
+        # Return keeps tiers separate as there is not 1:1 alignment between them
         return groups
 
     # Len returns number of groups
@@ -1076,6 +1116,87 @@ class Transcription:
         actual = record_ele.find(f".//ipaTier[@form='actual']", ns)
         return ""
 
+# Incorporates Segments with positional alignment
+class Alignment:
+    def __init__(self, transcription:Transcription):
+        self.indexes = transcription.indexes
+        self.model = transcription.model
+        self.actual = transcription.actual
+        self.orthography = transcription.orthography
+        self.notes = transcription.notes
+        self.segments = transcription.segments
+    
+    # To Do: Use these parallel DFs to create a new class representing each dimension of the transcription.
+    # What to do with the exisitng Segment class? Use this as helper and the user interacts with a different Phone class?
+    def get_alignment(self):
+        groups = []
+        for g, chars in enumerate(self.indexes):
+            parallel_dfs = []
+
+            # Get DataFrame with alignments aligned characters only
+            df_dict = {}
+            df_dict['Model Segment'] = [char[1].model for char in chars['model'] if isinstance(char[1], Segment) ]
+            df_dict['Actual Segment'] = [char[1].actual for char in chars['actual'] if isinstance(char[1], Segment)]
+            align_df = pd.DataFrame(df_dict)
+            align_df.index.name = "Position"
+            parallel_dfs.append(align_df)
+            print(align_df.T)
+
+            # Get parallel DataFrame with Segment objects
+            df_debug_dict = {}
+            df_debug_dict['Model Segment'] = [char[1] for char in chars['model'] if isinstance(char[1], Segment) ]
+            df_debug_dict['Actual Segment'] = [char[1] for char in chars['actual'] if isinstance(char[1], Segment)]
+            align_df = pd.DataFrame(df_debug_dict)
+            align_df.index.name = "Position"
+            parallel_dfs.append(align_df)
+
+            # Get parallel DataFrame with original indexes
+            df_original_dict = {}
+            df_original_dict['Model Segment'] = [char[2]['original_index'] for char in chars['model'] if isinstance(char[1], Segment) ]
+            df_original_dict['Actual Segment'] = [char[2]['original_index'] for char in chars['actual'] if isinstance(char[1], Segment)]
+            align_df = pd.DataFrame(df_original_dict)
+            align_df.index.name = "Position"
+            parallel_dfs.append(align_df)           
+
+            # Get parallel DataFrame with alignment indexes
+            df_align_dict = {}
+            df_align_dict['Model Segment'] = [char[2]['alignment_index'] for char in chars['model'] if isinstance(char[1], Segment) ]
+            df_align_dict['Actual Segment'] = [char[2]['alignment_index'] for char in chars['actual'] if isinstance(char[1], Segment)]
+            align_df = pd.DataFrame(df_align_dict)
+            align_df.index.name = "Position"
+            parallel_dfs.append(align_df)   
+
+            groups.append(parallel_dfs)       
+
+            # Get each tier's alignments with non-aligned characters. Not currently returned.
+            original_string_dict = {}
+            original_string_dict['Model Segment All'] = [char[1].model if isinstance(char[1], Segment) else None for char in chars['model']]
+            original_string_dict['Actual Segment All'] = [char[1].actual if isinstance(char[1], Segment) else None for char in chars['actual']]
+
+        return groups # [seg chars, Segment objects, original indexes, align indexes]
+
+    # An Option
+    
+        
+
+
+    # AN OPTION
+    # when sending back to XML
+    # determine what is changed (i.e., position of actual in alignment, a segment transcription)
+    # Get the segment in question. Change the segment attributes.
+    # look up the segment in the self.indexes.
+        # Index the group and the tier
+        # How to get position? may be a problem with multiple same segments
+
+
+    # def get_alignment(self):
+        # Create skeleton a matrix for alignment
+        # 4 x len(indexes when 'alignment_index' is not None)
+        # Row 1: Model
+        # Row 2: Actual
+        # Row 3: [model_ai, actual_ai]  # For checking and debugging
+        # Row 4: [model_oi, actual_oi]  # For sending back to XML 
+    
 
 def get_element_contents(element: ET.Element) -> dict:
     """
@@ -1208,12 +1329,18 @@ if __name__ == "__main__":
     s = Session(test_path)
     r_list = s.records
     r = Record(r_list[0], s.root)
-    # records = s.get_records(exclude_records=True)
-    t1 = r.extract_transcriptions()
-    t2 = Transcription(r)
-    seg1 = t2.segments[0][0]
-    # seg2 = t2.aligned_segments[0][1]
-    # seg5 = t2.aligned_segments[0][4]
+    t_raw = r.extract_transcriptions()
+    t = Transcription(r)
+    segs = t.segments[0]
+    seg = t.segments[0][0]
+    indexes = t.indexes[0]
+    indexes_a = t.indexes[0]['actual']
+    indexes_m = t.indexes[0]['model']
+    index_a = t.indexes[0]['actual'][0]
+    index_m = t.indexes[0]['model'][0]
+    alignment = Alignment(t)
+    resultado = alignment.get_alignment()
+    pass
     # Test 5: Write to file
 
     # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files/2275_PKP_PKP Pre.xml"
@@ -1222,12 +1349,14 @@ if __name__ == "__main__":
     # r = rs[0][2]
     # t = r.get_transcription()
     # write_xml_to_file(s.tree, "output_file_A.xml")
-    result = []
-    for file in os.listdir("XML Files"):
-        if file.endswith(".xml"):
-            s = Session(os.path.join("XML Files", file))
-            r_test = s.get_records(simple_return=True)
-            test_list = [Transcription(r).get_indexes() for r in r_test]
-            result.append(test_list)
-            pass
-    pass
+    
+    # Test all files
+    # result = []
+    # for file in os.listdir("XML Files"):
+    #     if file.endswith(".xml"):
+    #         s = Session(os.path.join("XML Files", file))
+    #         r_test = s.get_records(simple_return=True)
+    #         test_list = [Transcription(r).get_indexes() for r in r_test]
+    #         result.append(test_list)
+    #         pass
+    # pass
