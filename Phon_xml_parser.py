@@ -1,5 +1,7 @@
 """Classes for parsing Phon XML session files."""
 
+# Updated on 2023-12-30
+
 """
 Next Steps:
 1. Merge Transcription.indexes across tiers with Transcription.segments to create revised Segment
@@ -1295,7 +1297,7 @@ def check_sessions(directory, to_csv=True, ignore_autosave=True):
     return file_list
 
 
-# Test
+# Testing
 if __name__ == "__main__":
 
     # Test 1: Single tutorial session. First record.
@@ -1341,6 +1343,8 @@ if __name__ == "__main__":
     alignment = Alignment(t)
     resultado = alignment.get_alignment()
     pass
+
+
     # Test 5: Write to file
 
     # test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files/2275_PKP_PKP Pre.xml"
