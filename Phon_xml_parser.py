@@ -581,8 +581,6 @@ class Record:
                       'actual_present', 
                       'alignment_present']
         check_dict = {}
-        # t = aligned_transcriptions
-        t = self.extract_transcriptions(zip_tiers=False)[0]
         
         check_dict['not_excluded'] = not self.exclude_from_searches
 
@@ -602,33 +600,27 @@ class Record:
             tiers. If they are equal, the 'equal_num_groups' key in `check_dict` is set to True. If not, it is set to
             False, and an error message is printed.
             """
-
-            # Check for presence of tiers
-            tier_list = ['orthography', 'model', 'actual', 'alignment']
+            
+            # Check for presence of tiers (revised)
+            tier_list = ['orthography', 'model', 'actual']
             for tier in tier_list:
-                if tier not in t.keys():
+                try:
+                    self.transcriptions.t_tiers[tier]
+                    check_dict[f"{tier}_present"] = True
+                except KeyError as error:
                     check_dict[f"{tier}_present"] = False
                     print(f"{tier} tier empty")
-                else:
-                    check_dict[f"{tier}_present"] = True
             if check_dict['orthography_present'] and check_dict['model_present'] and check_dict['actual_present']:
                 check_dict['transcriptions_present']=True
             else:
                 check_dict['transcriptions_present']=False
-
-            # Check for equal number of groups across tiers
-            try:
-                if len(t['model']) == len(t['actual']) == len(t['alignment']):
-                    check_dict['equal_num_groups'] = True
-                else:
-                    check_dict['equal_num_groups'] = False
-                    logging.warning(f"Unequal number of groups across tiers: {self.root.corpus}>{self.root.id}>{self.record_num},{self.id}")
-                    print("Unequal number of groups across tiers.")
-            except KeyError:
-                check_dict['equal_num_groups'] = False
-                logging.warning(f"A tier is empty: {self.root.corpus}>{self.root.id}>{self.record_num},{self.id}")
-                print("A tier is empty.")
-            return
+            # Check for alignment
+            if self.transcriptions.t_segs:
+                check_dict['alignment_present']=True
+            else:
+                check_dict['alignment_present']=False
+                logging.warning(f"Alignment errored or missing: {self.root.corpus}>{self.root.id}>{self.record_num},{self.id}")
+                print("Alignment errored or missing.")
         
         check_tier_content()
 
