@@ -581,6 +581,7 @@ class Record:
                       'actual_present', 
                       'alignment_present']
         check_dict = {}
+        # t = aligned_transcriptions
         t = self.extract_transcriptions(zip_tiers=False)[0]
         
         check_dict['not_excluded'] = not self.exclude_from_searches
@@ -1366,9 +1367,9 @@ if __name__ == "__main__":
     # t = r.get_transcription()
     # write_xml_to_file(s.tree, "output_file_A.xml")
     
-    # Test all files
+    # Test alignment of all files in directory
     result = []
-    directory = "/Users/pcombiths/Library/CloudStorage/OneDrive-UniversityofIowa/Offline Work/SSD Tx III - BHL/Original Lab Project/S201"
+    directory = "/Users/pcombiths/Library/CloudStorage/OneDrive-UniversityofIowa/Offline Work/SSD Tx III - BHL/Lab Project_REV/S202"
     for file in os.listdir(directory):
         if file.endswith(".xml"):
             s = Session(os.path.join(directory, file))
@@ -1376,4 +1377,7 @@ if __name__ == "__main__":
             test_list = [Transcription(r).get_indexes() for r in r_test]
             result.append([s, test_list])
             pass
+    pass
+
+    resultado = check_sessions(directory)
     pass
