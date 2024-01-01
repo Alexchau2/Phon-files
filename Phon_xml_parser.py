@@ -370,10 +370,12 @@ class Record:
                     # Could streamline by extracting the embedded indices directly from the ph element
                     pgs.append(alignments)
                 char_indexes[tier] = pgs
-            except KeyError as error:
+            except KeyError as error: # Omit aligned_transcriptions if missing tiers
+                print(f"Tier missing or errored: {self.root.corpus}>{self.root.id}>{self.record_num},{self.id}") # Debugging
                 logging.warning(f"Tier missing or errored: {self.root.corpus}>{self.root.id}>{self.record_num},{self.id}")
-                continue
-        
+                return [None, char_indexes, embedded_indices]
+
+
         def align_transcriptions(self, char_indexes):
             alignment = [
                 [
@@ -943,15 +945,21 @@ class Transcription:
             list: A list of groups, each containing indexed characters for both tiers.
             # Return keeps tiers separate as there is not 1:1 alignment between them
         """
-        groups = []  # Create a list to store groups
+        # Check for unspecified alignment or alignment error. If errored, return list
+        # with with empty dictionary(s)
+        try:
+            assert self.t[0]
+        except AssertionError:
+            logging.warning(f"Unable to get indexes for records with errored alignment: {self.record.root.corpus}>{self.record.root.id}>{self.record.record_num},{self.record.id}")
+            return [{"actual":[""], "model":[""]} for x in self.orthography]           
+        # Return list with empty dictionary(s) when missing tiers prevent indexing.
         try:
             self.t_orig['model']
             self.t_orig['actual']
-        # Return list with empty dictionary(s) when missing tiers prevent indexing.
-        except KeyError:
+        except KeyError as error:
             logging.warning(f"Unable to get indexes for records with missing tiers: {self.record.root.corpus}>{self.record.root.id}>{self.record.record_num},{self.record.id}")
             return [{"actual":[""], "model":[""]} for x in self.orthography]
-            raise Exception("Unable to get indexes for records with missing tiers.")
+        groups = []  # Create a list to store groups
         for form in ["actual", "model"]:
             for g_i, group in enumerate(self.t_orig[form]):
                 # Get original string for each group in the tier
@@ -986,49 +994,55 @@ class Transcription:
                         o_skip_counter -= 1
                         continue
                     o_i = o_is[o_i_c]  # original segment index(es)
-                    a_seg = a_split[g_i][a_c][0][f]  # aligned segment string
-                    a_i = a_split[g_i][a_c][1][f] # aligned segment index
-
-                    # Append an extra item for deletions and insertions. 
-                    if a_i == -1:  # deletion (actual) or insertion (model)
-                        assert a_seg == " "  # Debugging
-                        indexed_chars.append([" ", {"original_index":o_i, "alignment_index":a_i}])
-                        a_c += 1
-                        # Re-extract variables due to counter update
+                    # Handle error with incomplete/errored alignment
+                    try:
                         a_seg = a_split[g_i][a_c][0][f]  # aligned segment string
                         a_i = a_split[g_i][a_c][1][f] # aligned segment index
-                    if o_char != " " and o_char == a_seg and isinstance(o_i, int):  # If match and single index
-                        # indexed_char = [o_char, o_i, a_i]  # Debugging
-                        # indexed_chars.append(indexed_char)  # Debugging
-                        indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":a_i}])
-                        o_c += 1  # Advance in original and align lists
-                        o_i_c += 1
-                        a_c += 1
-                    elif o_char != a_seg and isinstance(o_i, list): # If not match and multi index
-                        # Match with multi-index
-                        span = len(o_i)
-                        # Add subsequenct chars via span (2 = 1 additional)
-                        for num in range(span-1):
-                            o_c += 1  # Advance in original list for each extra char
-                            o_char+=o_split[o_c]
-                            o_skip_counter = span-1
-                        indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":a_i}])
-                        # o_c += 1  # Advance in original and align lists
-                        o_c += 1
-                        o_i_c += 1
-                        a_c += 1                 
-                    # Non-segment characters to skip. Check that nothing else applies here.
-                    elif o_char != a_seg and isinstance(o_i, int):  # If not match and single index
-                        # Nonmatch
-                        indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":None}])
-                        o_c += 1  # Advance only in original list
-                        o_i_c += 1
-                    # Does this condition ever get accessed?
-                    elif o_char == a_seg == " ":  # If o_char is a space and matches an insertion
-                        indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":None}])
-                        indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":a_i}])
-                        o_c += 1  # Advance only in original list
-                        o_i_c += 1
+                    except IndexError as error:
+                        print(f"Incomplete alignment detected for {self.record.root.corpus}>{self.record.root.id}>{self.record.record_num},{self.record.id}")
+                        logging.warning(f"Unable to get indexes for records with incomplete alignment: {self.record.root.corpus}>{self.record.root.id}>{self.record.record_num},{self.record.id}")
+                        return [{"actual":[""], "model":[""]} for x in self.orthography]
+                        
+                        # Append an extra item for deletions and insertions. 
+                        if a_i == -1:  # deletion (actual) or insertion (model)
+                            assert a_seg == " "  # Debugging
+                            indexed_chars.append([" ", {"original_index":o_i, "alignment_index":a_i}])
+                            a_c += 1
+                            # Re-extract variables due to counter update
+                            a_seg = a_split[g_i][a_c][0][f]  # aligned segment string
+                            a_i = a_split[g_i][a_c][1][f] # aligned segment index
+                        if o_char != " " and o_char == a_seg and isinstance(o_i, int):  # If match and single index
+                            # indexed_char = [o_char, o_i, a_i]  # Debugging
+                            # indexed_chars.append(indexed_char)  # Debugging
+                            indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":a_i}])
+                            o_c += 1  # Advance in original and align lists
+                            o_i_c += 1
+                            a_c += 1
+                        elif o_char != a_seg and isinstance(o_i, list): # If not match and multi index
+                            # Match with multi-index
+                            span = len(o_i)
+                            # Add subsequenct chars via span (2 = 1 additional)
+                            for num in range(span-1):
+                                o_c += 1  # Advance in original list for each extra char
+                                o_char+=o_split[o_c]
+                                o_skip_counter = span-1
+                            indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":a_i}])
+                            # o_c += 1  # Advance in original and align lists
+                            o_c += 1
+                            o_i_c += 1
+                            a_c += 1                 
+                        # Non-segment characters to skip. Check that nothing else applies here.
+                        elif o_char != a_seg and isinstance(o_i, int):  # If not match and single index
+                            # Nonmatch
+                            indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":None}])
+                            o_c += 1  # Advance only in original list
+                            o_i_c += 1
+                        # Does this condition ever get accessed?
+                        elif o_char == a_seg == " ":  # If o_char is a space and matches an insertion
+                            indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":None}])
+                            indexed_chars.append([o_char, {"original_index":o_i, "alignment_index":a_i}])
+                            o_c += 1  # Advance only in original list
+                            o_i_c += 1
                 # Instantiate empty dictionary for each group
                 try:
                     groups[g_i]
@@ -1324,25 +1338,23 @@ if __name__ == "__main__":
 
     # Test 4: A session with excluded records
     
-    test_path = r"C:\Users\Philip\Documents\github\Phon-files\XML Files\1007_PKP_PKP Pre.xml"
-    test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Files/1007_PKP_PKP Pre.xml"
-    test_path = "/Users/pcombiths/Documents/GitHub/Phon-files/XML Test/groups-words/C401_words.xml"
+    # test_path = "/Users/pcombiths/Documents/GitHub/phon_companion/tests/test_xml/sp_en1/S201_EFE-A_Post.xml"
 
-    s = Session(test_path)
-    r_list = s.records
-    r = Record(r_list[0], s.root)
-    t_raw = r.extract_transcriptions()
-    t = Transcription(r)
-    segs = t.segments[0]
-    seg = t.segments[0][0]
-    indexes = t.indexes[0]
-    indexes_a = t.indexes[0]['actual']
-    indexes_m = t.indexes[0]['model']
-    index_a = t.indexes[0]['actual'][0]
-    index_m = t.indexes[0]['model'][0]
-    alignment = Alignment(t)
-    resultado = alignment.get_alignment()
-    pass
+    # s = Session(test_path)
+    # r_list = s.records
+    # r = Record(r_list[0], s.root)
+    # t_raw = r.extract_transcriptions()
+    # t = Transcription(r)
+    # segs = t.segments[0]
+    # seg = t.segments[0][0]
+    # indexes = t.indexes[0]
+    # indexes_a = t.indexes[0]['actual']
+    # indexes_m = t.indexes[0]['model']
+    # index_a = t.indexes[0]['actual'][0]
+    # index_m = t.indexes[0]['model'][0]
+    # alignment = Alignment(t)
+    # resultado = alignment.get_alignment()
+    # pass
 
 
     # Test 5: Write to file
@@ -1355,12 +1367,13 @@ if __name__ == "__main__":
     # write_xml_to_file(s.tree, "output_file_A.xml")
     
     # Test all files
-    # result = []
-    # for file in os.listdir("XML Files"):
-    #     if file.endswith(".xml"):
-    #         s = Session(os.path.join("XML Files", file))
-    #         r_test = s.get_records(simple_return=True)
-    #         test_list = [Transcription(r).get_indexes() for r in r_test]
-    #         result.append(test_list)
-    #         pass
-    # pass
+    result = []
+    directory = "/Users/pcombiths/Library/CloudStorage/OneDrive-UniversityofIowa/Offline Work/SSD Tx III - BHL/Original Lab Project/S201"
+    for file in os.listdir(directory):
+        if file.endswith(".xml"):
+            s = Session(os.path.join(directory, file))
+            r_test = s.get_records(simple_return=True)
+            test_list = [Transcription(r).get_indexes() for r in r_test]
+            result.append([s, test_list])
+            pass
+    pass
